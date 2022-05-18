@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('additional_updates', function (Blueprint $table) {
+        Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
-            $table->string('event');
-            $table->string('name');
-            $table->string('image')->nullable();
-            $table->text('notes')->nullable();
-            $table->foreignId('entry_id');
+            $table->text('address');
+            $table->integer('phone');
+            $table->foreignId('user-id');
+            $table->bigInteger('salary')->default(25000);
+            $table->foreignId('id_type'); //اسم االسنوي او الشهري
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('additional_updates');
+        Schema::dropIfExists('sponsors');
     }
 };

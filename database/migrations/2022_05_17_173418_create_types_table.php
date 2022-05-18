@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('additional_updates', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('event');
-            $table->string('name');
-            $table->string('image')->nullable();
-            $table->text('notes')->nullable();
-            $table->foreignId('entry_id');
+            $table->string('type')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('additional_updates');
+        Schema::dropIfExists('types');
     }
 };

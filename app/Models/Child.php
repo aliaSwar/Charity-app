@@ -14,4 +14,8 @@ class Child extends Model
     {
         return $this->belongsTo(Entry::class);
     }
+    public function orphan()
+    {
+        return $this->belongsTo(Orphan::class);
+    }
 }

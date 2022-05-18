@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('name');
             $table->date('birthday');
             $table->string('health_status');
-            $table->string('academic_level');
+            $table->string('academic_level');//enum
             $table->foreignId('entry_id');
             $table->enum('gender', ['male', 'female', 'other']);
-            // $table->foreignId('orphan_id')->nullable()->constrained();
+            $table->foreignId('orphan_id')->nullable()->constrained();
+            //is_orphan
             $table->timestamps();
         });
     }

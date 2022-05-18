@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('husband_name')->nullable();
             $table->string('wife_name')->nullable();
+            //is_orphan
             $table->string('husband_health_status')->nullable();
             $table->string('wife_health_status')->nullable();
             $table->enum('wife_work', ['work', 'dont work'])->nullable();

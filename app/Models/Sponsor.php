@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Sponsor extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'address', 'phone', 'email', 'salary', 'id_type'];
-
-    public function type()
+    protected $fillable = ['address', 'phone', 'user_id'];
+    public function paids()
     {
-        return $this->belongsTo(Type::class);
+        return $this->hasMany(Paid::class);
+    }
+    public function orphans()
+    {
+        return $this->belongsToMany(Orphan::class);
     }
 }

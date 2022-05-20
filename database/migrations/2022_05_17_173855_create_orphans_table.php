@@ -15,9 +15,15 @@ return new class extends Migration
     {
         Schema::create('orphans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('entry_id');
+            $table->foreignId('person_id');
             $table->foreignId('sponsor_id');
-            $table->integer('number_');
+            $table->integer('number_person')->default(0);
+            $table->boolean('mother_is_ok');
+            $table->bigInteger('salary_month')->default(25000);
+            $table->date('begin_date', 'y-m-d');
+            $table->date('end_date', 'y-m-d');
+            $table->bigInteger('salary_year')->default(100000);
+            $table->foreignId('type_id'); //اسم االسنوي او الشهري
             $table->timestamps();
         });
     }

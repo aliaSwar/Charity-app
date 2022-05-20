@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sponsors', function (Blueprint $table) {
+        Schema::create('paids', function (Blueprint $table) {
             $table->id();
-            $table->text('address');
-            $table->bigInteger('phone');
-            $table->foreignId('user-id');
-            //$table->bigInteger('salary')->default(25000);
+            $table->bigInteger('amount');
+            $table->string('image'); //يجيب ان يكون ضمن الصورة تاريخ التسليم
+            $table->date('date_paid', 'y-d-m');
+            $table->foreignId('sposor_id');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsors');
+        Schema::dropIfExists('paids');
     }
 };

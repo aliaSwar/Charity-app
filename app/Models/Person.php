@@ -14,9 +14,9 @@ class Person extends Model
     {
         return $this->belongsTo(Entry::class);
     }
-    public function orphan()
+    public function sponsors()
     {
-        return $this->belongsTo(Orphan::class);
+        return $this->belongsToMany(Sponsor::class);
     }
     /**
      * Get the additional_updates for the entry .

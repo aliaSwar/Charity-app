@@ -15,8 +15,8 @@ class Type extends Model
     /**
      * Get the category for the entry.
      */
-    public function sponsors()
+    public function orphans()
     {
-        return $this->hasMany(Sponsor::class);
+        return $this->hasMany(Orphan::class);
     }
 }

@@ -19,29 +19,16 @@ return new class extends Migration
             $table->bigInteger('registration_num')->unsigned();
             $table->bigInteger('smartCard_num')->unsigned();
             $table->bigInteger('phone_num')->unsigned();
-            $table->bigInteger('husband_id_num')->unsigned();
-            $table->bigInteger('wife_id_num')->unsigned();
             $table->date('entry_date', 'y-m-d'); //تاريخ الادخال
             $table->date('renewal_date', 'y-m-d')->nullable(); //تاريخ التجديد
             $table->date('finshed_date')->nullable(); //تاريخ الانتهاء
-            $table->date('husband_birthday');
-            $table->date('wife_birthday');
             $table->string('family_name');
-            $table->string('address');
-            $table->string('husband_name')->nullable();
-            $table->string('wife_name')->nullable();
-            //is_orphan
-            $table->string('husband_health_status')->nullable();
-            $table->string('wife_health_status')->nullable();
-            $table->enum('wife_work', ['work', 'dont work'])->nullable();
-            $table->enum('husband_work', ['work', 'dont work'])->nullable();
-            $table->integer('children_num')->default(0);
+            $table->text('address');
+            $table->boolean('all_orphan')->default(false);
+            $table->integer('family_num')->default(1);
             $table->integer('salary_charity')->default(0);
-            $table->text('notes')->nullable();
-            $table->string('family_husband_status'); //اعملا enum?
-            $table->string('family_wife_status');
-            $table->foreignId('id_category');
-            $table->foreignId('id_status');
+            $table->foreignId('category_id');
+            $table->foreignId('status_id');
             $table->timestamps();
         });
     }

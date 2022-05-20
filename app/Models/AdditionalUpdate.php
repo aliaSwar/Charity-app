@@ -10,9 +10,9 @@ class AdditionalUpdate extends Model
     use HasFactory;
     protected $fillable = ['event', 'name_number', 'entry_id', 'image', 'notes'];
 
-    public function entry()
+    public function person()
     {
-        return $this->belongsTo(Entry::class);
+        return $this->belongsTo(Person::class);
     }
     public function getFeaturedImageAttribute($value)
     {

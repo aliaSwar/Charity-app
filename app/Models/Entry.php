@@ -9,7 +9,7 @@ class Entry extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'diwan_num', 'registration_num', 'smartCard_num', 'phone_num', 'husband_id_num', 'wife_id_num', 'entry_date', 'entry_date', 'renewal_date', 'finshed_date', 'husband_birthday', 'wife_birthday', 'family_name', 'address', 'husband_name', 'wife_name', 'husband_health_status', 'wife_health_status', 'wife_work', 'husband_work', 'children_num', 'salary_charity', 'notes', 'family_husband_status', 'family_wife_status', 'id_category', 'id_status'
+        'diwan_num', 'registration_num', 'smartCard_num', 'phone_num', 'entry_date', 'entry_date', 'renewal_date', 'finshed_date', 'family_num', 'salary_charity', 'notes',  'id_category', 'id_status', 'all_orphan'
     ];
     /**
      * The entry that belong to the category.
@@ -42,15 +42,8 @@ class Entry extends Model
     /**
      * Get the children  for the entry family.
      */
-    public function children()
+    public function people()
     {
         return $this->hasMany(Entry::class);
-    }
-    /**
-     * Get the additional_updates for the entry .
-     */
-    public function additional_updates()
-    {
-        return $this->hasMany(additional_updates::class);
     }
 }

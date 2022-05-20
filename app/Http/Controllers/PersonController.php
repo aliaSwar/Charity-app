@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Child;
-use App\Http\Requests\StoreChildRequest;
-use App\Http\Requests\UpdateChildRequest;
+use App\Models\Person;
+use App\Http\Requests\StorePersonRequest;
+use App\Http\Requests\UpdatePersonRequest;
 
-class ChildController extends Controller
+class PersonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class ChildController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreChildRequest  $request
+     * @param  \App\Http\Requests\StorePersonRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreChildRequest $request)
+    public function store(StorePersonRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class ChildController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Child  $child
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function show(Child $child)
+    public function show(Person $person)
     {
         //
     }
@@ -53,10 +53,10 @@ class ChildController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Child  $child
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function edit(Child $child)
+    public function edit(Person $person)
     {
         //
     }
@@ -64,11 +64,11 @@ class ChildController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateChildRequest  $request
-     * @param  \App\Models\Child  $child
+     * @param  \App\Http\Requests\UpdatePersonRequest  $request
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateChildRequest $request, Child $child)
+    public function update(UpdatePersonRequest $request, Person $person)
     {
         //
     }
@@ -76,10 +76,10 @@ class ChildController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Child  $child
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Child $child)
+    public function destroy(Person $person)
     {
         //
     }

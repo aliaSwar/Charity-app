@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AdditionalUpdate extends Model
 {
     use HasFactory;
-    protected $fillable = ['event', 'name_number', 'entry_id', 'image', 'notes'];
+    protected $fillable = ['event', 'name_number', 'person_id', 'image', 'notes'];
 
     public function person()
     {

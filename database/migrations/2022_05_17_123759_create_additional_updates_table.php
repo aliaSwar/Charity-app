@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('notes')->nullable();
-            $table->foreignId('entry_id');
+            $table->foreignId('person_id');
             $table->timestamps();
         });
     }

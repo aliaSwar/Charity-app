@@ -37,7 +37,8 @@ class EntryController extends Controller
      */
     public function store(StoreEntryRequest $request)
     {
-        //
+        $entry = Entry::create($request->all());
+        dd($entry);
     }
 
     /**

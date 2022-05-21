@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\StatusController;
+use App\Models\Identification_paper;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +27,8 @@ Route::get('/', function () {
 Route::resource('entries', EntryController::class);
 // TODO: Category entry
 Route::resource('categories', CategoryController::class);
-//TODO::Status entry
+// TODO::Status entry
 Route::resource('statuses', StatusController::class);
+// TODO::Paper Entry
+Route::resource('papers', IdentificationPaperController::class);
 //////////////////////////////////End Resource///////////////////////

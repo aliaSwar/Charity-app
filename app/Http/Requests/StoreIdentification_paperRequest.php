@@ -13,7 +13,7 @@ class StoreIdentification_paperRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreIdentification_paperRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image_upload'             => 'required_without:image|file|image|nullable',
+            'name'                     => 'required|min:4|max:255',
+            'slug'                     => 'required|min:4',
         ];
     }
 }

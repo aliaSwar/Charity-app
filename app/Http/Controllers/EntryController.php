@@ -15,7 +15,8 @@ class EntryController extends Controller
      */
     public function index()
     {
-        //
+        $entries = Entry::paginate(8);
+        return view('Entry.index', ['entries' => $entries]);
     }
 
     /**
@@ -25,7 +26,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('Entry.create');
     }
 
     /**
@@ -47,7 +48,7 @@ class EntryController extends Controller
      */
     public function show(Entry $entry)
     {
-        //
+        return view('Entry.show', $entry);
     }
 
     /**
@@ -58,7 +59,7 @@ class EntryController extends Controller
      */
     public function edit(Entry $entry)
     {
-        //
+        return view('Entry.edit', $entry);
     }
 
     /**

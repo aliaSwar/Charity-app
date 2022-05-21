@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EntryController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//////////////////////////////////RESOURCE//////////////////////////
+// TODO: Entry
+Route::resource('entries', EntryController::class);
+// TODO: Category entry
+Route::resource('categories', CategoryController::class);
+//TODO::Status entry
+Route::resource('statuses', StatusController::class);
+//////////////////////////////////End Resource///////////////////////

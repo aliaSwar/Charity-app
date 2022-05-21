@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Status;
 use App\Http\Requests\StoreStatusRequest;
 use App\Http\Requests\UpdateStatusRequest;
+use Illuminate\Support\Str;
 
 class StatusController extends Controller
 {
@@ -15,7 +16,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $statuses = Status::all();
+        return view('Status.index', ['statueses' => $statuses]);
     }
 
     /**
@@ -25,7 +27,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('Status.create');
     }
 
     /**
@@ -36,7 +38,11 @@ class StatusController extends Controller
      */
     public function store(StoreStatusRequest $request)
     {
-        //
+        $status = new Status();
+        $status->Status = $request->Status;
+        $status->slug = Str::slug($request->Status, '-');
+        $status->saveOrFail();
+        return   redirect()->route('Statues.show', ['status' => $status])->with('sucess create Status');
     }
 
     /**
@@ -47,7 +53,7 @@ class StatusController extends Controller
      */
     public function show(Status $status)
     {
-        //
+        return view('Status.show', $status);
     }
 
     /**
@@ -58,7 +64,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        //
+        return view('Status.edit', $status);
     }
 
     /**
@@ -70,7 +76,11 @@ class StatusController extends Controller
      */
     public function update(UpdateStatusRequest $request, Status $status)
     {
-        //
+
+        $status->status = $request->status;
+        $status->slug = Str::slug($request->status, '-');
+        $status->save();
+        return redirect()->route('statuses.show', ['status' => $status]);
     }
 
     /**
@@ -81,6 +91,7 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-        //
+        $status->delete();
+        return redirect()->route('statuses.index');
     }
 }

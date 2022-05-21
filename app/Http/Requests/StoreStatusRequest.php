@@ -13,7 +13,7 @@ class StoreStatusRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'status'                     => 'required|min:4|max:255',
         ];
     }
 }

@@ -72,7 +72,8 @@ class EntryController extends Controller
      */
     public function update(UpdateEntryRequest $request, Entry $entry)
     {
-        //
+        $entry->update($request->all());
+        return redirect()->route('entries.show', $entry);
     }
 
     /**
@@ -83,6 +84,23 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        //
+        //$entry->delete();
+        $entry->delete();
+
+        return redirect()->route('entries.index');
+    }
+    public function restoreAll()
+    {
+        //return "sfgdhgjkh";
+        Entry::onlyTrashed()->restore();
+
+        return redirect()->route('entries.index');
+    }
+    public function restore($id)
+    {
+        $entry = Entry::findOrFail($id);
+        $entry->withTrashed()->restore();
+
+        return redirect()->route('entries.show');
     }
 }

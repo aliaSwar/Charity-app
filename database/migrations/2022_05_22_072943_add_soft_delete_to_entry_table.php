@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sponsors', function (Blueprint $table) {
-            $table->id();
-            $table->text('address');
-            $table->foreignId('user-id');
-            //$table->bigInteger('salary')->default(25000);
-            $table->timestamps();
+        Schema::table('entry', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsors');
+        Schema::table('entry', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

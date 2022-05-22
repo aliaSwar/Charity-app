@@ -18,14 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-//////////////////////////////////RESOURCE//////////////////////////
-// TODO: Entry
-Route::resource('entries', EntryController::class);
-// TODO: Category entry
-Route::resource('categories', CategoryController::class);
-// TODO::Status entry
-Route::resource('statuses', StatusController::class);
-// TODO::Paper Entry
-Route::resource('papers', IdentificationPaperController::class);
-//////////////////////////////////End Resource///////////////////////
+Route::get('/', function () {
+    return view('index');
+});

@@ -39,6 +39,7 @@ class EntryController extends Controller
     {
         $entry = Entry::create($request->all());
         dd($entry);
+         return redirect()->route('entries.show');
     }
 
     /**

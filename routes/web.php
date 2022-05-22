@@ -23,9 +23,9 @@ Route::get('/', function () {
 });
 
 //////////////////////////////////RESOURCE//////////////////////////
-// TODO: Entry
+// TODO:: Entry
 Route::resource('entries', EntryController::class);
-// TODO: Category entry
+// TODO:: Category entry
 Route::resource('categories', CategoryController::class);
 // TODO::Status entry
 Route::resource('statuses', StatusController::class);

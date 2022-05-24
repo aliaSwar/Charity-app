@@ -6,7 +6,7 @@ use App\Models\Person;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
 
-class PersonController extends Controller
+class PersonController extends BaseController
 {
     /**
      * Display a listing of the resource.

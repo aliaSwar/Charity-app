@@ -4,16 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class layouts.app extends Component
+class app extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    /*     public $style;
+    public $script; */
+    public function __construct(/* $style, $script */)
     {
-        //
+        /*         $this->style = $style;
+        $this->script = $script; */
     }
 
     /**

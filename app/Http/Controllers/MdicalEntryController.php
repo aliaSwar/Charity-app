@@ -6,7 +6,7 @@ use App\Models\Mdical_entry;
 use App\Http\Requests\StoreMdical_entryRequest;
 use App\Http\Requests\UpdateMdical_entryRequest;
 
-class MdicalEntryController extends Controller
+class MdicalEntryController extends BaseController
 {
     /**
      * Display a listing of the resource.

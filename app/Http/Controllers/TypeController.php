@@ -6,7 +6,7 @@ use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 
-class TypeController extends Controller
+class TypeController extends BaseController
 {
     /**
      * Display a listing of the resource.

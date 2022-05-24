@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class CategoryController extends Controller
+
+class CategoryController extends BaseController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+
         $categories = Category::all();
         return view('Category.index', ['categories' => $categories]);
     }
@@ -36,13 +38,20 @@ class CategoryController extends Controller
      * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'category'  => 'required|min:3|max:255',
+
+        ]);
+
+
         $category = new Category();
+        /*  dd($category); */
         $category->category = $request->category;
         $category->slug = Str::slug($request->category, '-');
         $category->saveOrFail();
-        return   redirect()->route('Categories.show', ['category' => $category])->with('sucess create category');
+        return   redirect()->route('categories.show', ['category' => $category])->with('sucess create category');
     }
 
     /**
@@ -75,7 +84,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, Category $category)
     {
 
         $category->category = $request->category;

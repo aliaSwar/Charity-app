@@ -3,8 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\IdentificationPaperController;
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\StatusController;
-use App\Models\Identification_paper;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +18,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('index');
+});
 
-//////////////////////////////////RESOURCE//////////////////////////
-// TODO: Entry
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
+///////////////////////////////Begin RESOURCE/////////////////////////
+//TODO:: route entry
 Route::resource('entries', EntryController::class);
-// TODO: Category entry
+//TODO:: route category
 Route::resource('categories', CategoryController::class);
-// TODO::Status entry
+//TODO:: route Status
 Route::resource('statuses', StatusController::class);
-// TODO::Paper Entry
+//TODO:: route Paper to entries
 Route::resource('papers', IdentificationPaperController::class);
-//////////////////////////////////End Resource///////////////////////
+//TODO:: route person or family entries
+Route::resource('paople', PersonController::class);
+
+/////////////////////////////End Resource////////////////////////////

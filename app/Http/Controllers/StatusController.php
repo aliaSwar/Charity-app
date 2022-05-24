@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Status;
 use App\Http\Requests\StoreStatusRequest;
 use App\Http\Requests\UpdateStatusRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class StatusController extends Controller
+class StatusController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -36,13 +37,16 @@ class StatusController extends Controller
      * @param  \App\Http\Requests\StoreStatusRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStatusRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'status'   => 'required|min:3'
+        ]);
         $status = new Status();
-        $status->Status = $request->Status;
-        $status->slug = Str::slug($request->Status, '-');
+        $status->status = $request->status;
+        $status->slug = Str::slug($request->status, '-');
         $status->saveOrFail();
-        return   redirect()->route('Statues.show', ['status' => $status])->with('sucess create Status');
+        return   redirect()->route('statuses.show', ['status' => $status])->with('sucess create Status');
     }
 
     /**
@@ -74,7 +78,7 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStatusRequest $request, Status $status)
+    public function update(Request $request, Status $status)
     {
 
         $status->status = $request->status;

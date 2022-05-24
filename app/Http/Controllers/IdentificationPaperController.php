@@ -7,7 +7,7 @@ use App\Http\Requests\StoreIdentification_paperRequest;
 use App\Http\Requests\UpdateIdentification_paperRequest;
 use Illuminate\Support\Str;
 
-class IdentificationPaperController extends Controller
+class IdentificationPaperController extends BaseController
 {
     /**
      * Display a listing of the resource.

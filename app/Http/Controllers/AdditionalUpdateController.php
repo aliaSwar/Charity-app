@@ -6,7 +6,7 @@ use App\Models\AdditionalUpdate;
 use App\Http\Requests\StoreAdditionalUpdateRequest;
 use App\Http\Requests\UpdateAdditionalUpdateRequest;
 
-class AdditionalUpdateController extends Controller
+class AdditionalUpdateController extends BaseController
 {
     /**
      * Display a listing of the resource.

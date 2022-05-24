@@ -6,7 +6,7 @@ use App\Models\Orphan;
 use App\Http\Requests\StoreOrphanRequest;
 use App\Http\Requests\UpdateOrphanRequest;
 
-class OrphanController extends Controller
+class OrphanController extends BaseController
 {
     /**
      * Display a listing of the resource.

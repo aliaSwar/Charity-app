@@ -6,7 +6,7 @@ use App\Models\Sponsor;
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
 
-class SponsorController extends Controller
+class SponsorController extends BaseController
 {
     /**
      * Display a listing of the resource.

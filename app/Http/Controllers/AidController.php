@@ -6,7 +6,7 @@ use App\Models\Aid;
 use App\Http\Requests\StoreAidRequest;
 use App\Http\Requests\UpdateAidRequest;
 
-class AidController extends Controller
+class AidController extends BaseController
 {
     /**
      * Display a listing of the resource.

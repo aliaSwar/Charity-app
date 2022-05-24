@@ -6,7 +6,7 @@ use App\Models\Paid;
 use App\Http\Requests\StorePaidRequest;
 use App\Http\Requests\UpdatePaidRequest;
 
-class PaidController extends Controller
+class PaidController extends BaseController
 {
     /**
      * Display a listing of the resource.

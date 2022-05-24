@@ -6,7 +6,7 @@ use App\Models\Admin;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     /**
      * Display a listing of the resource.

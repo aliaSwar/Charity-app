@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Entry;
 use App\Http\Requests\StoreEntryRequest;
 use App\Http\Requests\UpdateEntryRequest;
+use App\Models\Category;
+use App\Models\Status;
 
-class EntryController extends Controller
+class EntryController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +28,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-        return view('Entry.create');
+        return view('Entry.create', ['categories' => Category::all(), 'statuses' => Status::all()]);
     }
 
     /**

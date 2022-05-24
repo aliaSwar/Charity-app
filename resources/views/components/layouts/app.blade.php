@@ -48,8 +48,10 @@
     </head>
 
     <body>
+@auth
+            <x-side-bar/>
+@endauth
 
-<x-side-bar/>
 
 
 

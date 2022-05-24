@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="validationCustom02" class="form-label"> رقم القيد </label>
+                        <label for="validationCustom02" class="form-label"> عدد أفراد العائلة </label>
                         <input name="family_num" type="number" class="form-control" id="validationCustom02" required>
                         <div class="valid-feedback">
                             Looks good!
@@ -118,27 +118,30 @@
                             Please provide a valid city.
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class=" col-md-3 -btn-group dropend">
                         <label for="validationCustom04" class="form-label">نوع المدرج </label>
-                        <select name="category_id" class="form-select" id="validationCustom04" required>
-                            <select value="{{ old('category_id') }}">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
-                                @endforeach
-                            </select>
+                        <select name="category_id" class="form-select" id="validationCustom04"
+                            aria-label="Default select example" required>
+                            {{-- <select value="{{ old('category_id') }}"> --}}
+                            <option selected>اختر نوع المدرجين</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                            @endforeach
                         </select>
+
                         <div class="invalid-feedback">
                             Please select a valid state.
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class=" col-md-3 -btn-group dropend">
                         <label for="validationCustom04" class="form-label">حالة المدرج </label>
-                        <select name="status_is" class="form-select" id="validationCustom04" required>
-                            <select value="{{ old('status_id') }}">
-                                @foreach ($statuses as $status)
-                                    <option value="{{ $status->id }}">{{ $status->status }}</option>
-                                @endforeach
-                            </select>
+                        <select name="status_id" class="form-select" id="validationCustom04"
+                            aria-label="Default select example" required>
+                            <option selected>اختر حالة المدرج</option>
+                            @foreach ($statuses as $status)
+                                <option value="{{ $status->id }}">{{ $status->status }}</option>
+                            @endforeach
+                        </select>
                         </select>
                         <div class="invalid-feedback">
                             Please select a valid state.

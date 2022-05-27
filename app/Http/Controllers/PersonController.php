@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
+use App\Models\Entry;
 
 class PersonController extends BaseController
 {
@@ -23,9 +24,11 @@ class PersonController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Entry $entry)
     {
-        //
+        /* dd($entry); */
+
+        return view('Person.create', ['entry' => $entry]);
     }
 
     /**

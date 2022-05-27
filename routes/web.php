@@ -40,3 +40,8 @@ Route::resource('papers', IdentificationPaperController::class);
 Route::resource('paople', PersonController::class);
 
 /////////////////////////////End Resource////////////////////////////
+
+
+
+//TODO::to create a family entry
+Route::get('/create/{id}', [EntryController::class, 'createFamily'])->name('person.create');

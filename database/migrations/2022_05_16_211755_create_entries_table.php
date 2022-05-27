@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('family_name');
             $table->text('address');
             $table->boolean('all_orphan')->default(false);
-            $table->integer('family_num')->default(1);
+            $table->integer('family_num')->default(0);
             $table->integer('salary_charity')->default(0);
             $table->foreignId('category_id');
             $table->foreignId('status_id');

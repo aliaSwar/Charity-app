@@ -13,7 +13,7 @@ class StoreEntryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreEntryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'family_name'      => ['required', 'string', 'min:4'],
+            'address'          => ['required', 'string', 'min:5'],
+            'category_id'      => ['required', 'numeric', 'exists:categories,id'],
+            'status_id'        => ['required', 'numeric', 'exists:statuses,id'],
+            'phone_num'        => ['required', 'numeric', 'digits:11'],
+            'diwan_num'        => ['required', 'numeric'],
+            'smartCard_num'    => ['required', 'numeric', 'digits:7'],
+            'registration_num' => ['required', 'numeric'],
+            'family_num'       => ['required', 'min:0', 'max:20']
         ];
     }
 }

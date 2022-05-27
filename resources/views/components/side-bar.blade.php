@@ -50,13 +50,13 @@
 
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="tables-basic.html" class="menu-link">
+                            <a href="{{ route('entries.index') }}" class="menu-link">
                                 <div data-i18n="Without menu">عرض المدرجين</div>
                             </a>
 
                         </li>
                         <li class="menu-item">
-                            <a href="add-modraj.html" class="menu-link">
+                            <a href="{{ route('entries.create') }}" class="menu-link">
                                 <div data-i18n="Without navbar">إضافة مدرج</div>
                             </a>
                         </li>

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Entry;
 use App\Http\Requests\StoreEntryRequest;
-use App\Http\Requests\UpdateEntryRequest;
+use App\Models\Entry;
+
 use App\Models\Category;
 use App\Models\Status;
+use Illuminate\Http\Request;
 
 class EntryController extends BaseController
 {
@@ -39,10 +40,35 @@ class EntryController extends BaseController
      */
     public function store(StoreEntryRequest $request)
     {
-        $entry = Entry::create($request->all());
-        dd($entry);
+        //dd($request->all());
+        $entry = new Entry();
+        $entry->diwan_num = $request->diwan_num;
+        $entry->registration_num = $request->registration_num;
+        $entry->smartCard_num = $request->smartCard_num;
+        $entry->phone_num = $request->phone_num;
+        $entry->renewal_date = $request->renewal_date;
+        $entry->entry_date = $request->entry_date;
+        $entry->finshed_date = $request->finshed_date;
+        $entry->family_num = $request->family_num;
+        $entry->family_name = $request->family_name;
+        $entry->address = $request->address;
+        $entry->salary_charity = $request->salary_charity;
+        $entry->category_id = $request->category_id;
+        $entry->status_id = $request->status_id;
+        $entry->save();
+        if ($entry->family_num >= 1) {
+            return redirect()->route('person.create', ['entry' => $entry])->with('success create entry ');
+        }
+        return redirect()->route('entries.show');
     }
+    public function createFamily(Entry $entry)
+    {
 
+        $num = $entry->family_num - 1;
+        session()->push('number_person', $entry->family_num);
+        dd(session()->get('number_person'));
+        return view('Person.create', ['entry' => $entry]);
+    }
     /**
      * Display the specified resource.
      *
@@ -72,7 +98,7 @@ class EntryController extends BaseController
      * @param  \App\Models\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEntryRequest $request, Entry $entry)
+    public function update(Request $request, Entry $entry)
     {
         $entry->update($request->all());
         return redirect()->route('entries.show', $entry);

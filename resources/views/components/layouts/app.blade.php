@@ -49,9 +49,10 @@
 
     <body>
 @auth
-            <x-side-bar/>
+                                <x-side-bar/>
 @endauth
 
+<x-side-bar/>
 
 
 

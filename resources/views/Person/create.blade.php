@@ -1,5 +1,40 @@
 <x-layouts.app>
+    <x-slot name="styles">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+    </x-slot>
+    <x-slot name="scripts">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            /* store person in database and return respones success  */
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
+            $("#btnAddPerson").click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: {{ route('people.store') }},
+                    method: 'POST',
+                    data: {
+                        /* Code: title,
+                        Chief: details */
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            console.log(response.message) //Message come from controller
+                        } else {
+                            alert("Error")
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            });
+        </script>
+    </x-slot>
     <!-- / Menu -->
 
     <!-- Layout container -->
@@ -41,7 +76,7 @@
             <div class="container-xxl flex-grow-1 container-p-y">
                 <hr class="my-5" />
                 <div class="profile2">
-                    <form action="{{ route('people.store') }}" method="POST" class="row g-3 needs-validation"
+                    <form {{-- action="{{ route('people.store') }}" --}} method="POST" class="row g-3 needs-validation"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="col-md-4">
@@ -145,21 +180,19 @@
                         </div>
 
 
-
+                        {{-- the id btnAddPerson button to new person --}}
                         <div class="">
-                            <button id="btnAddLanguage" class="btn btn-primary" type="button"> إضافة طفل </button>
+                            <button id="btnAddPerson" class="btn btn-primary" type="button"> إضافة طفل </button>
                         </div>
+                        <hr class="my-5" />
 
 
                     </form>
+
                 </div>
 
-                <hr class="my-5" />
-                <x-slot name="scripts">
-                    $("#btnAddLanguage").click(function() {
-                    var $appendItem = $('.profile2').html();
-                    $($appendItem).appendTo('.profile2');
-                    });
-                </x-slot>
+
+
+
 
 </x-layouts.app>

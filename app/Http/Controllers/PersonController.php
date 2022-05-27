@@ -26,7 +26,6 @@ class PersonController extends BaseController
      */
     public function create(Entry $entry)
     {
-        /* dd($entry); */
 
         return view('Person.create', ['entry' => $entry]);
     }
@@ -39,7 +38,7 @@ class PersonController extends BaseController
      */
     public function store(StorePersonRequest $request)
     {
-        //
+        return response()->json(['success' => 'Data is successfully added']);
     }
 
     /**

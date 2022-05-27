@@ -37,11 +37,7 @@ Route::resource('statuses', StatusController::class);
 //TODO:: route Paper to entries
 Route::resource('papers', IdentificationPaperController::class);
 //TODO:: route person or family entries
-Route::resource('paople', PersonController::class);
+Route::resource('people', PersonController::class);
 
 /////////////////////////////End Resource////////////////////////////
-
-
-
-//TODO::to create a family entry
-Route::get('/create/{id}', [EntryController::class, 'createFamily'])->name('person.create');
+Route::get('person/{id}', [PersonController::class, 'create'])->name('person.create');

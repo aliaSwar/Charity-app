@@ -61,14 +61,7 @@ class EntryController extends BaseController
         }
         return redirect()->route('entries.show');
     }
-    public function createFamily(Entry $entry)
-    {
 
-        $num = $entry->family_num - 1;
-        session()->push('number_person', $entry->family_num);
-        dd(session()->get('number_person'));
-        return view('Person.create', ['entry' => $entry]);
-    }
     /**
      * Display the specified resource.
      *

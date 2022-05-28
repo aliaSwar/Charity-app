@@ -27,6 +27,7 @@ class StoreEntryRequest extends FormRequest
             'family_name'      => ['required', 'string', 'min:4'],
             'address'          => ['required', 'string', 'min:5'],
             'category_id'      => ['required', 'numeric', 'exists:categories,id'],
+            'financial_id'     => ['required', 'numeric', 'exists:financials,id'],
             'status_id'        => ['required', 'numeric', 'exists:statuses,id'],
             'phone_num'        => ['required', 'numeric', 'digits:11'],
             'diwan_num'        => ['required', 'numeric'],

@@ -5,16 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Financial extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'status',
-        'slug'
-    ];
-    /**
-     * Get the status for the entry.
-     */
+    protected $fillable = ['type', 'slug'];
     public function entries()
     {
         return $this->hasMany(Entry::class);

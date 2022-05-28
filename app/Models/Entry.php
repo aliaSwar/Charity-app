@@ -48,4 +48,11 @@ class Entry extends Model
     {
         return $this->hasMany(Entry::class);
     }
+    /**
+     * تحديد الفئات حسب الحالة المادية للعائلة المدخلة.
+     */
+    public function financial()
+    {
+        return $this->belongsTo(Financial::class);
+    }
 }

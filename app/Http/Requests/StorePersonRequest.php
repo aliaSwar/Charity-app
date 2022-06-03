@@ -28,7 +28,7 @@ class StorePersonRequest extends FormRequest
         return [
             'full_name'         => ['required', 'string', 'min:5'],
             'birthday'          => ['date'],
-            'phone'             => ['required', 'numeric', 'digits:11'],
+            'phone'             => ['numeric', 'digits:10'],
             'work'              => ['required', Rule::in(['work', 'dont work'])],
             'status'            => ['required', Rule::in('existing', 'not existing')],
             'category'          => ['required', Rule::in('mother', 'father', 'boy', 'girl')],
@@ -37,7 +37,8 @@ class StorePersonRequest extends FormRequest
             'entry_id'          => ['required', 'numeric', 'exists:entries,id'],
             'orphan_id'         => ['numeric', 'exists:orphans,id'],
             'health_status'     => ['required', 'string', 'min:3', 'max:1000'],
-            'number_id'         => ['numeric', 'digits:11']
+            'number_id'         => ['numeric', 'digits:11'],
+            'notes'             => ['required', 'string']
         ];
     }
 }

@@ -6,6 +6,8 @@ use App\Models\Person;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
 use App\Models\Entry;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PersonController extends BaseController
 {
@@ -36,9 +38,28 @@ class PersonController extends BaseController
      * @param  \App\Http\Requests\StorePersonRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePersonRequest $request)
+    public function store(Request $request, Entry $entry)
     {
-        return response()->json(['success' => 'Data is successfully added']);
+        return 'success';
+        $person = new Person();
+        $person->number_id = $request->number_id;
+        $person->full_name = $request->full_name;
+        $person->healf_status = $request->helf_status;
+        $person->work = $request->work;
+        $person->category = $request->category;
+        $person->status = $request->status;
+        $person->family_status = $request->family_status;
+        $person->educational_level;
+        $person->notes = $request->notes;
+        $person->entry_id = $entry->id;
+        $entry->increment('current_person');
+        $entry->save();
+        $person->save();
+        dd($person);
+        if ($entry->current_person == $entry->family_num) {
+            return redirect()->route('entries.show', $entry)->with(['message' => 'success add all family number ']);
+        }
+        return redirect()->back()->with(['success' => 'Data is successfully added']);
     }
 
     /**

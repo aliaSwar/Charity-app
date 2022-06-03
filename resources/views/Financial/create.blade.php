@@ -14,8 +14,6 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                <!-- Search -->
-                <!-- Search -->
                 <div class="navbar-nav align-items-center">
                     <div class="nav-item d-flex align-items-center">
 
@@ -24,37 +22,36 @@
 
                     </div>
                 </div>
-                <!-- /Search -->
-                <!-- /Search -->
 
                 <ul class="navbar-nav flex-row align-items-center ms-auto">
                     <!-- Place this tag where you want the button to render. -->
+
             </div>
         </nav>
 
-        <!-- / Navbar -->
-
-        <!-- Content wrapper -->
         <div class="content-wrapper">
-            <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-                <!-- Basic Bootstrap Table -->
-                <!--/ Basic Bootstrap Table -->
                 <hr class="my-5" />
-                <div class="container">
-                    <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th class="table-success ">اسم العائلة</th>
-                                <th class="table-success ">رقم الاستمارة</th>
-                                <th class="table-success ">رقم الهاتف</th>
-                                <th class="table-success ">الفئة </th>
-                                <th class="table-success ">التفاصيل </th>
-                            </tr>
-                        </thead>
-                        @foreach ($category->entries as $entry)
-                        @endforeach
+                <form action="{{ route('financials.store') }}" method="POST" class="row g-3 needs-validation"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-md-4">
+                        <label for="validationCustom01" class="form-label"> ادخل الفئة </label>
+                        <input name="type" type="text" class="form-control @error('type') border-light-danger @enderror"
+                            id="validationCustom01">
+                        @error('type')
+                            <div>
+                                <p class="help is-danger">{{ $message }}</p>
+                            </div>
+                        @enderror
+
+                    </div>
+                    <hr class="my-5" />
+                    <div class="col-md-3">
+                        <input type="submit" value="تم" class="btn btn-primary" />
+                    </div>
+                </form>
+
 
 </x-layouts.app>

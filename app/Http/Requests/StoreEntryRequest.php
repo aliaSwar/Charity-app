@@ -13,7 +13,7 @@ class StoreEntryRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return true; 
     }
 
     /**
@@ -29,11 +29,11 @@ class StoreEntryRequest extends FormRequest
             'category_id'      => ['required', 'numeric', 'exists:categories,id'],
             'financial_id'     => ['required', 'numeric', 'exists:financials,id'],
             'status_id'        => ['required', 'numeric', 'exists:statuses,id'],
-            'phone_num'        => ['required', 'numeric', 'digits:11'],
+            'phone_num'        => ['required', 'numeric', 'digits:10'],
             'diwan_num'        => ['required', 'numeric'],
             'smartCard_num'    => ['required', 'numeric', 'digits:7'],
             'registration_num' => ['required', 'numeric'],
-            'family_num'       => ['required', 'min:0', 'max:20']
+            'family_num'       => ['required', 'min:0', 'max:200']
         ];
     }
 }

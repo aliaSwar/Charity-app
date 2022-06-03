@@ -70,8 +70,8 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="auth-login-basic.html" class="menu-link" target="_blank">
-                                <div data-i18n="Basic">Login</div>
+                            <a href="{{ route('financials.create') }}" class="menu-link" target="_blank">
+                                <div data-i18n="Basic">اضافة فئة</div>
                             </a>
                         </li>
                         <li class="menu-item">

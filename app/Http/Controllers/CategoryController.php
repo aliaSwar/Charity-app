@@ -62,7 +62,7 @@ class CategoryController extends BaseController
      */
     public function show(Category $category)
     {
-        return view('Category.show');
+        return view('Category.show', ['category' => $category]);
     }
 
     /**

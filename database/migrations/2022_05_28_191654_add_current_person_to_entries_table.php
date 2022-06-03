@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('financials', function (Blueprint $table) {
-            $table->id();
-            $table->string('type')->unique();
-            $table->string('slug');
-            $table->timestamps();
+        Schema::table('entries', function (Blueprint $table) {
+            $table->integer('current_person')->default(0);
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('financials');
+        Schema::table('entries', function (Blueprint $table) {
+            $table->dropColumn('current_person');
+        });
     }
 };

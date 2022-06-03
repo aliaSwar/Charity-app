@@ -145,6 +145,21 @@
                         @enderror
                     </div>
                     <div class=" col-md-3 -btn-group dropend">
+                        <label for="validationCustom04" class="form-label">الفئة </label>
+                        <select name="financial_id"
+                            class="form-select @error('financial_id') border-light-danger @enderror"
+                            id="validationCustom04" aria-label="Default select example">
+                            {{-- <select value="{{ old('category_id') }}"> --}}
+                            <option selected>اختر الفئة</option>
+                            @foreach ($financials as $financial)
+                                <option value="{{ $financial->id }}">{{ $financial->type }}</option>
+                            @endforeach
+                        </select>
+                        @error('financial_id')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class=" col-md-3 -btn-group dropend">
                         <label for="validationCustom04" class="form-label ">حالة المدرج
                         </label>
                         <select name="status_id" class="form-select @error('status_id') border-light-danger @enderror"

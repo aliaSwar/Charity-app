@@ -50,11 +50,12 @@
 
         <!-- Navbar -->
 
-        @if (session()->has('sucsess'))
+        @if (session()->has('success'))
             <div class="alert alert-success">
-                <p>{{ session()->get('sucsess') }}</p>
+                <p>{{ session()->get('success') }}</p>
             </div>
         @endif
+            
         <div class="content-wrapper">
 
             <div class="container-xxl flex-grow-1 container-p-y">

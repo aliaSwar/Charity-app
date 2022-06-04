@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('full_name');
             $table->string('phone')->nullable();
-            $table->string('health_status')->default('is ok');
+            $table->string('health_status')->nullable();
             $table->enum('work', ['work', 'dont work'])->nullable();
             $table->enum('status', ['existing', 'not existing']); //موجود  ام لا
             $table->enum('category', ['mother', 'father', 'boy', 'girl']);

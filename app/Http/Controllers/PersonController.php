@@ -6,8 +6,11 @@ use App\Models\Person;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
 use App\Models\Entry;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View as FacadesView;
+use Illuminate\View\View as ViewView;
 
 class PersonController extends BaseController
 {
@@ -40,23 +43,25 @@ class PersonController extends BaseController
      */
     public function store(Request $request, Entry $entry)
     {
-        return 'success';
+        //return 'success';
         $person = new Person();
         $person->number_id = $request->number_id;
         $person->full_name = $request->full_name;
-        $person->healf_status = $request->helf_status;
+
+        $person->health_status = $request->health_status;
         $person->work = $request->work;
         $person->category = $request->category;
         $person->status = $request->status;
         $person->family_status = $request->family_status;
-        $person->educational_level;
+        $person->educational_level = $request->educational_level;
         $person->notes = $request->notes;
+        $person->birthday = $request->birthday;
         $person->entry_id = $entry->id;
         $entry->increment('current_person');
         $entry->save();
         $person->save();
-        dd($person);
-        if ($entry->current_person == $entry->family_num) {
+        //dd($person);
+        if ($entry->current_person === $entry->family_num) {
             return redirect()->route('entries.show', $entry)->with(['message' => 'success add all family number ']);
         }
         return redirect()->back()->with(['success' => 'Data is successfully added']);
@@ -70,7 +75,7 @@ class PersonController extends BaseController
      */
     public function show(Person $person)
     {
-        //
+        return view('Person.create', ['person' => $person]);
     }
 
     /**

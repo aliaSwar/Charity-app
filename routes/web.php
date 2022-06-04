@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\StatusController;
@@ -41,9 +42,11 @@ Route::resource('papers', IdentificationPaperController::class);
 //TODO:: route person or family entries
 Route::resource('people', PersonController::class);
 //TODO:: route add financial to entries
-Route::resource('financials', Financial::class);
+Route::resource('financials', FinancialController::class);
 
 /////////////////////////////End Resource////////////////////////////
-Route::get('person/{entry}', [PersonController::class, 'create'])->name('person.create');
-Route::post('person/{entry}', [PersonController::class, 'store'])->name('person.store');
+Route::controller(PersonController::class)->group(function () {
+    Route::get('person/{entry}', [PersonController::class, 'create'])->name('person.create');
+    Route::post('person/{entry}', [PersonController::class, 'store'])->name('person.store');
+});
 //Route::get('person', [PersonController::class, 'create'])->name('person.create');

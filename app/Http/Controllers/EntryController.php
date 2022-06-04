@@ -75,8 +75,9 @@ class EntryController extends BaseController
      */
     public function show(Entry $entry)
     {
-        $person = Person::where('entry_id', $entry->id)->get();
-        return view('Entry.show', ['entry'=>$entry, 'person'=>$person]);
+        $people = Person::where('entry_id', $entry->id)->get();
+
+        return view('Entry.show', ['entry' => $entry, 'people' => $people]);
     }
 
     /**

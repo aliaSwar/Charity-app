@@ -72,7 +72,7 @@
                                 <tr class="table-default">
                                     <td><i class="fab fa-angular fa-lg text-danger "></i> <strong>تاريخ الإدراج</strong>
                                     </td>
-                                    <td>{{ $entry->entry_date  }}</td>
+                                    <td>{{ $entry->entry_date }}</td>
 
                                 </tr>
                                 <tr class="table-default">
@@ -117,8 +117,11 @@
                         </table>
                     </div>
                 </div>
-
+2
 
                 <hr class="my-5" />
-
+                @foreach ($people as $person)
+                
+                    {{ $person->full_name }}
+                @endforeach
 </x-layouts.app>

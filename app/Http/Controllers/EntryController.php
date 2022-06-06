@@ -61,8 +61,8 @@ class EntryController extends BaseController
         $entry->status_id = $request->status_id;
         $entry->save();
         if ($entry->family_num >= 1) {
-            //return redirect()->route('person.create', ['entry' => $entry])->with('sucsess', 'success create entry ');
-            return view('Person.createAjax');
+            return redirect()->route('person.create',  $entry)->with('sucsess', 'success create entry ');
+            //return view('Person.createAjax');
         }
         return redirect()->route('entries.show', ['entry' => $entry])->with('sucsess', 'success create entry ');
     }

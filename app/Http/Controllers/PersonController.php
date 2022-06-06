@@ -21,7 +21,7 @@ class PersonController extends BaseController
      */
     public function index()
     {
-        //
+        return view('Person.index');
     }
 
     /**
@@ -62,7 +62,7 @@ class PersonController extends BaseController
         $person->save();
         //dd($person);
         if ($entry->current_person === $entry->family_num) {
-            return redirect()->route('entries.show', $entry)->with(['message' => 'success add all family number ']);
+            return redirect()->route('people.show', $person)->with(['message' => 'success add all family number ']);
         }
         return redirect()->back()->with(['success' => 'Data is successfully added']);
     }
@@ -86,7 +86,7 @@ class PersonController extends BaseController
      */
     public function edit(Person $person)
     {
-        //
+        return view('Person.edit', ['person' => $person]);
     }
 
     /**
@@ -109,6 +109,5 @@ class PersonController extends BaseController
      */
     public function destroy(Person $person)
     {
-        //
     }
 }

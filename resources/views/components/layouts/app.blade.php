@@ -58,7 +58,7 @@
 
 
     {{ $slot }}
-    <!-- Core JS -->
+    <x-footer/>
     {{ $scripts ?? '' }}
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>

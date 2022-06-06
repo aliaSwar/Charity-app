@@ -13,7 +13,7 @@ class StoreEntryRequest extends FormRequest
      */
     public function authorize()
     {
-        return true; 
+        return true;
     }
 
     /**
@@ -33,7 +33,8 @@ class StoreEntryRequest extends FormRequest
             'diwan_num'        => ['required', 'numeric'],
             'smartCard_num'    => ['required', 'numeric', 'digits:7'],
             'registration_num' => ['required', 'numeric'],
-            'family_num'       => ['required', 'min:0', 'max:200']
+            'family_num'       => ['required', 'min:0', 'max:200'],
+            'salary_charity'   => ['numeric']
         ];
     }
 }

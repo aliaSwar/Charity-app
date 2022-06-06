@@ -45,7 +45,7 @@
                             id="validationCustom01">
                         @error('family_name')
                             <div>
-                                <p class="text-danger">{{ $message }}</p>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             </div>
                         @enderror
                     </div>
@@ -55,7 +55,7 @@
                             class="form-control @error('diwan_num') border-light-danger @enderror"
                             id="validationCustom02">
                         @error('diwan_num')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-4">
@@ -64,7 +64,7 @@
                             class="form-control @error('smartCard_num') border-light-danger @enderror"
                             id="validationCustom02">
                         @error('smartCard_num')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-4">
@@ -78,7 +78,7 @@
                                 aria-describedby="inputGroupPrepend">
                         </div>
                         @error('phone_num')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-4">
@@ -87,7 +87,7 @@
                             class="form-control @error('registration_num') border-light-danger @enderror"
                             id="validationCustom02">
                         @error('registration_num')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-4">
@@ -96,29 +96,29 @@
                             class="form-control @error('family_num') border-light-danger @enderror"
                             id="validationCustom02">
                         @error('family_num')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="validationCustom02" class="form-label">تاريخ الادراج </label>
                         <input name="entry_date" type="date" class="form-control" id="validationCustom02">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                        @error('entry_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="validationCustom02" class="form-label">تاريخ التجديد</label>
                         <input name="renewal_date" type="date" class="form-control" id="validationCustom02">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                        @error('renewal_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-4">
                         <label for="validationCustom02" class="form-label">تاريخ الانتهاء</label>
                         <input name="finshed_date" type="date" class="form-control" id="validationCustom02">
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
+                        @error('finshed_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="validationCustom03" class="form-label">العنوان</label>
@@ -126,10 +126,10 @@
                             class="form-control @error('address') border-light-danger @enderror" id="validationCustom03"
                             placeholder="city">
                         @error('address')
-                            <p class="text-danger"> {{ $message }}</p>
+                            <div class="alert alert-danger"> {{ $message }}</div>
                         @enderror
                     </div>
-                    <div class=" col-md-3 -btn-group dropend">
+                    <div class=" col-md-3 -btn-group dropend -mt-px">
                         <label for="validationCustom04" class="form-label">نوع المدرج </label>
                         <select name="category_id"
                             class="form-select @error('category_id') border-light-danger @enderror"
@@ -141,7 +141,7 @@
                             @endforeach
                         </select>
                         @error('category_id')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class=" col-md-3 -btn-group dropend">
@@ -156,7 +156,7 @@
                             @endforeach
                         </select>
                         @error('financial_id')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class=" col-md-3 -btn-group dropend">
@@ -170,7 +170,7 @@
                             @endforeach
                         </select>
                         @error('status_id')
-                            <p class="text-danger">{{ $message }}</p>
+                            <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -178,17 +178,19 @@
                     <div class="col-md-3">
                         <label for="validationCustom05" class="form-label"> راتب الإدراج</label>
                         <input name="salary_charity" type="number" class="form-control" id="validationCustom05">
-
+                        @error('salary_charity')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-                    {{-- <hr class="my-5" /> --}}
-
-                    <button type="submit"
-                        class="btn btn-primary btn-lg text-center waves-effect waves-light">تم</button>
-
-
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 col-lg-6 mx-auto">
+                            <button class="btn btn-secondary btn-lg" type="button">تم</button>
+                        </div>
+                    </div>
                 </form>
 
                 <hr class="my-5" />
+
 
 
 </x-layouts.app>

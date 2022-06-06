@@ -26,7 +26,7 @@ class FinancialController extends Controller
      */
     public function create()
     {
-        return view('Category.create');
+        return view('Financial.create');
     }
 
     /**
@@ -75,7 +75,13 @@ class FinancialController extends Controller
      */
     public function update(UpdateFinancialRequest $request, Financial $financial)
     {
-        //
+        $financial->update(
+            [
+                'type'  => $request->type,
+                'slug'  => Str::slug($request->type, '-')
+            ]
+        );
+        return redirect()->route('financials.show', $financial);
     }
 
     /**

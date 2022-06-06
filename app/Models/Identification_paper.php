@@ -26,10 +26,6 @@ class Identification_paper extends Model
 
     public function getFeaturedImageAttribute($value)
     {
-        if (filter_var($value, FILTER_VALIDATE_URL)) {
-            return $value;
-        }
-
         return asset("storage/{$value}");
     }
 }

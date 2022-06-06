@@ -38,14 +38,15 @@ class IdentificationPaperController extends BaseController
      */
     public function store(StoreIdentification_paperRequest $request)
     {
+
         $pepar = new Identification_paper();
         $pepar->name = $request->name;
         $pepar->slug = Str::slug($request->name, '-');
-        if ($request->has('image_upload')) {
-            $image = $request->image_upload;
-            $path = $image->store('paper-images', 'public');
-            $pepar->image = $path;
-        }
+        /* if ($request->has('image_upload')) { */
+        $image = $request->image;
+        $path = $image->store('paper-images', 'public');
+        $pepar->image = $path;
+        /* } */
         $pepar->save();
         return redirect()->route('papers.show', ['paper' => $pepar]);
     }

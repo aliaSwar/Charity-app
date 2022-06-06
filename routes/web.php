@@ -7,6 +7,7 @@ use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\StatusController;
 use App\Models\Financial;
+use App\Models\Identification_paper;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +45,9 @@ Route::resource('people', PersonController::class);
 //TODO:: route add financial to entries
 Route::resource('financials', FinancialController::class);
 
+
 /////////////////////////////End Resource////////////////////////////
+
 Route::controller(PersonController::class)->group(function () {
     Route::get('person/{entry}', [PersonController::class, 'create'])->name('person.create');
     Route::post('person/{entry}', [PersonController::class, 'store'])->name('person.store');

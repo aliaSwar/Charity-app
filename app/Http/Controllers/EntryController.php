@@ -35,7 +35,7 @@ class EntryController extends BaseController
         return view('Entry.create', ['categories' => Category::all(), 'statuses' => Status::all(), 'financials' => Financial::all()]);
     }
 
-    /**
+    /** 
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreEntryRequest  $request
@@ -61,7 +61,7 @@ class EntryController extends BaseController
         $entry->status_id = $request->status_id;
         $entry->save();
         if ($entry->family_num >= 1) {
-            return redirect()->route('person.create',  $entry)->with('sucsess', 'success create entry ');
+            return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'success create entry ');
             //return view('Person.createAjax');
         }
         return redirect()->route('entries.show', ['entry' => $entry])->with('sucsess', 'success create entry ');

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('notes')->nullable();
             $table->text('papers'); //الاوراق المطلوبة
-            $table->integer('phone');
+            $table->bigInteger('phone');
             $table->string('husband_name');
             $table->string('wife_name');
             $table->string('whos'); //من المدرج ...الزوج ...الزوجة...الطفل

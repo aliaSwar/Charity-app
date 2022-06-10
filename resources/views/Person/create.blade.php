@@ -17,216 +17,183 @@
         </script>
     </x-slot>
 
-    <!-- Layout container -->
-    <div class="layout-page">
-        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar">
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                    <i class="bx bx-menu bx-sm"></i>
-                </a>
-            </div>
 
-            <div class="navbar-nav-left d-flex align-items-center" id="navbar-collapse">
-                <!-- Search -->
-                <div class="navbar-nav align-items-center">
-                    <div class="nav-item d-flex align-items-center">
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            <p>{{ session()->get('success') }}</p>
+        </div>
+    @endif
 
+    <div class="content-wrapper">
 
-                        <h5 class="card-title al"> جمعية إنعاش الفير الخيرية في التل/ قسم الإدراج </h5>
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <hr class="my-5" />
+            <div class="profile2">
 
+                {{-- to send entry id to store person in database --}}
+                <form action="{{ route('person.store', $entry) }}" method="POST" class="row g-3 needs-validation"
+                    enctype="multipart/form-data">
+
+                    {{ csrf_field() }}
+                    <div class=" col-md-3 -btn-group dropend">
+                        <label for="validationCustom04" class="form-label ">نوع المدرج
+                        </label>
+                        <select name="category" class="form-select @error('category') border-light-danger @enderror"
+                            id="validationCustom04" aria-label="Default select example">
+                            <option value="mother">أم</option>
+                            <option value="father">اب </option>
+                            <option value="boy">طفل </option>
+                            <option value="girl">طفلة </option>
+
+                        </select>
+                        @error('category')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
-                </div>
-                <!-- /Search -->
-
-                <ul class="navbar-nav flex-row align-items-center ms-auto">
-                    <!-- Place this tag where you want the button to render. -->
-
-
-
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Navbar -->
-
-        @if (session()->has('success'))
-            <div class="alert alert-success">
-                <p>{{ session()->get('success') }}</p>
-            </div>
-        @endif
-            
-        <div class="content-wrapper">
-
-            <div class="container-xxl flex-grow-1 container-p-y">
-                <hr class="my-5" />
-                <div class="profile2">
-                    {{-- to send entry id to store person in database --}}
-                    <form action="{{ route('person.store', $entry) }}" method="POST" class="row g-3 needs-validation"
-                        enctype="multipart/form-data">
-
-                        {{ csrf_field() }}
-                        <div class=" col-md-3 -btn-group dropend">
-                            <label for="validationCustom04" class="form-label ">نوع المدرج
-                            </label>
-                            <select name="category" class="form-select @error('category') border-light-danger @enderror"
-                                id="validationCustom04" aria-label="Default select example">
-                                <option value="mother">أم</option>
-                                <option value="father">اب </option>
-                                <option value="boy">طفل </option>
-                                <option value="girl">طفلة </option>
-
-                            </select>
-                            @error('category')
+                    <div class="col-md-4">
+                        <label for="validationCustom01" class="form-label">اسم الفرد</label>
+                        <input name="full_name" type="text"
+                            class="form-control @error('full_name') border-light-danger @enderror"
+                            id="validationCustom01">
+                        @error('full_name')
+                            <div>
                                 <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom01" class="form-label">اسم الفرد</label>
-                            <input name="full_name" type="text"
-                                class="form-control @error('full_name') border-light-danger @enderror"
-                                id="validationCustom01">
-                            @error('full_name')
-                                <div>
-                                    <p class="text-danger">{{ $message }}</p>
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label"> رقم التواصل ان وجد</label>
-                            <input name="phone" type="number"
-                                class="form-control @error('phone') border-light-danger @enderror"
-                                id="validationCustom02">
-                            @error('phone')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">الرقم الوطني</label>
-                            <input name="number_id" type="number"
-                                class="form-control @error('number_id') border-light-danger @enderror"
-                                placeholder="04177777777" id="validationCustom02">
-                            @error('number_id')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="validationCustomUsername" class="form-label">الحالة الصحية </label>
-                            <div class="input-group has-validation">
-
-                                <input name="health_status" type="text"
-                                    class="form-control  @error('health_status') border-light-danger @enderror"
-                                    id="validationCustomUsername" placeholder="سليم"
-                                    aria-describedby="inputGroupPrepend">
                             </div>
-                            @error('health_status')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="validationCustom02" class="form-label"> رقم التواصل ان وجد</label>
+                        <input name="phone" type="number"
+                            class="form-control @error('phone') border-light-danger @enderror" id="validationCustom02">
+                        @error('phone')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustom02" class="form-label">الرقم الوطني</label>
+                        <input name="number_id" type="number"
+                            class="form-control @error('number_id') border-light-danger @enderror"
+                            placeholder="04177777777" id="validationCustom02">
+                        @error('number_id')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="validationCustomUsername" class="form-label">الحالة الصحية </label>
+                        <div class="input-group has-validation">
+
+                            <input name="health_status" type="text"
+                                class="form-control  @error('health_status') border-light-danger @enderror"
+                                id="validationCustomUsername" placeholder="سليم" aria-describedby="inputGroupPrepend">
                         </div>
-                        <div class="col-md-4">
-                            <label for="validationCustomUsername" class="form-label">تاريخ الميلاد </label>
-                            <div class="input-group has-validation">
+                        @error('health_status')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="col-md-4">
+                        <label for="validationCustomUsername" class="form-label">تاريخ الميلاد </label>
+                        <div class="input-group has-validation">
 
-                                <input name="birthday" type="date"
-                                    class="form-control  @error('birthday') border-light-danger @enderror"
-                                    id="validationCustomUsername" placeholder="" aria-describedby="inputGroupPrepend">
-                            </div>
-                            @error('birthday')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
+                            <input name="birthday" type="date"
+                                class="form-control  @error('birthday') border-light-danger @enderror"
+                                id="validationCustomUsername" placeholder="" aria-describedby="inputGroupPrepend">
                         </div>
-                        <div class=" col-md-3 -btn-group dropend">
-                            <label for="validationCustom04" class="form-label ">التحصيل العلمي
-                            </label>
-                            <select name="educational_level"
-                                class="form-select @error('educational_level') border-light-danger @enderror"
-                                id="validationCustom04" aria-label="Default select example">
-                                <option value="امي">أمي أو صغير</option>
-                                <option value="أول"> الصف الأول </option>
-                                <option value="ثاني">الصف الثاني </option>
-                                <option value="ثالث"> الصف الثالث </option>
-                                <option value="رابع"> الصف الرابع </option>
-                                <option value="خامس"> الصف الخامس </option>
-                                <option value="سادس"> الصف السادس </option>
-                                <option value="سابع"> الصف السابع </option>
-                                <option value="ثامن"> الصف الثامن </option>
-                                <option value="تاسع"> الصف التاسع </option>
-                                <option value="عاشر"> الصف العاشر </option>
-                                <option value="حادي عشر "> الصف الحادي عشر </option>
-                                <option value="بكلوريا"> الشهادة الثانوية </option>
-                                <option value="جامعي"> المرحلة الجامعية </option>
+                        @error('birthday')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class=" col-md-3 -btn-group dropend">
+                        <label for="validationCustom04" class="form-label ">التحصيل العلمي
+                        </label>
+                        <select name="educational_level"
+                            class="form-select @error('educational_level') border-light-danger @enderror"
+                            id="validationCustom04" aria-label="Default select example">
+                            <option value="امي">أمي أو صغير</option>
+                            <option value="أول"> الصف الأول </option>
+                            <option value="ثاني">الصف الثاني </option>
+                            <option value="ثالث"> الصف الثالث </option>
+                            <option value="رابع"> الصف الرابع </option>
+                            <option value="خامس"> الصف الخامس </option>
+                            <option value="سادس"> الصف السادس </option>
+                            <option value="سابع"> الصف السابع </option>
+                            <option value="ثامن"> الصف الثامن </option>
+                            <option value="تاسع"> الصف التاسع </option>
+                            <option value="عاشر"> الصف العاشر </option>
+                            <option value="حادي عشر "> الصف الحادي عشر </option>
+                            <option value="بكلوريا"> الشهادة الثانوية </option>
+                            <option value="جامعي"> المرحلة الجامعية </option>
 
-                            </select>
-                            @error('educational_level')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class=" col-md-3 -btn-group dropend">
-                            <label for="validationCustom04" class="form-label ">الحالة الاجتماعية
-                            </label>
-                            <select name="family_status"
-                                class="form-select @error('family_status') border-light-danger @enderror"
-                                id="validationCustom04" aria-label="Default select example">
-                                <option value="single">اعزب</option>
-                                <option value="married"> متزوج </option>
-                                <option value="separate">منفصل </option>
-                                <option value="window">أرمل </option>
+                        </select>
+                        @error('educational_level')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class=" col-md-3 -btn-group dropend">
+                        <label for="validationCustom04" class="form-label ">الحالة الاجتماعية
+                        </label>
+                        <select name="family_status"
+                            class="form-select @error('family_status') border-light-danger @enderror"
+                            id="validationCustom04" aria-label="Default select example">
+                            <option value="single">اعزب</option>
+                            <option value="married"> متزوج </option>
+                            <option value="separate">منفصل </option>
+                            <option value="window">أرمل </option>
 
-                            </select>
-                            @error('family_status')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        </select>
+                        @error('family_status')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                        <div class=" col-md-3 -btn-group dropend">
-                            <label for="validationCustom04" class="form-label ">الوضع
-                            </label>
-                            <select name="status" class="form-select @error('status') border-light-danger @enderror"
-                                id="validationCustom04" aria-label="Default select example">
-                                <option value="existing">موجود</option>
-                                <option value="not existing">غير موجود </option>
-                            </select>
-                            @error('status')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
+                    <div class=" col-md-3 -btn-group dropend">
+                        <label for="validationCustom04" class="form-label ">الوضع
+                        </label>
+                        <select name="status" class="form-select @error('status') border-light-danger @enderror"
+                            id="validationCustom04" aria-label="Default select example">
+                            <option value="existing">موجود</option>
+                            <option value="not existing">غير موجود </option>
+                        </select>
+                        @error('status')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                        <div class=" col-md-3 -btn-group dropend">
-                            <label for="validationCustom04" class="form-label ">المهنة </label>
-                            <select name="work" class="form-select @error('work') border-light-danger @enderror"
-                                id="validationCustom04" aria-label="Default select example">
-                                <option value="work">يعمل</option>
-                                <option value="dont work">لا يعمل </option>
-                            </select>
-                            @error('work')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="">
-                            <label class="label">ملاحظات</label>
+                    <div class=" col-md-3 -btn-group dropend">
+                        <label for="validationCustom04" class="form-label ">المهنة </label>
+                        <select name="work" class="form-select @error('work') border-light-danger @enderror"
+                            id="validationCustom04" aria-label="Default select example">
+                            <option value="work">يعمل</option>
+                            <option value="dont work">لا يعمل </option>
+                        </select>
+                        @error('work')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="">
+                        <label class="label">ملاحظات</label>
 
-                            <textarea id="editor" name="notes" class="form-control @error('content') text-danger @enderror" rows="3"></textarea>
-                            <input type="hidden" {{-- name="notes" --}}id="content">
+                        <textarea id="editor" name="notes" class="form-control @error('content') text-danger @enderror" rows="3"></textarea>
+                        <input type="hidden" {{-- name="notes" --}}id="content">
 
 
-                            @error('notes')
-                                <p class="help is-danger">{{ $message }}</p>
-                            @enderror
+                        @error('notes')
+                            <p class="help is-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <hr class="my-5" />
+                    <div class="btn-group-lg">
+                        <div class="control">
+                            <input class="btn btn-primary" type="submit" value="إضافة">
                         </div>
                         <hr class="my-5" />
-                        <div class="btn-group-lg">
-                            <div class="control">
-                                <input class="btn btn-primary" type="submit" value="إضافة">
-                            </div>
-                            <hr class="my-5" />
 
 
 
-                    </form>
+                </form>
 
-                </div>
+            </div>
 
 
 

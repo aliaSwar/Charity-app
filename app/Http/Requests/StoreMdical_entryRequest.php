@@ -13,7 +13,7 @@ class StoreMdical_entryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class StoreMdical_entryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name_recipient'   => ['required', 'string', 'min:4'],
+            'notes'            => ['required', 'string', 'min:4'],
+            'phone'            => ['required', 'numeric', 'digits:10'],
+            'husband_name'     => ['required', 'string', 'min:4'],
+            'wife_name'        => ['required', 'string', 'min:4'],
+            'whos'             => ['required', 'string'],
+            'birthday'         => ['required', 'date'],
+            'illness'          => ['required', 'string'],
+            'address'          => ['required', 'string'],
+            'session_decision' => ['required', 'string']
         ];
     }
 }

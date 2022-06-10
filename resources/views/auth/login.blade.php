@@ -76,8 +76,14 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">اسم المستخدم</label>
-                                <input type="text" name="email" class="form-control" id="name"
+                                <input type="text" name="name"
+                                    class="form-control @error('name') border-light-danger @enderror" id="name"
                                     placeholder="Enter your username" autofocus />
+                                @error('name')
+                                    <div>
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
@@ -87,10 +93,17 @@
                                     </a>
                                 </div>
                                 <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" name="password"
+                                    <input type="password" id="password"
+                                        class="form-control @error('password') border-light-danger @enderror"
+                                        name="password"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                         aria-describedby="password" />
                                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    @error('password')
+                                        <div>
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="mb-3">

@@ -57,7 +57,7 @@ class StatusController extends BaseController
      */
     public function show(Status $status)
     {
-        return view('Status.show', $status);
+        return view('Status.show', ['status' => $status]);
     }
 
     /**

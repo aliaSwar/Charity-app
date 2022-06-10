@@ -1,1 +1,2 @@
-show all status
+<x-layouts.app>
+</x-layouts.app>

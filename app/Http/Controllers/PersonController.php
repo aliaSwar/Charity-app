@@ -43,7 +43,7 @@ class PersonController extends BaseController
      */
     public function store(Request $request, Entry $entry)
     {
-        //return 'success';
+
         $person = new Person();
         $person->number_id = $request->number_id;
         $person->full_name = $request->full_name;
@@ -59,12 +59,15 @@ class PersonController extends BaseController
         $person->entry_id = $entry->id;
         $entry->increment('current_person');
         $entry->save();
+
         $person->save();
         //dd($person);
         if ($entry->current_person === $entry->family_num) {
-            return redirect()->route('people.show', $person)->with(['message' => 'success add all family number ']);
+            return view('Person.show', ['person' => $person])->with(['data'=>'تم اضافة جميع أفراد العائلة بنجاح']);
         }
-        return redirect()->back()->with(['success' => 'Data is successfully added']);
+        // return redirect()->route('person.show', ['person' => $person])->with(['message' => 'success add all family number ']);
+
+        return redirect()->route('person.create', ['entry' => $entry])->with(['success' => 'Data is successfully added']);
     }
 
     /**
@@ -75,7 +78,7 @@ class PersonController extends BaseController
      */
     public function show(Person $person)
     {
-        return view('Person.create', ['person' => $person]);
+        return view('Person.show', ['person' => $person]);
     }
 
     /**

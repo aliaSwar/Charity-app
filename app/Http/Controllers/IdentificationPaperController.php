@@ -57,9 +57,9 @@ class IdentificationPaperController extends BaseController
      * @param  \App\Models\Identification_paper  $identification_paper
      * @return \Illuminate\Http\Response
      */
-    public function show(Identification_paper $identification_paper)
+    public function show(Identification_paper $paper)
     {
-        return view('Paper.show', $identification_paper);
+        return view('Paper.show', $paper);
     }
 
     /**

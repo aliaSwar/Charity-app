@@ -5,34 +5,36 @@
     <x-slot name="scripts">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type="text/javascript">
-            /* store person in database and return respones success  */
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            /* store person in database and return respones success  */ <
+            script >
+                $('#contactForm').on('submit', function(event) {
+                    event.preventDefault();
+                    // Get Alll Text Box Id's
+                    name = $('#full_name').val();
 
-            $("#btnAddPerson").click(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: {{ route('person.store') }},
-                    method: 'POST',
-                    data: {
-                        /* Code: title,
-                        Chief: details */
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            console.log(response.message) //Message come from controller
-                        } else {
-                            alert("Error")
-                        }
-                    },
-                    error: function(error) {
-                        console.log(error)
-                    }
+
+                    $.ajax({
+                        url: "{{ route('people.store') }}", //Define Post URL
+                        type: "POST",
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            full_name: full_name,
+
+                        },
+                        //Display Response Success Message
+                        success: function(response) {
+                            $('#res_message').show();
+                            $('#res_message').html(response.msg);
+                            $('#msg_div').removeClass('d-none');
+
+                            document.getElementById("contactForm").reset();
+                            setTimeout(function() {
+                                $('#res_message').hide();
+                                $('#msg_div').hide();
+                            }, 4000);
+                        },
+                    });
                 });
-            });
         </script>
     </x-slot>
     <!-- / Menu -->
@@ -80,112 +82,17 @@
             <div class="container-xxl flex-grow-1 container-p-y">
                 <hr class="my-5" />
                 <div class="profile2">
-                    <form method="POST" class="row g-3 needs-validation" enctype="multipart/form-data">
+                    <form id="contactForm" method="POST" class="row g-3 needs-validation" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">اسم الفرد</label>
-                            <input name="family_name" type="text"
-                                class="form-control @error('full_name') border-light-danger @enderror"
-                                id="validationCustom01">
-                            @error('full_name')
-                                <div>
-                                    <p class="text-danger">{{ $message }}</p>
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">رقم التواصل</label>
-                            <input name="phone" type="number"
-                                class="form-control @error('phone') border-light-danger @enderror"
-                                id="validationCustom02">
-                            @error('phone')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">رقم البطاقة الذكية</label>
-                            <input name="smartCard_num" type="number"
-                                class="form-control @error('smartCard_num') border-light-danger @enderror"
-                                id="validationCustom02">
-                            @error('smartCard_num')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustomUsername" class="form-label">رقم
-                                الهاتف</label>
-                            <div class="input-group has-validation">
-
-                                <input name="phone_num" type="number"
-                                    class="form-control  @error('phone_num') border-light-danger @enderror"
-                                    id="validationCustomUsername" placeholder="0944444458"
-                                    aria-describedby="inputGroupPrepend">
-                            </div>
-                            @error('phone_num')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label"> رقم السجل </label>
-                            <input name="registration_num" type="number"
-                                class="form-control @error('registration_num') border-light-danger @enderror"
-                                id="validationCustom02">
-                            @error('registration_num')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label"> عدد أفراد العائلة </label>
-                            <input name="family_num" type="number"
-                                class="form-control @error('family_num') border-light-danger @enderror"
-                                id="validationCustom02">
-                            @error('family_num')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">تاريخ الادراج </label>
-                            <input name="entry_date" type="date" class="form-control" id="validationCustom02">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">تاريخ التجديد</label>
-                            <input name="renewal_date" type="date" class="form-control" id="validationCustom02">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">تاريخ الانتهاء</label>
-                            <input name="finshed_date" type="date" class="form-control" id="validationCustom02">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="validationCustom03" class="form-label">العنوان</label>
-                            <input name="address" type="text"
-                                class="form-control @error('address') border-light-danger @enderror"
-                                id="validationCustom03" placeholder="city">
-                            @error('address')
-                                <p class="text-danger"> {{ $message }}</p>
-                            @enderror
-                        </div>
-
-
-                        <div class="col-md-3">
-                            <label for="validationCustom05" class="form-label"> راتب الإدراج</label>
-                            <input name="salary_charity" type="number" class="form-control" id="validationCustom05">
+                            <input type="text" class="form-control" id="family_name">
 
                         </div>
-
 
 
                         <div class="">
-                            <button class="btn btn-primary" type="submit"> اضافةشخص للمدرجين</button>
+                            <button class="btn btn-primary" type="button"> اضافةشخص للمدرجين</button>
                         </div>
                         <hr class="my-5" />
 

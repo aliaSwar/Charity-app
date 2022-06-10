@@ -103,6 +103,6 @@ class CategoryController extends BaseController
     {
         $category->delete();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with(['data' => 'تم  حذف النوع بنجاح']);
     }
 }

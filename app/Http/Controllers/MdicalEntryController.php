@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Mdical_entry;
 use App\Http\Requests\StoreMdical_entryRequest;
 use App\Http\Requests\UpdateMdical_entryRequest;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class MdicalEntryController extends BaseController
 {
@@ -15,7 +17,9 @@ class MdicalEntryController extends BaseController
      */
     public function index()
     {
-        //
+        return view('Mdical.index', [
+            'mdicals'  => Mdical_entry::all()
+        ]);
     }
 
     /**
@@ -25,7 +29,7 @@ class MdicalEntryController extends BaseController
      */
     public function create()
     {
-        //
+        return view('Mdical.create');
     }
 
     /**
@@ -36,7 +40,10 @@ class MdicalEntryController extends BaseController
      */
     public function store(StoreMdical_entryRequest $request)
     {
-        //
+        /* dd($request->all()); */
+        $mdical = Mdical_entry::create($request->validated());
+
+        return redirect()->route('mdicals.show', ['mdical' => $mdical])->with('success', 'تم اضافة المدرج الطبي بنجاح');
     }
 
     /**
@@ -45,9 +52,11 @@ class MdicalEntryController extends BaseController
      * @param  \App\Models\Mdical_entry  $mdical_entry
      * @return \Illuminate\Http\Response
      */
-    public function show(Mdical_entry $mdical_entry)
+    public function show(Mdical_entry $mdical)
     {
-        //
+        return view('Mdical.show', [
+            'mdical'  => $mdical
+        ]);
     }
 
     /**
@@ -56,9 +65,11 @@ class MdicalEntryController extends BaseController
      * @param  \App\Models\Mdical_entry  $mdical_entry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mdical_entry $mdical_entry)
+    public function edit(Mdical_entry $mdical)
     {
-        //
+        return view('Mdical.show', [
+            'mdical'  => $mdical
+        ]);
     }
 
     /**
@@ -68,9 +79,11 @@ class MdicalEntryController extends BaseController
      * @param  \App\Models\Mdical_entry  $mdical_entry
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMdical_entryRequest $request, Mdical_entry $mdical_entry)
+    public function update(UpdateMdical_entryRequest $request, Mdical_entry $mdical)
     {
-        //
+        $mdical = Mdical_entry::update($request->validated());
+
+        return redirect()->route('mdicals.show')->with('success', 'تم تعديل المدرج الطبي بنجاح');
     }
 
     /**
@@ -79,8 +92,9 @@ class MdicalEntryController extends BaseController
      * @param  \App\Models\Mdical_entry  $mdical_entry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mdical_entry $mdical_entry)
+    public function destroy(Mdical_entry $mdical)
     {
-        //
+        $mdical->delete();
+        return redirect()->route('mdicals.index');
     }
 }

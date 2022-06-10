@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
+use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\StatusController;
 use App\Models\Financial;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/index', function () {
     return view('index');
 });
 
@@ -41,15 +42,17 @@ Route::resource('statuses', StatusController::class);
 //TODO:: route Paper to entries
 Route::resource('papers', IdentificationPaperController::class);
 //TODO:: route person or family entries
-Route::resource('people', PersonController::class);
+//Route::resource('people', PersonController::class);
 //TODO:: route add financial to entries
 Route::resource('financials', FinancialController::class);
-
+//TODO:: route add  the mdical entries
+Route::resource('mdicals', MdicalEntryController::class);
 
 /////////////////////////////End Resource////////////////////////////
 
 Route::controller(PersonController::class)->group(function () {
-    Route::get('person/{entry}', [PersonController::class, 'create'])->name('person.create');
+    Route::get('person-create/{entry}', [PersonController::class, 'create'])->name('person.create');
     Route::post('person/{entry}', [PersonController::class, 'store'])->name('person.store');
+    Route::get('person/{person}', [PersonController::class, 'show'])->name('person.show');
 });
 //Route::get('person', [PersonController::class, 'create'])->name('person.create');

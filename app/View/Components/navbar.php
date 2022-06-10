@@ -2,19 +2,18 @@
 
 namespace App\View\Components;
 
-use App\Models\Status;
 use Illuminate\View\Component;
 
-class sideBar extends Component
+class navbar extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
     public function __construct()
     {
+        //
     }
 
     /**
@@ -24,6 +23,6 @@ class sideBar extends Component
      */
     public function render()
     {
-        return view('components.side-bar');
+        return view('components.navbar');
     }
 }

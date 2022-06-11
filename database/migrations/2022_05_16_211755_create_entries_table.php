@@ -29,8 +29,7 @@ return new class extends Migration
             $table->boolean('all_orphan')->default(false);
             $table->integer('family_num')->default(0);
             $table->integer('salary_charity')->default(0);
-            $table->foreignId('category_id');
-            $table->foreignId('status_id');
+
             $table->timestamps();
         });
     }

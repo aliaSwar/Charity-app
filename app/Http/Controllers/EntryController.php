@@ -20,7 +20,8 @@ class EntryController extends BaseController
      */
     public function index()
     {
-        $entries = Entry::with('category', 'status', 'financial')->get();
+        $entries = Entry::with('category', 'status', 'financial')->paginate(6);
+
         ///$person = Person::all();
         return view('Entry.index', ['entries' => $entries]);
     }
@@ -35,7 +36,7 @@ class EntryController extends BaseController
         return view('Entry.create', ['categories' => Category::all(), 'statuses' => Status::all(), 'financials' => Financial::all()]);
     }
 
-    /** 
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreEntryRequest  $request

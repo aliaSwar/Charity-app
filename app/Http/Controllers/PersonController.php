@@ -63,11 +63,11 @@ class PersonController extends BaseController
         $person->save();
         //dd($person);
         if ($entry->current_person === $entry->family_num) {
-            return view('Person.show', ['person' => $person])->with(['data'=>'تم اضافة جميع أفراد العائلة بنجاح']);
+            return view('Person.show', ['person' => $person])->with(['data' => 'تم اضافة جميع أفراد العائلة بنجاح']);
         }
         // return redirect()->route('person.show', ['person' => $person])->with(['message' => 'success add all family number ']);
 
-        return redirect()->route('person.create', ['entry' => $entry])->with(['success' => 'Data is successfully added']);
+        return redirect()->route('person.create', ['entry' => $entry])->with(['success' => 'تم اضافة فرد آخر إلى  العائلة']);
     }
 
     /**

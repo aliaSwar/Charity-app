@@ -41,7 +41,7 @@ class FinancialController extends Controller
         $financial->type = $request->type;
         $financial->slug = Str::slug($request->type);
         $financial->saveOrFail();
-        return redirect()->route('financials.show', $financial);
+        return redirect()->route('financials.show', ['financial' => $financial]);
     }
 
     /**
@@ -52,7 +52,7 @@ class FinancialController extends Controller
      */
     public function show(Financial $financial)
     {
-        return view('Financial.show', $financial);
+        return view('Financial.show', ['financial' => $financial]);
     }
 
     /**
@@ -93,6 +93,6 @@ class FinancialController extends Controller
     public function destroy(Financial $financial)
     {
         $financial->delete();
-        return redirect()->route('financials.index')->with(['message' => 'delete the type financial']);
+        return redirect()->route('financials.index')->with(['message' => 'تم حذف الفئة بنجاح']);
     }
 }

@@ -18,7 +18,7 @@ class StatusController extends BaseController
     public function index()
     {
         $statuses = Status::all();
-        return view('Status.index', ['statueses' => $statuses]);
+        return view('Status.index', ['statuses' => $statuses]);
     }
 
     /**

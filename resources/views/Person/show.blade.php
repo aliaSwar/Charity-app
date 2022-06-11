@@ -1,8 +1,7 @@
 <x-layouts.app>
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content -->
 
-    @if (session()->has('data'))
-        <div class="alert alert-success" role="alert">
-            <p>{{ session()->get('data') }}</p>
-        </div>
-    @endif
+        <div class="container-xxl flex-grow-1 container-p-y">
 </x-layouts.app>

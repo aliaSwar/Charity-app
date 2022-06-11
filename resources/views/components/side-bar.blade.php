@@ -26,10 +26,10 @@
                     </svg>
 
                 </span>
-
                 <span class="text-muted demo menu-text fw-bolder "
                     style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman';font-style:italic;">
                     إنعاش الفقيرالخيرية </span>
+
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

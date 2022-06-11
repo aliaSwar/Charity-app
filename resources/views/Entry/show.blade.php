@@ -1,19 +1,10 @@
 <x-layouts.app>
 
-
-    <!-- / Navbar -->
-
-    <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
 
-
-            <!-- Basic Bootstrap Table -->
-
-
-            <!--/ Basic Bootstrap Table -->
 
             <hr class="my-5" />
 

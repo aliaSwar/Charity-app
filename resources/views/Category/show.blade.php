@@ -1,6 +1,9 @@
 <x-layouts.app>
 
-    <!-- Content wrapper -->
+    <slot name="styles">
+        <link rel="stylesheet" href="{{ asset('assets\loading.css') }}">
+    </slot>
+
     <div class="content-wrapper">
         <!-- Content -->
 
@@ -19,6 +22,7 @@
                             <form method="post" action="{{ route('categories.destroy', $category) }}">
                                 @method('delete')
                                 @csrf
+
                                 <button type="submit" class="btn btn-primary me-1">حذف</button>
 
                                 <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary me-1">
@@ -26,6 +30,7 @@
                                     تعديل
 
                                 </a>
+
                             </form>
 
                             </p>

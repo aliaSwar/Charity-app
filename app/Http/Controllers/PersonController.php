@@ -93,7 +93,7 @@ class PersonController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
+    * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatePersonRequest  $request
      * @param  \App\Models\Person  $person

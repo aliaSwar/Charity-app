@@ -55,4 +55,5 @@ Route::controller(PersonController::class)->group(function () {
     Route::post('person/{entry}', [PersonController::class, 'store'])->name('person.store');
     Route::get('person/{person}', [PersonController::class, 'show'])->name('person.show');
 });
-//Route::get('person', [PersonController::class, 'create'])->name('person.create');
+//قسم النواقص
+Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');

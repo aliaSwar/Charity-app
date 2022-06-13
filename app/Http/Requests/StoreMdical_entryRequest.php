@@ -33,7 +33,8 @@ class StoreMdical_entryRequest extends FormRequest
             'birthday'         => ['required', 'date'],
             'illness'          => ['required', 'string'],
             'address'          => ['required', 'string'],
-            'session_decision' => ['required', 'string']
+            'session_decision' => ['required', 'string'],
+        
         ];
     }
 }

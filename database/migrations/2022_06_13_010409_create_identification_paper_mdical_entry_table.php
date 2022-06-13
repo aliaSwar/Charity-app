@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('identification_papers', function (Blueprint $table) {
+        Schema::create('identification_paper_mdical_entry', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug');
-            $table->string('image')->nullable();
+            $table->foreignId('identification_paper_id');
+            $table->foreignId('mdical_entry_id');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identification_papers');
+        Schema::dropIfExists('identification_paper_mdical_entry');
     }
 };

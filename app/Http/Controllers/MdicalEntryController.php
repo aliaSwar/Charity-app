@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mdical_entry;
 use App\Http\Requests\StoreMdical_entryRequest;
 use App\Http\Requests\UpdateMdical_entryRequest;
+use App\Models\Identification_paper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,8 @@ class MdicalEntryController extends BaseController
      */
     public function create()
     {
-        return view('Mdical.create');
+        $papers = Identification_paper::where('is_mdical', 1)->get();
+        return view('Mdical.create', ['papers' => $papers]);
     }
 
     /**
@@ -38,11 +40,24 @@ class MdicalEntryController extends BaseController
      * @param  \App\Http\Requests\StoreMdical_entryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMdical_entryRequest $request)
+    public function store(Request $request)
     {
-        /* dd($request->all()); */
-        $mdical = Mdical_entry::create($request->validated());
 
+        $mdical = new  Mdical_entry();
+        $mdical->name_recipient = $request->name_recipient;
+        $mdical->notes = $request->notes;
+        $mdical->phone = $request->phone;
+        $mdical->husband_name = $request->husband_name;
+        $mdical->wife_name = $request->wife_name;
+        $mdical->whos = $request->whos;
+        $mdical->birthday = $request->birthday;
+        $mdical->illness = $request->illness;
+        $mdical->address = $request->address;
+        $mdical->session_decision = $request->session_decision;
+        $mdical->save();
+
+
+        $mdical->identification_papers()->sync($request->papers);
         return redirect()->route('mdicals.show', ['mdical' => $mdical])->with('success', 'تم اضافة المدرج الطبي بنجاح');
     }
 

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('mdical_entries', function (Blueprint $table) {
             $table->id();
             $table->string('notes')->nullable();
-            $table->text('papers'); //الاوراق المطلوبة
+            //الاوراق المطلوبة
             $table->bigInteger('phone');
             $table->string('husband_name');
             $table->string('wife_name');

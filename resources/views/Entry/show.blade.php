@@ -10,14 +10,14 @@
 
             <!-- Contextual Classes -->
 
-            <div class="card text-bg-warning mb-3">
+            <div class="card text-bg-primary mb-3">
                 <h5 class="card-header">معلومات عامة </h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="table-warning"> المعلومات</th>
-                                <th class="table-warning"> المعلومات</th>
+                                <th class="table-primary"> المعلومات</th>
+                                <th class="table-primary"> المعلومات</th>
 
 
                             </tr>
@@ -78,7 +78,7 @@
                     </table>
                 </div>
             </div>
-            2
+
 
             <hr class="my-5" />
             @foreach ($people as $person)

@@ -148,6 +148,15 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="row-cols-md-3">
+                    <label for="validationCustom05" class="form-label"> الأوراق الثبوتية</label>
+                    <select class="form-select demo-spacing mt-3" multiple aria-label="multiple select example"
+                        name="papers[]" multiple>
+                        @foreach ($papers as $paper)
+                            <option value="{{ $paper->id }}">{{ $paper->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="row mt-3">
                     <div class="d-grid gap-2 col-lg-6 mx-auto">
                         <button class="btn btn-secondary btn-lg" type="submit">تم</button>

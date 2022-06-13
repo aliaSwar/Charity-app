@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('identification_papers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->string('slug');
-            $table->string('image')->nullable();
-            $table->timestamps();
+        Schema::table('identification_papers', function (Blueprint $table) {
+            $table->boolean('is_mdical')->default(false);
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identification_papers');
+        Schema::table('identification_papers', function (Blueprint $table) {
+            $table->dropColumn('is_mdical');
+        });
     }
 };

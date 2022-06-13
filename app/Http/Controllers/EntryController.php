@@ -7,6 +7,7 @@ use App\Models\Entry;
 
 use App\Models\Category;
 use App\Models\Financial;
+use App\Models\Identification_paper;
 use App\Models\Person;
 use App\Models\Status;
 use Illuminate\Http\Request;
@@ -33,7 +34,13 @@ class EntryController extends BaseController
      */
     public function create()
     {
-        return view('Entry.create', ['categories' => Category::all(), 'statuses' => Status::all(), 'financials' => Financial::all()]);
+        $papers = Identification_paper::where('is_mdical', 0)->get();
+        return view('Entry.create', [
+            'categories' => Category::all(),
+            'statuses' => Status::all(),
+            'financials' => Financial::all(),
+            'papers' => $papers
+        ]);
     }
 
     /**
@@ -61,11 +68,18 @@ class EntryController extends BaseController
         $entry->financial_id = $request->financial_id;
         $entry->status_id = $request->status_id;
         $entry->save();
+
+        $lost_paper = Identification_paper::where(function ($query) use ($request) {
+
+            $query->where('is_mdical', 0)->whereNotIn('id', $request->papers);
+        })->get();
+        $entry->identification_papers()->sync($lost_paper);
+        
         if ($entry->family_num >= 1) {
-            return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'success create entry ');
+            return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'تم اضافة مدرج بنجاح ');
             //return view('Person.createAjax');
         }
-        return redirect()->route('entries.show', ['entry' => $entry])->with('sucsess', 'success create entry ');
+        return redirect()->route('entries.show', ['entry' => $entry])->with('sucsess', ' تم إضافة مدرج بنجاح ');
     }
 
     /**

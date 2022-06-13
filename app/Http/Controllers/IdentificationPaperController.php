@@ -42,11 +42,12 @@ class IdentificationPaperController extends BaseController
         $pepar = new Identification_paper();
         $pepar->name = $request->name;
         $pepar->slug = Str::slug($request->name, '-');
-        /* if ($request->has('image_upload')) { */
-        $image = $request->image;
-        $path = $image->store('paper-images', 'public');
-        $pepar->image = $path;
-        /* } */
+        if ($request->has('image')) {
+            $image = $request->image;
+            $path = $image->store('paper-images', 'public');
+            $pepar->image = $path;
+        }
+        $pepar->is_mdical = $request->is_mdical;
         $pepar->save();
         return redirect()->route('papers.show', ['paper' => $pepar]);
     }
@@ -59,7 +60,7 @@ class IdentificationPaperController extends BaseController
      */
     public function show(Identification_paper $paper)
     {
-        return view('Paper.show', $paper);
+        return view('Paper.show', ['paper' => $paper]);
     }
 
     /**
@@ -103,5 +104,12 @@ class IdentificationPaperController extends BaseController
     {
         $pepar->delete();
         return redirect()->route('papers.index');
+    }
+    public function indexAll()
+    {
+
+        $papers = Identification_paper::all();
+
+        return view('Paper.lost', ['papers' => $papers]);
     }
 }

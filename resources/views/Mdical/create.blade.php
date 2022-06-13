@@ -1,5 +1,22 @@
 <x-layouts.app>
 
+    <x-slot name="styles">
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    </x-slot>
+    <x-slot name="scripts">
+        <!-- Include the Quill library -->
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+        <!-- Initialize Quill editor -->
+        <script>
+            var quill = new Quill('#editor', {
+                theme: 'snow'
+            })
+            quill.on('text-change', function(delta, source) {
+                document.getElementById('content').value = quill.root.innerHTML
+            })
+        </script>
+    </x-slot>
 
 
     <div class="content-wrapper">
@@ -20,14 +37,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">اسماء الاوراق الثبوتية </label>
-                    <input name="papers" type="text" class="form-control @error('papers') border-light-danger @enderror"
-                        id="validationCustom02">
-                    @error('papers')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+
                 <div class="col-md-4">
                     <label for="validationCustom02" class="form-label">رقم التواصل</label>
                     <input name="phone" type="number" class="form-control @error('phone') border-light-danger @enderror"
@@ -91,13 +101,26 @@
                         <div class="alert alert-danger"> {{ $message }}</div>
                     @enderror
                 </div>
-                <hr>
-                <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">قرار الجلسة</label>
-                    <textarea name="session_decision" type="date"
-                        class="form-control @error('session_decision') border-light-danger @enderror" id="validationCustom02"></textarea>
+
+                <div class="row-cols-md-3">
+                    <label for="validationCustom05" class="form-label"> الأوراق الثبوتية</label>
+                    <select class="form-select demo-spacing mt-3" multiple aria-label="multiple select example"
+                        name="papers[]" multiple>
+                        @foreach ($papers as $paper)
+                            <option value="{{ $paper->id }}">{{ $paper->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="">
+                    <label class="label">قرار الجلسة </label>
+
+                    <textarea id="editor" name="session_decision" class="form-control @error('content') text-danger @enderror" rows="3"></textarea>
+                    <input type="hidden" {{-- name="session_decision" --}}id="content">
+
+
                     @error('session_decision')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <p class="help is-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="row mt-3">

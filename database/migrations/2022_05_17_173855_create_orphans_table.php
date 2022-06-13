@@ -12,6 +12,7 @@ return new class extends Migration
      * @return void
      */
     public function up()
+    
     {
         Schema::create('orphans', function (Blueprint $table) {
             $table->id();

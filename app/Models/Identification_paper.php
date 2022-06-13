@@ -18,7 +18,13 @@ class Identification_paper extends Model
     {
         return $this->belongsToMany(Entry::class);
     }
-
+    /**
+     * The paper that belong to the entry mdical.
+     */
+    public function mdical_entries()
+    {
+        return $this->belongsToMany(Mdical_entry::class);
+    }
     public function getRouteKeyName()
     {
         return 'slug';

@@ -24,9 +24,9 @@ class StoreIdentification_paperRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'                    => 'file|image|nullable',
-            'name'                     => 'required|min:4|max:255',
-
+            'image'                    => ['file', 'image', 'nullable'],
+            'name'                     => ['required', 'min:3', 'max:255'],
+            'is_mdical'                => ['required', 'numeric']
         ];
     }
 }

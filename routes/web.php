@@ -6,6 +6,7 @@ use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
 use App\Models\Financial;
 use App\Models\Identification_paper;
@@ -31,7 +32,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
-///////////////////////////////Begin RESOURCE/////////////////////////
+///////////////////////////////Start section entries/////////////////////////
 //TODO:: route entry
 Route::resource('entries', EntryController::class);
 /* Route::get('entries/{entry}/detials', [EntryController::class, 'detials']); */
@@ -57,3 +58,7 @@ Route::controller(PersonController::class)->group(function () {
 });
 //قسم النواقص
 Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');
+
+
+/////////////////////////////Start section Orphan////////////////////////////
+Route::resource('sponsors', SponsorController::class);

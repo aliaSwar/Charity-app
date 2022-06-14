@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Sponsor;
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class SponsorController extends BaseController
 {
@@ -15,7 +17,7 @@ class SponsorController extends BaseController
      */
     public function index()
     {
-        //
+        return view('Sponsor.index');
     }
 
     /**
@@ -25,7 +27,7 @@ class SponsorController extends BaseController
      */
     public function create()
     {
-        //
+        return view('Sponsor.create');
     }
 
     /**
@@ -36,7 +38,18 @@ class SponsorController extends BaseController
      */
     public function store(StoreSponsorRequest $request)
     {
-        //
+        $pass = 'aid' . '-' . $request->phone;
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone'  => $request->phone,
+            'password' => Hash::make($pass),
+        ]);
+        $sponsor = Sponsor::create([
+            'address' => $request->address,
+            'user_id' => $user->id
+        ]);
+        return redirect()->route('sponsors.show',['sponsor'=>$sponsor]);
     }
 
     /**
@@ -47,7 +60,7 @@ class SponsorController extends BaseController
      */
     public function show(Sponsor $sponsor)
     {
-        //
+        return view('Sponsor.show', ['sponsor' => $sponsor]);
     }
 
     /**
@@ -58,7 +71,7 @@ class SponsorController extends BaseController
      */
     public function edit(Sponsor $sponsor)
     {
-        //
+        return view('Sponsor.edit', ['sponsor' => $sponsor]);
     }
 
     /**
@@ -81,6 +94,7 @@ class SponsorController extends BaseController
      */
     public function destroy(Sponsor $sponsor)
     {
-        //
+        $sponsor->delete();
+        return redirect()->route('sponsors.index')->with(['sucess' => 'تم حذف الكفيل من الجمعية']);
     }
 }

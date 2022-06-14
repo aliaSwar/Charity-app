@@ -26,7 +26,7 @@ class StoreSponsorRequest extends FormRequest
     {
         return [
             'address' => ['string', 'required', 'main:5'],
-            '' => ['required', 'numeric', 'exists:users,id'],
+            'user_id' => ['required', 'numeric', 'exists:users,id'],
             'name'    => ['required', 'string', 'max:255'],
             'email'   => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone'   => ['string', 'numeric', 'unique:users', 'nullable', 'digits:10'],

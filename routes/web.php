@@ -8,8 +8,9 @@ use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
-use App\Models\Financial;
-use App\Models\Identification_paper;
+use App\Models\User;
+use App\Notifications\SponsorPublished;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,3 +63,9 @@ Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name(
 
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
+Route::get('send', function () {
+
+    $user = User::where('name', 'swar')->first();
+    Notification::send($user, new SponsorPublished($user));
+    return 'done';
+});

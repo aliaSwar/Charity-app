@@ -6,6 +6,8 @@ use App\Models\Sponsor;
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SponsorPublished;
 use Illuminate\Support\Facades\Hash;
 
 class SponsorController extends BaseController
@@ -43,13 +45,14 @@ class SponsorController extends BaseController
             'name' => $request->name,
             'email' => $request->email,
             'phone'  => $request->phone,
-            'password' => Hash::make($pass),
+            'password' => $pass,
         ]);
+        Notification::send($user, new SponsorPublished($user));
         $sponsor = Sponsor::create([
             'address' => $request->address,
             'user_id' => $user->id
         ]);
-        return redirect()->route('sponsors.show',['sponsor'=>$sponsor]);
+        return redirect()->route('sponsors.show', ['sponsor' => $sponsor]);
     }
 
     /**

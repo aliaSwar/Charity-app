@@ -21,8 +21,21 @@
                         </div>
                         <div class=" card-body">
                             <p class="card-text"> تأتي مع المدرجين لاثبات الادراج.</p>
-                            <a href="{{ route('papers.destroy', $paper) }}" class="btn btn-primary me-1">حذف</a>
-                            <a href="{{ route('papers.edit', $paper) }}" class="btn btn-primary me-1">تعديل</a>
+                            <form method="post" action="{{ route('papers.destroy', $paper) }}">
+                                @method('delete')
+                                @csrf
+
+                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+
+                                <a href="{{ route('papers.edit', $paper) }}" class="btn btn-primary me-1">
+
+                                    تعديل
+
+                                </a>
+
+                            </form>
+
+                            </p>
                         </div>
                     </div>
                 </div>

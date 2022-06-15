@@ -72,7 +72,7 @@
         const darkmode = new Darkmode(options);
         darkmode.showWidget();
     </script> --}}
-    @auth
+    @auth()
         <x-side-bar />
         <x-navbar />
     @endauth

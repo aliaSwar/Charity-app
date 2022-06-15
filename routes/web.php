@@ -63,9 +63,3 @@ Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name(
 
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
-Route::get('send', function () {
-
-    $user = User::where('name', 'swar')->first();
-    Notification::send($user, new SponsorPublished($user));
-    return 'done';
-});

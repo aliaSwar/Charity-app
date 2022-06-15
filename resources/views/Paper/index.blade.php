@@ -2,6 +2,11 @@
     <div class="content-wrapper">
         <!-- Content -->
 
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                <p>{{ session()->get('success') }}</p>
+            </div>
+        @endif
         <div class="container-xxl flex-grow-1 container-p-y">
 
             <h6 class="pb-1 mb-4 text-muted">الأوراق الثيوتية</h6>

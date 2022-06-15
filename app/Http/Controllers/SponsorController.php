@@ -40,18 +40,21 @@ class SponsorController extends BaseController
      */
     public function store(StoreSponsorRequest $request)
     {
+
         $pass = 'aid' . '-' . $request->phone;
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone'  => $request->phone,
-            'password' => $pass,
+            'password' => Hash::make($pass),
         ]);
-        Notification::send($user, new SponsorPublished($user));
+
+        Notification::send($user, new SponsorPublished($user, $pass));
         $sponsor = Sponsor::create([
             'address' => $request->address,
             'user_id' => $user->id
         ]);
+
         return redirect()->route('sponsors.show', ['sponsor' => $sponsor]);
     }
 

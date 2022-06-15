@@ -17,9 +17,10 @@ class SponsorPublished extends Notification
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, $pass)
     {
         $this->user = $user;
+        $this->pass = $pass;
     }
 
     /**
@@ -42,11 +43,8 @@ class SponsorPublished extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('سعيدون بمساعدتك المحتاجين')
-            ->line($this->user->name)
-            ->line($this->user->password)
-            // ->action('Notification Action', route('meals.show', ['meal' => $this->meal]))
-            ->line('شكرا لك !');
+            ->from('swar2000alia@gmail.com', 'جمعية إنعاش الفقير الخيرية')
+            ->view('Mail.welcome', ['user' => $this->user, 'password' => $this->pass]);
     }
 
     /**

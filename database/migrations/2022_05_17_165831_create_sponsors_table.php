@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->text('address');
-            $table->foreignId('user-id');
+            $table->foreignId('user_id');
             //$table->bigInteger('salary')->default(25000);
             $table->timestamps();
         });

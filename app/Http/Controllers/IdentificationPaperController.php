@@ -39,17 +39,17 @@ class IdentificationPaperController extends BaseController
     public function store(StoreIdentification_paperRequest $request)
     {
 
-        $pepar = new Identification_paper();
-        $pepar->name = $request->name;
-        $pepar->slug = Str::slug($request->name, '-');
+        $paper = new Identification_paper();
+        $paper->name = $request->name;
+        $paper->slug = Str::slug($request->name, '-');
         if ($request->has('image')) {
             $image = $request->image;
             $path = $image->store('paper-images', 'public');
-            $pepar->image = $path;
+            $paper->image = $path;
         }
-        $pepar->is_mdical = $request->is_mdical;
-        $pepar->save();
-        return redirect()->route('papers.show', ['paper' => $pepar]);
+        $paper->is_mdical = $request->is_mdical;
+        $paper->save();
+        return redirect()->route('papers.show', ['paper' => $paper]);
     }
 
     /**
@@ -69,9 +69,9 @@ class IdentificationPaperController extends BaseController
      * @param  \App\Models\Identification_paper  $identification_paper
      * @return \Illuminate\Http\Response
      */
-    public function edit(Identification_paper $pepar)
+    public function edit(Identification_paper $paper)
     {
-        return view('Paper.edit', $pepar);
+        return view('Paper.edit', $paper);
     }
 
     /**
@@ -81,17 +81,17 @@ class IdentificationPaperController extends BaseController
      * @param  \App\Models\Identification_paper  $identification_paper
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateIdentification_paperRequest $request, Identification_paper $pepar)
+    public function update(UpdateIdentification_paperRequest $request, Identification_paper $paper)
     {
-        $pepar->name = $request->name;
-        $pepar->slug = Str::slug($request->name, '-');
+        $paper->name = $request->name;
+        $paper->slug = Str::slug($request->name, '-');
         if ($request->has('image_upload')) {
             $image = $request->image_upload;
             $path = $image->store('paper-images', 'public');
-            $pepar->image = $path;
+            $paper->image = $path;
         }
-        $pepar->save();
-        return redirect()->route('papers.show', ['paper' => $pepar]);
+        $paper->save();
+        return redirect()->route('papers.show', ['paper' => $paper]);
     }
 
     /**
@@ -100,10 +100,10 @@ class IdentificationPaperController extends BaseController
      * @param  \App\Models\Identification_paper  $identification_paper
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Identification_paper $pepar)
+    public function destroy(Identification_paper $paper)
     {
-        $pepar->delete();
-        return redirect()->route('papers.index');
+        $paper->delete();
+        return redirect()->route('papers.index')->with(['sucess' => 'الورقة حذفت بنجاح']);
     }
     public function indexAll()
     {

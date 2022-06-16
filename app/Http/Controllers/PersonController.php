@@ -78,15 +78,7 @@ class PersonController extends BaseController
      */
     public function show(Person $person)
     {
-        $people = Person::all();
-        $i = 6;
-        foreach ($people as $person) {
 
-            $person->update([
-                'education' =>  $i
-            ]);
-        }
-        return $people;
         return view('Person.show', ['person' => $person]);
     }
 

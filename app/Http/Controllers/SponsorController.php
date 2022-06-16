@@ -19,7 +19,7 @@ class SponsorController extends BaseController
      */
     public function index()
     {
-        return view('Sponsor.index');
+        return view('Sponsor.index', ['sponsors' => Sponsor::all()]);
     }
 
     /**
@@ -89,7 +89,18 @@ class SponsorController extends BaseController
      */
     public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
     {
-        //
+        $pass = 'aid-update' . '-' . $this->phone;
+        $user = User::findOrFail($sponsor->user_id);
+        $request->authenticate($user, $pass);
+
+
+        Notification::send($user, new SponsorPublished($user, $pass));
+        $sponsor->update([
+            'address' => $request->address,
+            'user_id' => $user->id
+        ]);
+
+        return redirect()->route('sponsors.show', ['sponsor' => $sponsor]);
     }
 
     /**

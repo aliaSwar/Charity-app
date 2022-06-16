@@ -33,7 +33,7 @@ class StorePersonRequest extends FormRequest
             'status'            => ['required', Rule::in('existing', 'not existing')],
             'category'          => ['required', Rule::in('mother', 'father', 'boy', 'girl')],
             'family_status'     => ['required', Rule::in('single', 'married', 'separate', 'window')],
-            'educational_level' => ['required', Rule::in('امي', 'أول', 'ثاني', 'ثالث', 'رابع', 'خامس', 'سادس', 'سابع', 'ثامن', 'تاسع', 'عاشر', 'حادي عشر', 'بكلوريا', 'جامعي')],
+            'education'         => ['required', Rule::in('امي', 'أول', 'ثاني', 'ثالث', 'رابع', 'خامس', 'سادس', 'سابع', 'ثامن', 'تاسع', 'عاشر', 'حادي عشر', 'بكلوريا', 'جامعي')],
             'entry_id'          => ['required', 'numeric', 'exists:entries,id'],
             'orphan_id'         => ['numeric', 'exists:orphans,id'],
             'health_status'     => ['required', 'string', 'min:3', 'max:1000'],

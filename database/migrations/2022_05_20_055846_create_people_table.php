@@ -24,7 +24,12 @@ return new class extends Migration
             $table->enum('status', ['existing', 'not existing']); //موجود  ام لا
             $table->enum('category', ['mother', 'father', 'boy', 'girl']);
             $table->enum('family_status', ['single', 'married', 'separate', 'widow']);
-            $table->enum('educational_level', ['امي', 'أول', 'ثاني', 'ثالث', 'رابع', 'خامس', 'سادس', 'سابع', 'ثامن', 'تاسع', 'عاشر', 'حادي عشر', 'بكلوريا', 'جامعي']);
+            $table->enum(
+                'education',
+                [
+                    'امي', 'أول', 'ثاني', 'ثالث', 'رابع', 'خامس', 'سادس', 'سابع', 'ثامن', 'تاسع', 'عاشر', 'حادي عشر', 'بكلوريا',  'جامعي'
+                ]
+            );
             $table->boolean('orphan')->default(false);
             $table->text('notes')->nullable();
             $table->foreignId('entry_id');

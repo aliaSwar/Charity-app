@@ -8,6 +8,7 @@ use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
+use App\Models\Person;
 use App\Models\User;
 use App\Notifications\SponsorPublished;
 use Illuminate\Support\Facades\Notification;
@@ -60,6 +61,10 @@ Route::controller(PersonController::class)->group(function () {
 //قسم النواقص
 Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');
 
+Route::get('people/{id}', [PersonController::class, 'show']);
 
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
+Route::get('/enum', function () {
+    $person = Person::first();
+});

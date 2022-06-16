@@ -107,8 +107,8 @@
                     <div class=" col-md-3 -btn-group dropend">
                         <label for="validationCustom04" class="form-label ">التحصيل العلمي
                         </label>
-                        <select name="educational_level"
-                            class="form-select @error('educational_level') border-light-danger @enderror"
+                        <select name="education"
+                            class="form-select @error('education') border-light-danger @enderror"
                             id="validationCustom04" aria-label="Default select example">
                             <option value="امي">أمي أو صغير</option>
                             <option value="أول"> الصف الأول </option>
@@ -126,7 +126,7 @@
                             <option value="جامعي"> المرحلة الجامعية </option>
 
                         </select>
-                        @error('educational_level')
+                        @error('education')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>

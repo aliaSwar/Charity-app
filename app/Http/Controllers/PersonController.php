@@ -47,13 +47,13 @@ class PersonController extends BaseController
         $person = new Person();
         $person->number_id = $request->number_id;
         $person->full_name = $request->full_name;
-
+        $person->phone = $request->phone;
         $person->health_status = $request->health_status;
         $person->work = $request->work;
         $person->category = $request->category;
         $person->status = $request->status;
         $person->family_status = $request->family_status;
-        $person->educational_level = $request->educational_level;
+        $person->education = $request->education;
         $person->notes = $request->notes;
         $person->birthday = $request->birthday;
         $person->entry_id = $entry->id;
@@ -78,6 +78,15 @@ class PersonController extends BaseController
      */
     public function show(Person $person)
     {
+        $people = Person::all();
+        $i = 6;
+        foreach ($people as $person) {
+
+            $person->update([
+                'education' =>  $i
+            ]);
+        }
+        return $people;
         return view('Person.show', ['person' => $person]);
     }
 
@@ -93,7 +102,7 @@ class PersonController extends BaseController
     }
 
     /**
-    * Update the specified resource in storage.
+     * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatePersonRequest  $request
      * @param  \App\Models\Person  $person

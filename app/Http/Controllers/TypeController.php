@@ -39,12 +39,11 @@ class TypeController extends BaseController
      */
     public function store(StoreTypeRequest $request)
     {
-        $type = Type::created([
+        $type = Type::create([
             'type'  => $request->type,
-            'slug'  => Str::slug($request->type)
+            'slug'  => Str::slug($request->type, '-')
         ]);
-        return redirect()->route('types.show');
-        
+        return redirect()->route('types.show', ['type' => $type]);
     }
 
     /**
@@ -55,7 +54,11 @@ class TypeController extends BaseController
      */
     public function show(Type $type)
     {
-        //
+
+        return view('Type.show', [
+            'type' => $type,
+            'orphans' => $type->orphans()->paginate(7)
+        ]);
     }
 
     /**
@@ -66,7 +69,9 @@ class TypeController extends BaseController
      */
     public function edit(Type $type)
     {
-        //
+        return view('Type.edit', [
+            'type' => $type
+        ]);
     }
 
     /**
@@ -78,7 +83,11 @@ class TypeController extends BaseController
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $type->update([
+            'type' =>  $request->type,
+            'slug' => Str::slug($request->type)
+        ]);
+        return redirect()->route('types.show', ['type' => $type])->with('success', 'تم تحديث زمن الكفالة ');
     }
 
     /**
@@ -89,6 +98,7 @@ class TypeController extends BaseController
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('types.index')->with(['success', 'تم حذف زمن الكفالة بنجاح']);
     }
 }

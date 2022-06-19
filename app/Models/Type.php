@@ -19,4 +19,8 @@ class Type extends Model
     {
         return $this->hasMany(Orphan::class);
     }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\EntryController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\MdicalEntryController;
+use App\Http\Controllers\OrphanController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
@@ -67,3 +68,4 @@ Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name(
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
+Route::resource('orphans', OrphanController::class);

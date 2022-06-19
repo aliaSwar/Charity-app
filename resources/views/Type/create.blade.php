@@ -5,7 +5,7 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <hr class="my-5" />
-            <form action="{{ route('categories.store') }}" method="POST" class="row g-3 needs-validation"
+            <form action="{{ route('types.store') }}" method="POST" class="row g-3 needs-validation"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-4">

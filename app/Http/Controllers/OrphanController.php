@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Orphan;
 use App\Http\Requests\StoreOrphanRequest;
 use App\Http\Requests\UpdateOrphanRequest;
+use App\Models\Financial;
+use App\Models\Sponsor;
+use Illuminate\Contracts\View\View;
 
 class OrphanController extends BaseController
 {
@@ -25,9 +28,12 @@ class OrphanController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sponsor $sponsor)
     {
-        //
+        return view('Orphan.create', [
+            'sponsor' => $sponsor,
+            'financials' => Financial::all()
+        ]);
     }
 
     /**

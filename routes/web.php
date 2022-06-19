@@ -68,4 +68,7 @@ Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name(
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
-Route::resource('orphans', OrphanController::class);
+//TODO:: Add Orphan
+Route::controller(OrphanController::class)->group(function () {
+    Route::get('create/{sponsor}',[OrphanController::class,'create'])->name('orphans.create');
+});

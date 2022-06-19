@@ -66,7 +66,11 @@ class SponsorController extends BaseController
      */
     public function show(Sponsor $sponsor)
     {
-        return view('Sponsor.show', ['sponsor' => $sponsor]);
+
+        return view('Sponsor.show', [
+            'sponsor' => $sponsor,
+            'orphans' => $sponsor->orphans()->paginate(8)
+        ]);
     }
 
     /**

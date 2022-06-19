@@ -15,7 +15,9 @@ class OrphanController extends BaseController
      */
     public function index()
     {
-        //
+        return view('Orphan.index', [
+            'orphans' => Orphan::paginate(13)
+        ]);
     }
 
     /**
@@ -36,7 +38,7 @@ class OrphanController extends BaseController
      */
     public function store(StoreOrphanRequest $request)
     {
-        //
+        $orphan = Orphan::create([]);
     }
 
     /**
@@ -47,7 +49,9 @@ class OrphanController extends BaseController
      */
     public function show(Orphan $orphan)
     {
-        //
+        return view('Orphan.show', [
+            'orphan' => $orphan
+        ]);
     }
 
     /**
@@ -58,7 +62,9 @@ class OrphanController extends BaseController
      */
     public function edit(Orphan $orphan)
     {
-        //
+        return view('Orphan.edit', [
+            'orphan' => $orphan
+        ]);
     }
 
     /**

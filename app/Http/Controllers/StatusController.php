@@ -57,7 +57,8 @@ class StatusController extends BaseController
      */
     public function show(Status $status)
     {
-        return view('Status.show', ['status' => $status]);
+        $entries = $status->entries()->paginate(1);
+        return view('Status.show', ['status' => $status, 'entries' => $entries]);
     }
 
     /**

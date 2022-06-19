@@ -21,7 +21,7 @@ class EntryController extends BaseController
      */
     public function index()
     {
-        $entries = Entry::with('category', 'status', 'financial')->paginate(6);
+        $entries = Entry::paginate(1);
 
         ///$person = Person::all();
         return view('Entry.index', ['entries' => $entries]);
@@ -74,7 +74,7 @@ class EntryController extends BaseController
             $query->where('is_mdical', 0)->whereNotIn('id', $request->papers);
         })->get();
         $entry->identification_papers()->sync($lost_paper);
-        
+
         if ($entry->family_num >= 1) {
             return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'تم اضافة مدرج بنجاح ');
             //return view('Person.createAjax');

@@ -54,7 +54,7 @@
                             <th class="table-success ">التفاصيل </th>
                         </tr>
                     </thead>
-                    @foreach ($status->entries as $entry)
+                    @foreach ($entries as $entry)
                         <tr>
                             <td>{{ $entry->id }}</td>
                             <td>{{ $entry->family_name }}</td>
@@ -73,8 +73,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item"
-                                            href="{{ route('entries.show', $entry) }} detail"><i
+                                        <a class="dropdown-item" href="{{ route('entries.show', $entry) }} detail"><i
                                                 class="bx bx bxs-detail"></i> عرض التفاصيل</a>
                                         <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
                                                 class="bx bx-edit-alt me-1"></i> تعديل</a>
@@ -86,6 +85,9 @@
                     </tbody>
                 </table>
             </div>
+
+
+            {{ $entries->links() }}
         </div>
-        </section>
+    </div>
 </x-layouts.app>

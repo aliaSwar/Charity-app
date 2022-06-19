@@ -78,10 +78,40 @@
                     </table>
                 </div>
             </div>
+            <hr class="my-5">
+            <div class="card text-bg-danger mb-3">
+                <h5 class="card-header">معلومات الأفراد </h5>
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="table-primary"> اسم الفرد</th>
+                                <th class="table-primary"> من هو</th>
 
+
+                            </tr>
+                        </thead>
+                        <tbody class="table-flush-spacing">
+                            @foreach ($people as $person)
+                                <tr class="table-default">
+                                    <td><i class="fab fa-sketch fa-lg text-warning "></i>
+                                        <a href="{{ route('person.show', $person) }}">
+                                            {{ $person->full_name }}
+                                        </a>
+                                    </td>
+                                    <td>{{ $person->category }}</td>
+
+
+                                </tr>
+                            @endforeach
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <hr class="my-5" />
-            @foreach ($people as $person)
-                {{ $person->full_name }}
-            @endforeach
+
 </x-layouts.app>

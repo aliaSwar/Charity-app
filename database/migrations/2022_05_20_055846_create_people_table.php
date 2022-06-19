@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('health_status')->nullable();
             $table->enum('work', ['work', 'dont work'])->nullable();
             $table->enum('status', ['existing', 'not existing']); //موجود  ام لا
-            $table->enum('category', ['mother', 'father', 'boy', 'girl']);
+            $table->enum('category', ['الأم', 'الأب', 'الابن', 'الابنة']);
             $table->enum('family_status', ['single', 'married', 'separate', 'widow']);
             $table->enum(
                 'education',

@@ -40,10 +40,10 @@
                         </label>
                         <select name="category" class="form-select @error('category') border-light-danger @enderror"
                             id="validationCustom04" aria-label="Default select example">
-                            <option value="mother">أم</option>
-                            <option value="father">اب </option>
-                            <option value="boy">طفل </option>
-                            <option value="girl">طفلة </option>
+                            <option value="الأم">أم</option>
+                            <option value="الأب">اب </option>
+                            <option value="الابن">طفل </option>
+                            <option value="الابنة">طفلة </option>
 
                         </select>
                         @error('category')
@@ -107,8 +107,7 @@
                     <div class=" col-md-3 -btn-group dropend">
                         <label for="validationCustom04" class="form-label ">التحصيل العلمي
                         </label>
-                        <select name="education"
-                            class="form-select @error('education') border-light-danger @enderror"
+                        <select name="education" class="form-select @error('education') border-light-danger @enderror"
                             id="validationCustom04" aria-label="Default select example">
                             <option value="امي">أمي أو صغير</option>
                             <option value="أول"> الصف الأول </option>
@@ -174,7 +173,8 @@
                     <div class="">
                         <label class="label">ملاحظات</label>
 
-                        <textarea id="editor" name="notes" class="form-control @error('content') text-danger @enderror" rows="3"></textarea>
+                        <textarea id="editor" name="notes" class="form-control @error('content') text-danger @enderror"
+                            rows="3"></textarea>
                         <input type="hidden" {{-- name="notes" --}}id="content">
 
 

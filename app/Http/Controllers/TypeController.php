@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use Illuminate\Support\Str;
 
 class TypeController extends BaseController
 {
@@ -15,7 +16,9 @@ class TypeController extends BaseController
      */
     public function index()
     {
-        //
+        return view('Type.index', [
+            'types' => Type::all()
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class TypeController extends BaseController
      */
     public function create()
     {
-        //
+        return view('Type.create');
     }
 
     /**
@@ -36,7 +39,12 @@ class TypeController extends BaseController
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $type = Type::created([
+            'type'  => $request->type,
+            'slug'  => Str::slug($request->type)
+        ]);
+        return redirect()->route('types.show');
+        
     }
 
     /**

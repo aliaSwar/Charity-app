@@ -50,7 +50,7 @@ class Kernel extends ConsoleKernel
     }
     protected function check($person)
     {
-        if ($person->category == 'father' || $person->category == 'mother') {
+        if ($person->category == 'الأب' || $person->category == 'الأم') {
             return false;
         }
         return true;
@@ -65,7 +65,13 @@ class Kernel extends ConsoleKernel
                 }
             }
         })->yearly();
-
+        $schedule->call(function () use ($people) {
+            foreach ($people as $person) {
+                if ($this->check($person)) {
+                    $this->select($person);
+                }
+            }
+        })->yearly();
         // $schedule->command('inspire')->hourly();
     }
 

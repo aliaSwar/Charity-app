@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Aid;
 use App\Http\Requests\StoreAidRequest;
 use App\Http\Requests\UpdateAidRequest;
+use Illuminate\Contracts\View\View;
 
 class AidController extends BaseController
 {
@@ -15,7 +16,7 @@ class AidController extends BaseController
      */
     public function index()
     {
-        //
+        return view();
     }
 
     /**

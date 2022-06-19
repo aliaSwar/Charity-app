@@ -62,6 +62,7 @@ class CategoryController extends BaseController
      */
     public function show(Category $category)
     {
+        $entries = $category->entries()->paginate(1);
         return view('Category.show', ['category' => $category]);
     }
 

@@ -39,9 +39,11 @@
                                 <td><a href="{{ route('categories.show', $entry->category) }}"><span
                                             class="badge bg-label-success me-1">{{ $entry->category->category }}</span></a>
                                 </td>
-                                <td><span class="badge bg-label-info me-1">{{ $entry->status->status }}</span>
+                                <td><a href="{{ route('statuses.show', $entry->status) }}"><span
+                                            class="badge bg-label-info me-1">{{ $entry->status->status }}</span></a>
                                 </td>
-                                <td><span class="badge bg-label-danger me-1">{{ $entry->financial->type }}</span>
+                                <td><a href="{{ route('financials.show', $entry->financial) }}"><span
+                                            class="badge bg-label-danger me-1">{{ $entry->financial->type }}</span></a>
                                 </td>
                                 <td>
                                     <div class="dropdown">
@@ -64,23 +66,9 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="column is-12">{{ $entries->links() }}</div>
+
         </div>
-        <div class="column is-12">{{ $entries->links() }}</div>
-        </section>
-
-        <!-- / Content -->
-
-
-
-        <div class="content-backdrop fade"></div>
     </div>
-    <!-- Content wrapper -->
-    </div>
-    <!-- / Layout page -->
-    </div>
-
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
-
 </x-layouts.app>

@@ -75,9 +75,9 @@ class EntryController extends BaseController
                 $query->where('is_mdical', 0)->whereNotIn('id', $request->papers);
             })->get();
             $entry->identification_papers()->sync($lost_paper);
+        } else {
+            $entry->identification_papers()->sync(Identification_paper::where('is_mdical', 0)->get());
         }
-
-
         if ($entry->family_num >= 1) {
             return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'تم اضافة مدرج بنجاح ');
             //return view('Person.createAjax');

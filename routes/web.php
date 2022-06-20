@@ -70,5 +70,7 @@ Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
 //TODO:: Add Orphan
 Route::controller(OrphanController::class)->group(function () {
-    Route::get('create/{sponsor}',[OrphanController::class,'create'])->name('orphans.create');
+    Route::get('filter/create/{sponsor}', [OrphanController::class, 'create_filter'])->name('orphans.create');
+    Route::post('filter/{sponsor}', [OrphanController::class, 'filter'])->name('orphans.filter');
+    Route::get('filter/{sponsor}', [OrphanController::class, 'filter']);
 });

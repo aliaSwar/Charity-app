@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFilterRequest;
 use App\Models\Orphan;
 use App\Http\Requests\StoreOrphanRequest;
 use App\Http\Requests\UpdateOrphanRequest;
+use App\Models\Category;
+use App\Models\Entry;
 use App\Models\Financial;
+use App\Models\Person;
 use App\Models\Sponsor;
+use App\Models\Status;
 use Illuminate\Contracts\View\View;
 
 class OrphanController extends BaseController
@@ -94,5 +99,39 @@ class OrphanController extends BaseController
     public function destroy(Orphan $orphan)
     {
         //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create_filter(Sponsor $sponsor)
+    {
+        return view('Orphan.create-filter', [
+            'sponsor'    => $sponsor,
+            'financials' => Financial::all(),
+            'categories' => Category::all(),
+            'statuss'    => Status::all()
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filter(StoreFilterRequest $request, Sponsor $sponsor)
+    {
+        /* $people = array();
+        foreach ($request->filter_entry() as $entry) {
+            array_push($people, $request->filter_age($entry->id));
+        } */
+        dd($request->filter_orphan());
+
+        return view('Orphan.filter', [
+            'sponsor' => $sponsor,
+            'data'  => $request->filter_orphan()
+        ]);
     }
 }

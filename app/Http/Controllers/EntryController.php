@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEntryRequest;
+use App\Models\Aid;
 use App\Models\Entry;
 
 use App\Models\Category;
@@ -68,12 +69,14 @@ class EntryController extends BaseController
         $entry->financial_id = $request->financial_id;
         $entry->status_id = $request->status_id;
         $entry->save();
+        if ($request->papers != null) {
+            $lost_paper = Identification_paper::where(function ($query) use ($request) {
 
-        $lost_paper = Identification_paper::where(function ($query) use ($request) {
+                $query->where('is_mdical', 0)->whereNotIn('id', $request->papers);
+            })->get();
+            $entry->identification_papers()->sync($lost_paper);
+        }
 
-            $query->where('is_mdical', 0)->whereNotIn('id', $request->papers);
-        })->get();
-        $entry->identification_papers()->sync($lost_paper);
 
         if ($entry->family_num >= 1) {
             return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'تم اضافة مدرج بنجاح ');

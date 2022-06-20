@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="ar" class="light-style  customizer-hide" dir="rtl" data-theme="theme-default" data-assets-path="assets/"
-    data-template="vertical-menu-template-no-customizer">
+<html lang="ar" class="light-style  customizer-hide" dir="rtl" data-theme="theme-default"
+    data-assets-path="assets/" data-template="vertical-menu-template-no-customizer">
 
 <head>
     <meta charset="utf-8" />
@@ -49,7 +49,7 @@
 
 <body>
     {{ $scripts ?? '' }}
-    {{-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script>
         function addDarkmodeWidget() {
@@ -71,7 +71,7 @@
         }
         const darkmode = new Darkmode(options);
         darkmode.showWidget();
-    </script> --}}
+    </script>
     @auth()
         <x-side-bar />
         <x-navbar />

@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\PhoneNumber;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,7 @@ class RegisteredUserController extends BaseController
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' =>  ['string', 'numeric', 'unique:users', 'nullable', 'digits:10', 'nullable'],
+            'phone' =>  ['string', 'numeric', 'unique:users', 'nullable', new PhoneNumber()],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

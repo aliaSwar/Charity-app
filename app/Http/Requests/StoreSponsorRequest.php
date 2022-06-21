@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-
+use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreSponsorRequest extends FormRequest
@@ -28,7 +28,7 @@ class StoreSponsorRequest extends FormRequest
             'address' => ['string', 'required', 'min:5'],
             'name'    => ['required', 'string', 'max:255'],
             'email'   => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone'   => ['string', 'numeric', 'unique:users', 'nullable', 'digits:10'],
+            'phone'   => ['string', 'unique:users', 'nullable',  new PhoneNumber()],
             'password' => ['string'],
         ];
     }

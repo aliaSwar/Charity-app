@@ -64,7 +64,7 @@
 
                     <div class="col-md-4">
                         <label for="validationCustom02" class="form-label"> رقم التواصل ان وجد</label>
-                        <input name="phone" type="number"
+                        <input name="phone" type="text"
                             class="form-control @error('phone') border-light-danger @enderror" id="validationCustom02">
                         @error('phone')
                             <p class="text-danger">{{ $message }}</p>

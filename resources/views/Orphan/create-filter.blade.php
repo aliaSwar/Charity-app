@@ -1,29 +1,14 @@
 <x-layouts.app>
-    <x-slot name="styles">
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    </x-slot>
-    <x-slot name="scripts">
-        <!-- Include the Quill library -->
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-        <!-- Initialize Quill editor -->
-        <script>
-            var quill = new Quill('#editor', {
-                theme: 'snow'
-            })
-            quill.on('text-change', function(delta, source) {
-                document.getElementById('content').value = quill.root.innerHTML
-            })
-        </script>
-    </x-slot>
-
-
-
 
     <div class="content-wrapper">
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <hr class="my-5" />
+            <div class="btn-group-lg">
+                <div class="control">
+                    <button class="btn btn-primary">filter</button>
+                </div>
+            </div>
+            <hr>
             <div class="profile2">
 
                 {{-- to send entry id to store person in database --}}
@@ -39,7 +24,7 @@
                             id="validationCustom04" aria-label="Default select example">
                             <option value="الابن">طفل </option>
                             <option value="الابنة">طفلة </option>
-                            <option value="كليهما"> كليهما</option>
+
                         </select>
                         @error('gender')
                             <p class="text-danger">{{ $message }}</p>
@@ -117,12 +102,50 @@
                             <input class="btn btn-primary" type="submit" value="فلترة">
                         </div>
                         <hr class="my-5" />
-
-
-
                 </form>
-
             </div>
+
+        </div>
+        <div class="container">
+            <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="table-success ">اسم العائلة</th>
+                        <th class="table-success ">اسم الفرد</th>
+                        <th class="table-success ">التفاصيل </th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    @foreach ($people as $key => $person)
+                        <tr>
+                            <td><a href="{{ route('entries.show', $person->entry) }}">
+                                    {{ $person->entry->family_name }}
+                                </a></td>
+                            <td><a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a></td>
+                            <td>
+                                <form action="{{ route('orphans.create') }}" method="GET">
+                                    <input type="checkbox" name="people[]" value="{{ $person->id }}">
+                            </td>
+                    @endforeach
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 col-lg-6 mx-auto">
+                            <input type="submit" class="btn btn-danger" value="اختيار">
+                        </div>
+                    </div>
+                    <hr>
+                    </form>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        {{ $people->links() }}
+
+    </div>
+    </div>
 
 
 

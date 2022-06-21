@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,7 +29,7 @@ class UpdateSponsorRequest extends FormRequest
             'address' => ['string', 'required', 'min:5'],
             'name'    => ['required', 'string', 'max:255'],
             'email'   => ['required', 'string', 'email', 'max:255'],
-            'phone'   => ['string', 'numeric', 'nullable', 'digits:10'],
+            'phone'   => ['string', 'nullable', new PhoneNumber()],
             'password' => ['string'],
         ];
     }

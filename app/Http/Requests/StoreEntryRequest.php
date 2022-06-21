@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEntryRequest extends FormRequest
@@ -29,7 +30,7 @@ class StoreEntryRequest extends FormRequest
             'category_id'      => ['required', 'numeric', 'exists:categories,id'],
             'financial_id'     => ['required', 'numeric', 'exists:financials,id'],
             'status_id'        => ['required', 'numeric', 'exists:statuses,id'],
-            'phone_num'        => ['required', 'numeric', 'digits:10'],
+            'phone_num'        => ['required', 'string',  new PhoneNumber()],
             'diwan_num'        => ['required', 'numeric'],
             'smartCard_num'    => ['required', 'numeric', 'digits:7'],
             'registration_num' => ['required', 'numeric'],

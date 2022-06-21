@@ -13,7 +13,8 @@
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">اسم العائلة</label>
                     <input name="family_name" type="text"
-                        class="form-control @error('family_name') border-light-danger @enderror" id="validationCustom01">
+                        class="form-control @error('family_name') border-light-danger @enderror"
+                        id="validationCustom01">
                     @error('family_name')
                         <div>
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -42,7 +43,7 @@
                         الهاتف</label>
                     <div class="input-group has-validation">
 
-                        <input name="phone_num" type="number"
+                        <input name="phone_num" type="text"
                             class="form-control  @error('phone_num') border-light-danger @enderror"
                             id="validationCustomUsername" placeholder="0944444458" aria-describedby="inputGroupPrepend">
                     </div>
@@ -113,7 +114,8 @@
                 </div>
                 <div class=" col-md-3 -btn-group dropend">
                     <label for="validationCustom04" class="form-label">الفئة </label>
-                    <select name="financial_id" class="form-select @error('financial_id') border-light-danger @enderror"
+                    <select name="financial_id"
+                        class="form-select @error('financial_id') border-light-danger @enderror"
                         id="validationCustom04" aria-label="Default select example">
                         {{-- <select value="{{ old('category_id') }}"> --}}
                         <option selected>اختر الفئة</option>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMdical_entryRequest extends FormRequest
@@ -26,7 +27,7 @@ class StoreMdical_entryRequest extends FormRequest
         return [
             'name_recipient'   => ['required', 'string', 'min:4'],
             'notes'            => ['required', 'string', 'min:4'],
-            'phone'            => ['required', 'numeric', 'digits:10'],
+            'phone'            => ['required', 'string', new PhoneNumber()],
             'husband_name'     => ['required', 'string', 'min:4'],
             'wife_name'        => ['required', 'string', 'min:4'],
             'whos'             => ['required', 'string'],
@@ -34,7 +35,7 @@ class StoreMdical_entryRequest extends FormRequest
             'illness'          => ['required', 'string'],
             'address'          => ['required', 'string'],
             'session_decision' => ['required', 'string'],
-        
+
         ];
     }
 }

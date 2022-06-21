@@ -25,7 +25,7 @@
                                     تعديل
 
                                 </a>
-                                <a href="{{ route('orphans.create', $sponsor) }}" class="btn btn-primary me-1">
+                                <a href="{{ route('filter.create', $sponsor) }}" class="btn btn-primary me-1">
 
                                     انشاء كفالة
 

@@ -43,15 +43,15 @@
 
                             </tr>
                             <tr class="table-default">
-                                <td><i class="fab fa-react fa-lg text-info "></i> <strong>مدة الإدراج </strong></td>
-                                <td></td>
+                                <td><i class="fab fa-react fa-lg text-info "></i> <strong>العائلة مكفولة </strong></td>
+                                <td>{{ $entry->all_orphan }}</td>
 
                             </tr>
                             <tr class="table-default">
                                 <td>
-                                    <i class="fab fa-bootstrap fa-lg text-primary "></i> <strong> رقم القيد</strong>
+                                    <i class="fab fa-bootstrap fa-lg text-primary "></i> <strong>الأم مكفولة</strong>
                                 </td>
-                                <td>Jerry Milton</td>
+                                <td> </td>
 
                                 </td>
                             </tr>
@@ -87,7 +87,7 @@
                             <tr>
                                 <th class="table-primary"> اسم الفرد</th>
                                 <th class="table-primary"> من هو</th>
-
+                                <th class="table-primary"> مكفول</th>
 
                             </tr>
                         </thead>
@@ -100,6 +100,7 @@
                                         </a>
                                     </td>
                                     <td>{{ $person->category }}</td>
+                                    <td>{{ $person->orphan == false ? 'لا' : 'نعم' }}</td>
 
 
                                 </tr>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-
+use App\Rules\PhoneNumber;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -28,7 +28,7 @@ class StorePersonRequest extends FormRequest
         return [
             'full_name'         => ['required', 'string', 'min:5'],
             'birthday'          => ['date'],
-            'phone'             => ['numeric', 'digits:10'],
+            'phone'             => ['string', 'nullable', new PhoneNumber()],
             'work'              => ['required', Rule::in(['work', 'dont work'])],
             'status'            => ['required', Rule::in('existing', 'not existing')],
             'category'          => ['required', Rule::in('mother', 'father', 'boy', 'girl')],

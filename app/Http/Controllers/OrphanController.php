@@ -112,7 +112,8 @@ class OrphanController extends BaseController
             'sponsor'    => $sponsor,
             'financials' => Financial::all(),
             'categories' => Category::all(),
-            'statuss'    => Status::all()
+            'statuss'    => Status::all(),
+            'people'    => Person::orderBy('entry_id')->paginate(9)
         ]);
     }
 
@@ -123,15 +124,18 @@ class OrphanController extends BaseController
      */
     public function filter(StoreFilterRequest $request, Sponsor $sponsor)
     {
-        /* $people = array();
-        foreach ($request->filter_entry() as $entry) {
-            array_push($people, $request->filter_age($entry->id));
-        } */
-        dd($request->filter_orphan());
+        foreach ($request->filter_age() as $key => $person) {
+            if ($request->filter_entry($person->entry->id)) {
+                $people[] = $person;
+            }
+        }
+        return view('Orphan.create-filter', [
+            'people'     => $people,
+            'sponsor'    => $sponsor,
+            'financials' => Financial::all(),
+            'categories' => Category::all(),
+            'statuss'    => Status::all(),
 
-        return view('Orphan.filter', [
-            'sponsor' => $sponsor,
-            'data'  => $request->filter_orphan()
         ]);
     }
 }

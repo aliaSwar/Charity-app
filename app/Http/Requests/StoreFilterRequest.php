@@ -64,12 +64,14 @@ class StoreFilterRequest extends FormRequest
             ->get() as $person) {
             $birthday = $person->birthday;
             $age = Carbon::parse($birthday)->diff(Carbon::now())->y;
+            ///dd($this->age);
+
             if ($age <= 5 and $this->age == 1) {
 
                 $people[] = $person;
             } elseif ($age > 5 and $age < 11 and $this->age == 2) {
                 $people[] = $person;
-            } else {
+            } elseif ($this->age == 3) {
                 $people[] = $person;
             }
         }

@@ -49,7 +49,7 @@
 
 <body>
     {{ $scripts ?? '' }}
- {{--    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    {{-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
     <script>
         function addDarkmodeWidget() {
@@ -74,9 +74,11 @@
     </script> --}}
     @auth()
         <x-side-bar />
+
+
         <x-navbar />
     @endauth
-
+    {{-- <x-orphan-sid-bar /> --}}
 
 
 

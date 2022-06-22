@@ -12,7 +12,9 @@ use App\Models\Financial;
 use App\Models\Person;
 use App\Models\Sponsor;
 use App\Models\Status;
+use App\Models\Type;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class OrphanController extends BaseController
 {
@@ -33,11 +35,23 @@ class OrphanController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Sponsor $sponsor)
+    public function create(Request $request, Sponsor $sponsor)
     {
+        $mothers = array();
+        $people = Person::whereIn('id', $request->people)->get();
+        foreach ($people as $person) {
+            $entry = $person->entry_id;
+            $mothers[] = Person::where('category', 'الأم')
+                ->where('entry_id', $entry)
+                ->where('orphan', false)
+                ->first();
+        }
         return view('Orphan.create', [
-            'sponsor' => $sponsor,
-            'financials' => Financial::all()
+            'sponsor'    => $sponsor,
+            'types'      => Type::all(),
+            'financials' => Financial::all(),
+            'people'     => $people,
+            'mothers'    => $mothers
         ]);
     }
 
@@ -47,9 +61,29 @@ class OrphanController extends BaseController
      * @param  \App\Http\Requests\StoreOrphanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrphanRequest $request)
+    public function store(StoreOrphanRequest $request, Sponsor $sponsor)
     {
-        $orphan = Orphan::create([]);
+        foreach ($request->people as $key => $person) {
+            Orphan::create([
+                'sponsor_id'    => $sponsor->id,
+                'salary_month'  => $request->salary_month,
+                'salary_year'   => $request->salary_year,
+                'begin_date'    => $request->begin_date,
+                'end_date'      => $request->end_date,
+                'mother_is_ok'  => $request->mother_is_ok,
+                'type_id'       => $request->type_id,
+                'person_id'     => $person
+            ]);
+            Person::where('id', $person)->update([
+                'orphan'  => true
+            ]);
+        }
+
+        $mother = Person::where('id', $request->mother_is_ok)->first();
+        $mother->update([
+            'orphan'  => true
+        ]);
+        return redirect()->route('sponsors.show', $sponsor);
     }
 
     /**
@@ -113,7 +147,7 @@ class OrphanController extends BaseController
             'financials' => Financial::all(),
             'categories' => Category::all(),
             'statuss'    => Status::all(),
-            'people'    => Person::orderBy('entry_id')->paginate(9)
+            'people'    => Person::orderBy('entry_id')->get()
         ]);
     }
 
@@ -124,6 +158,15 @@ class OrphanController extends BaseController
      */
     public function filter(StoreFilterRequest $request, Sponsor $sponsor)
     {
+        if ($request->filter_age() == null) {
+            return view('Orphan.create-filter', [
+                'sponsor'    => $sponsor,
+                'financials' => Financial::all(),
+                'categories' => Category::all(),
+                'statuss'    => Status::all(),
+                'people'    => Person::orderBy('entry_id')->get()
+            ])->with(['data' => 'لا يوجد أفراد بهذه الصفات']);
+        }
         foreach ($request->filter_age() as $key => $person) {
             if ($request->filter_entry($person->entry->id)) {
                 $people[] = $person;

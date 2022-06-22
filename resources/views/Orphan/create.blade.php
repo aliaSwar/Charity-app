@@ -1,162 +1,135 @@
 <x-layouts.app>
     <div class="content-wrapper">
-        <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
 
+            <div class="row">
+                <div class="col-14">
+                    <div class="card mb-4">
+                        <h5 class="card-header">{{ $sponsor->user->name }}</h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                الكفيل, {{ $sponsor->user->name }}❤️
+                            </p>
 
-            <!-- Basic Bootstrap Table -->
+                            <a class="btn btn-success" href="{{ route('sponsors.show', $sponsor) }}">عرض</a>
 
-
-            <!--/ Basic Bootstrap Table -->
-
-            <hr class="my-5" />
-
-
-            <form class="row g-3">
-                <div class="col-md-5">
-                    <label for="validationServer01" class="form-label">مبلغ الكفالة</label>
-                    <input type="text" class="form-control is-valid" id="validationServer01" required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        enter first name.
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="container-xxl flex-grow-1 container-p-y">
+
+
+            <form class="row g-3" action="{{ route('orphans.store', $sponsor) }}" method="POST">
+                @csrf
                 <div class="col-md-5">
-                    <label for="validationServer01" class="form-label"> اسم الكفيل</label>
-                    <input type="text" class="form-control is-valid" id="validationServer01" required>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                        enter first name.
-                    </div>
+                    <label for="validationServer01" class="form-label">مبلغ الشهري</label>
+                    <input type="number" name="salary_month"
+                        class="form-control is-valid @error('salary_month') is-invalid @enderror"
+                        id="validationServer01">
+                    @error('salary_month')
+                        <div>
+                            <p class="help is-danger">{{ $message }}</p>
+                        </div>
+                    @enderror
                 </div>
+
                 <div class="col-md-5">
-                    <label for="validationServer02" class="form-label">العدد المراد كفالته</label>
-                    <input type="number" class="form-control is-valid" id="validationServer02" required>
-                    <div id="validationServer03Feedback" class="invalid-feedback">
-                        enter last name.
-                    </div>
+                    <label for="validationServer02" class="form-label">المبلغ السنوي </label>
+                    <input type="number"
+                        name="salary_year"class="form-control is-valid @error('salary_year') is-invalid @enderror"
+                        id="validationServer02">
+                    @error('salary_year')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-md-5 position-relative">
                     <label for="validationTooltip04" class="form-label">نوع الكفالة</label>
-                    <select class="form-select" id="validationTooltip04" required>
+                    <select name="type_id"class="form-select is-valid @error('type_id') is-invalid @enderror"
+                        id="validationTooltip04">
                         <option selected disabled value="">اختر...</option>
-                        <option>شهرية</option>
-                        <option>سنوية</option>
+                        @foreach ($types as $type)
+                            <option value="{{ $type->id }}">{{ $type->type }}</option>
+                        @endforeach
                     </select>
-                    <div class="invalid-tooltip">
-                        Please select a valid state.
-                    </div>
+                    @error('type_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-
+                <div class="col-md-5">
+                    <label for="validationServer01" class="form-label"> تاريخ بدء الكفالة</label>
+                    <input type="date" name="begin_date"
+                        class="form-control is-valid @error('begin_date') is-invalid @enderror "
+                        id="validationServer01">
+                    @error('begin_date')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-5">
+                    <label for="validationServer01" class="form-label">تاريخ انتهاء الكفالة</label>
+                    <input type="date" name="end_date"
+                        class="form-control is-valid @error('end_date') is-invalid @enderror" id="validationServer01">
+                    @error('end_date')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-5 position-relative">
+                    <label for="validationTooltip04" class="form-label">أتريد كفالة الأم؟</label>
+                    <select name="mother_is_ok"class="form-select is-valid @error('type_id') is-invalid @enderror"
+                        id="validationTooltip04">
+                        <option selected disabled value="">اختر...</option>
+                        @foreach ($mothers as $mother)
+                            <option value="{{ $mother->id }}">
+                                {{ $mother->full_name }}عائلة{{ $mother->entry->family_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('type_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
         </div>
 
 
         <div class="container">
-            <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
 
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th class="table-success ">اسم المكفولين</th>
-                        <th class="table-success "> عدد الأطفال غير المكفولين</th>
-                        <th class="table-success "> كفالة الأم </th>
-                        <th class="table-success ">عرض الأطفال </th>
 
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-                    <tr>
-                        <td>بشرى صالح</td>
+            <h5 class="card-header-elements">عرض الأطفال المكفولين</h3>
 
-                        <td><span class="badge bg-label-success me-1">3</span></td>
-                        <td> مكفولة</td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="check-child.html"><i class="bx bx bxs-detail"></i>
-                                        عرض التفاصيل</a>
 
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>حمزة</td>
 
-                        <td><span class="badge bg-label-warning me-1">2</span></td>
-                        <td> غير مكفولة</td>
-
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="check-child.html"><i class="bx bx bxs-detail"></i>
-                                        عرض التفاصيل</a>
-
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tr>
-                    <tr>
-                        <td>حمزة</td>
-
-                        <td><span class="badge bg-label-warning me-1">1</span></td>
-                        <td> غير مكفولة</td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="check-child.html"><i class="bx bx bxs-detail"></i>
-                                        عرض التفاصيل</a>
-
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>كمال</td>
-
-                        <td><span class="badge bg-label-success me-1">2</span></td>
-                        <td> مكفولة</td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="check-child.html"><i class="bx bx bxs-detail"></i>
-                                        عرض التفاصيل</a>
-
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-    </div>
-    </section>
 
-
-
-
-
-
-    <div class="col-12">
-        <button href="show-childes.html" class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-    </form>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="table-success ">اسم العائلة</th>
+                    <th class="table-success ">اسم الفرد</th>
+                    <th class="table-success ">التفاصيل </th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                @foreach ($people as $key => $person)
+                    <tr>
+                        <td><a href="{{ route('entries.show', $person->entry) }}">
+                                {{ $person->entry->family_name }}
+                            </a></td>
+                        <td><a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a></td>
+                        <td>
+                            تأكيد الكفالة
+                            <input type="checkbox" name="people[]" value="{{ $person->id }}">
+                        </td>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="row mt-3">
+            <div class="d-grid gap-2 col-lg-6 mx-auto">
+                <input type="submit" class="btn btn-danger" value="اختيار">
+            </div>
+        </div>
+        </form>
 
 
 </x-layouts.app>

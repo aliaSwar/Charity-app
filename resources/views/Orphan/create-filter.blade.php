@@ -1,5 +1,9 @@
 <x-layouts.app>
-
+    @if (session()->has('data'))
+        <div class="alert alert-success">
+            <p>{{ session()->get('data') }}</p>
+        </div>
+    @endif
     <div class="content-wrapper">
 
         <div class="container-xxl flex-grow-1 container-p-y">
@@ -125,7 +129,8 @@
                                 </a></td>
                             <td><a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a></td>
                             <td>
-                                <form action="{{ route('orphans.create') }}" method="GET">
+                                <form action="{{ route('orphans.create', $sponsor) }}" method="post">
+                                    @csrf
                                     <input type="checkbox" name="people[]" value="{{ $person->id }}">
                             </td>
                     @endforeach
@@ -142,7 +147,6 @@
             </table>
         </div>
 
-        {{ $people->links() }}
 
     </div>
     </div>

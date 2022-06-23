@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'text', 'image'];
-    public function getImageAttribute($value)
+    public function getFeaturedImageAttribute($value)
     {
         return asset("storage/{$value}");
     }

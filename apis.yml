@@ -1,0 +1,16 @@
+openapi: '3.0.2'
+info:
+  title: API Charity App
+  version: '1.0'
+servers:
+  - url: http://127.0.0.1:8000
+    description: Open On LocalHost
+  - url: https://6b09-37-19-199-152.ngrok.io
+    description: Optional server description, e.g. Internal server for testing
+
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK

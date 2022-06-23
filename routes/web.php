@@ -8,6 +8,7 @@ use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\OrphanController;
 use App\Http\Controllers\PaidController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
@@ -78,3 +79,10 @@ Route::controller(OrphanController::class)->group(function () {
     Route::post('orphans/{sponsor}', [OrphanController::class, 'create'])->name('orphans.create');
     Route::post('orphan/{sponsor}', [OrphanController::class, 'store'])->name('orphans.store');
 });
+
+
+
+
+/////////////////////////////Start section posts on app////////////////////////////
+//TODO:: add post to app
+Route::resource('posts', PostController::class);

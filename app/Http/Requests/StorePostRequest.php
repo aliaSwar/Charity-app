@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAdminRequest extends FormRequest
+use function PHPSTORM_META\map;
+
+class StorePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +15,7 @@ class UpdateAdminRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,9 @@ class UpdateAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image_upload'             => ['file', 'image', 'nullable'],
+            'name'                     => ['required', 'min:3', 'string', 'max:255'],
+            'text'                     => ['required', 'string', 'max:255']
         ];
     }
 }

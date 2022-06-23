@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('amount');
             $table->string('image'); //يجيب ان يكون ضمن الصورة تاريخ التسليم
             $table->date('date_paid', 'y-d-m');
-            $table->foreignId('sposor_id');
+            $table->foreignId('sponsor_id');
             $table->timestamps();
         });
     }

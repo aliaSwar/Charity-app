@@ -13,4 +13,8 @@ class Paid extends Model
     {
         return $this->belongsTo(Sponsor::class);
     }
+    public function getFeaturedImageAttribute($value)
+    {
+        return asset("storage/{$value}");
+    }
 }

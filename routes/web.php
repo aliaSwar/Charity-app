@@ -6,6 +6,7 @@ use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\OrphanController;
+use App\Http\Controllers\PaidController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
@@ -68,7 +69,7 @@ Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name(
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
-
+Route::resource('paids', PaidController::class);
 //TODO:: Add Orphan
 Route::controller(OrphanController::class)->group(function () {
     Route::get('filter/create/{sponsor}', [OrphanController::class, 'create_filter'])->name('filter.create');

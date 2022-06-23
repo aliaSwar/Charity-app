@@ -1,0 +1,11 @@
+openapi: 3.0.1
+info:
+  title: Charity App API
+  description: This API is designed for both Web and Mobile app.
+  version: 1.0.0
+
+servers:
+  - url: http://127.0.0.1:8000
+    description: Open On LocalHost
+  - url: https://1bc7-190-2-131-208.ngrok.io
+    description: Optional server description, e.g. Internal server for testing

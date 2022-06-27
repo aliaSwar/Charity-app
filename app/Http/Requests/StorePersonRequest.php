@@ -37,8 +37,8 @@ class StorePersonRequest extends FormRequest
             'entry_id'          => ['required', 'numeric', 'exists:entries,id'],
             'orphan_id'         => ['numeric', 'exists:orphans,id'],
             'health_status'     => ['required', 'string', 'min:3', 'max:1000'],
-            'number_id'         => ['numeric', 'digits:11'],
-            'notes'             => ['required', 'string']
+            'number_id'         => ['nullable', 'numeric', 'digits:11'],
+            'notes'             => ['nullable', 'required', 'string']
         ];
     }
 }

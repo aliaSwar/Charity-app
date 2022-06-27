@@ -16,8 +16,7 @@ return new class extends Migration
     {
         Schema::create('orphans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('person_id');
-            $table->foreignId('sponsor_id');
+
             $table->integer('mother_is_ok')->nullable();
             $table->bigInteger('salary_month')->default(25000);
             $table->date('begin_date', 'y-m-d');
@@ -25,6 +24,7 @@ return new class extends Migration
             $table->bigInteger('salary_year')->default(100000);
             $table->foreignId('type_id'); //اسم االسنوي او الشهري
             $table->timestamps();
+
         });
     }
 

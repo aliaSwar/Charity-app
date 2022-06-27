@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Person extends Model
 {
@@ -14,7 +15,7 @@ class Person extends Model
     {
         return $this->belongsTo(Entry::class);
     }
-    public function sponsors()
+    public function sponsors(): BelongsToMany
     {
         return $this->belongsToMany(Sponsor::class);
     }

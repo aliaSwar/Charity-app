@@ -46,6 +46,7 @@ class OrphanController extends BaseController
                 ->where('orphan', false)
                 ->first();
         }
+
         return view('Orphan.create', [
             'sponsor'    => $sponsor,
             'types'      => Type::all(),
@@ -78,13 +79,15 @@ class OrphanController extends BaseController
                 'orphan'  => true
             ]);
         }
-
         $mother = Person::where('id', $request->mother_is_ok)->first();
-        $mother->update([
-            'orphan'  => true
-        ]);
-        return redirect()->route('sponsors.show', $sponsor);
+        if ($mother  != null) {
+            $mother->update([
+                'orphan'  => true
+            ]);
+            return redirect()->route('sponsors.show', $sponsor);
+        }
     }
+
 
     /**
      * Display the specified resource.

@@ -18,6 +18,10 @@ class Sponsor extends Model
     {
         return $this->belongsToMany(Orphan::class);
     }
+    public function people()
+    {
+        return $this->belongsToMany(Person::class);
+    }
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

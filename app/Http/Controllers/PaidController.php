@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Paid;
 use App\Http\Requests\StorePaidRequest;
 use App\Http\Requests\UpdatePaidRequest;
+use App\Models\Sponsor;
 
 class PaidController extends BaseController
 {
@@ -23,9 +24,9 @@ class PaidController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sponsor $sponsor)
     {
-        //
+        return view('Paid.create', ['sponsor' => $sponsor]);
     }
 
     /**
@@ -34,9 +35,20 @@ class PaidController extends BaseController
      * @param  \App\Http\Requests\StorePaidRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePaidRequest $request)
+    public function store(StorePaidRequest $request, Sponsor $sponsor)
     {
-        //
+
+        $paid = new Paid();
+        $paid->amount = $request->amount;
+        $paid->date_paid = $request->date_paid;
+        $paid->sponsor_id = $sponsor->id;
+        if ($request->has('image')) {
+            $image = $request->image;
+            $path = $image->store('paid-images', 'public');
+            $paid->image = $path;
+        }
+        $paid->save();
+        return redirect()->route('paids.show', ['paid' => $paid]);
     }
 
     /**
@@ -47,7 +59,7 @@ class PaidController extends BaseController
      */
     public function show(Paid $paid)
     {
-        //
+        return view('Paid.show', ['paid' => $paid]);
     }
 
     /**

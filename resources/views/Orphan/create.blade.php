@@ -75,21 +75,23 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-5 position-relative">
-                    <label for="validationTooltip04" class="form-label">أتريد كفالة الأم؟</label>
-                    <select name="mother_is_ok"class="form-select is-valid @error('type_id') is-invalid @enderror"
-                        id="validationTooltip04">
-                        <option selected disabled value="">اختر...</option>
-                        @foreach ($mothers as $mother)
-                            <option value="{{ $mother->id }}">
-                                {{ $mother->full_name }}عائلة{{ $mother->entry->family_name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('type_id')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+                @if ($mothers == null)
+                    <div class="col-md-5 position-relative">
+                        <label for="validationTooltip04" class="form-label">أتريد كفالة الأم؟</label>
+                        <select name="mother_is_ok"class="form-select is-valid @error('type_id') is-invalid @enderror"
+                            id="validationTooltip04">
+                            <option selected disabled value="">اختر...</option>
+                            @foreach ($mothers as $mother)
+                                <option value="{{ $mother->id }}">
+                                    {{ $mother->full_name }}عائلة{{ $mother->entry->family_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('type_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endif
         </div>
 
 

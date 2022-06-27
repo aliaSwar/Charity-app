@@ -212,7 +212,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Entrust'   => Mindscms\Entrust\EntrustFacade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
     ])->toArray(),
 
 ];

@@ -30,6 +30,9 @@
                                     انشاء كفالة
 
                                 </a>
+                                <a href="{{ route('paids.create', $sponsor) }}" class="btn btn-primary me-1">
+                                    انشاء دفعة
+                                </a>
                             </form>
 
                             </p>

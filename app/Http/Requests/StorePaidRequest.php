@@ -13,7 +13,7 @@ class StorePaidRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StorePaidRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'amount'   => ['numeric'],
+            'image'    => ['file', 'image'],
+            'date_paid' => ['date']
         ];
     }
 }

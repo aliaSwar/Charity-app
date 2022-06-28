@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\FinancialController;
@@ -85,6 +88,17 @@ Route::controller(PaidController::class)->group(function () {
     Route::post('paids/{sponsor}', [PaidController::class, 'store'])->name('paids.store');
     Route::get('paids/{paid}', [PaidController::class, 'show'])->name('paids.show');
 });
+
+//////////////////////////////////start section role and permission///////////////////
+//TODO:: Add role
+Route::resource('roles', RoleController::class);
+//TODO:: Add permission
+Route::resource('permissions', PermissionController::class);
+//TODO:: Add user
+Route::resource('users', UserController::class);
+
+
+
 
 
 

@@ -24,9 +24,9 @@ class StorePaidRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount'   => ['numeric'],
-            'image'    => ['file', 'image'],
-            'date_paid' => ['date']
+            'amount'   => ['numeric', 'required'],
+            'image'    => ['file', 'image', 'required'],
+            'date_paid' => ['date', 'required']
         ];
     }
 }

@@ -43,9 +43,9 @@ class PermissionController extends Controller
         $permission = new Permission();
         $permission->name         =  $request->name;
         $permission->display_name =  $request->display_name; // optional
-        $permission->description  = 'create new blog posts'; // optional
+        $permission->description  = $request->description; // optional
         $permission->save();
-        return redirect()->route('permissions.show');
+        return redirect()->route('permissions.show', ['permission' => $permission]);
     }
 
     /**

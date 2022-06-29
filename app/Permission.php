@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Mindscms\Entrust\EntrustPermission;
 
@@ -16,7 +18,8 @@ class Permission extends EntrustPermission
         return $this->hasMany(Permission::class, 'parent', 'id');
     }
 
-    public static function tree( $level = 1 )
+
+    public static function tree($level = 1)
     {
         return static::with(implode('.', array_fill(0, $level, 'children')))
             ->whereParent(0)
@@ -25,5 +28,4 @@ class Permission extends EntrustPermission
             ->orderBy('ordering', 'asc')
             ->get();
     }
-
 }

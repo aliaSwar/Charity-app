@@ -18,6 +18,7 @@
     </x-slot>
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
+
             <form action="{{ route('roles.store') }}" method="POST" class="row g-3 needs-validation"
                 enctype="multipart/form-data">
 
@@ -54,12 +55,16 @@
                 <div class="btn-group-lg">
                     <div class="row mt-3">
                         <div class="d-grid gap-2 col-lg-6 mx-auto">
-                            <input type="submit" class="btn btn-success" value="انشاء">
+                            <input type="submit" class="btn btn-secondary" value="انشاء">
                         </div>
                     </div>
+                </div>
             </form>
         </div>
+        <div class="d-flex flex-row">
+            <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-4 mx-auto">
 
+        </div>
     </div>
     </div>
 

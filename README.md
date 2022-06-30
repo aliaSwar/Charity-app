@@ -1,5 +1,7 @@
-<p align="center"><a href="" target="_blank"><img src="assets/img/image/svg.svg" width="400"></a></p>
-
+<p align="center">
+  
+  <img src="assets/image/img/logoo.png" width="350" alt="accessibility text">
+</p>
 ## About Charity App
 
 عبارة عن نظام أتمتة لجمعية إنعاش الفقير الخيرية يتضمن :
@@ -11,11 +13,8 @@
 -   قسم الموظفين.
 -   قسم تواصل الكفلاء مع الجمعية إدارة بياناتهم.
 
-
 ## التقنيات المستخدمة
 
-laravel in backend.
-html css js in front end web app.
-android java in front ent app.
-
-
+-   laravel in backend.
+-   html css js in front end web app.
+-   android java in front ent app.

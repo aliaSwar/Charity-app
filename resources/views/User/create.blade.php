@@ -40,12 +40,11 @@
                                 <label for="validationCustom04" class="form-label" id="rule">دور الموظف</label>
                                 <select class="form-select" id="validationCustom04" required>
                                     <option selected disabled value="">...اختر</option>
-                                    <option>موظف في قسم الإدراج</option>
-                                    <option>مدير في قسم الإدراج</option>
-                                    <option>موظف في قسم الإدراج الطبي</option>
-                                    <option>مدير في قسم الإدراج الطبي</option>
-                                    <option>موظف في قسم الكفالات</option>
-                                    <option> مدير في قسك الكفالات</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
+
+
                                 </select>
                                 <div class="invalid-feedback">
                                     Please select a valid state.
@@ -57,62 +56,18 @@
                                 <label for="validationCustom02" class="form-label" id="per"> :
                                     الصلاحيات
                                     للموظف </label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        إضافة مدرج
-                                    </label>
+                                <br>
+                                <div class="form-check-inline">
+                                    @foreach ($permissions as $permission)
+                                        <input class="form-check-input" name="permissions[]" type="checkbox"
+                                            value="{{ $permission->id }}" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ $permission->name }}
+                                        </label>
+                                    @endforeach
+
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        التأكد من وجود الأوراق اللازمة
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        إدراة بيانات المدرجين
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        تسجيل إعانة جديدة
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        متابعة قسم الحالات غير النشطة
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        إدارة بيانات المكفولين
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        إضافة كفالة جديدة
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value=""
-                                        id="flexCheckChecked">
-                                    <label class="form-check-label" for="flexCheckChecked">
-                                        إدارة التقارير المالية لكل كفيل
-                                    </label>
-                                </div>
+
                             </div>
                         </div>
                         <div class="btn-group-lg">

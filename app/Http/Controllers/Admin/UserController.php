@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
+use App\Permission;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('User.create');
+        return view('User.create', ['permissions' => Permission::all(), 'roles' => Role::all()]);
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SponsorPublished extends Notification
+class UserPublished extends Notification
 {
     use Queueable;
 
@@ -44,7 +44,7 @@ class SponsorPublished extends Notification
     {
         return (new MailMessage)
             ->from('swar2000alia@gmail.com', 'جمعية إنعاش الفقير الخيرية')
-            ->view('Mail.sponsor', ['user' => $this->user, 'password' => $this->pass]);
+            ->view('Mail.user', ['user' => $this->user, 'password' => $this->pass]);
     }
 
     /**

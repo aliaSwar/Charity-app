@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Mindscms\Entrust\EntrustPermission;
 
 class Permission extends EntrustPermission
 {
+    use HasFactory;
     protected $guarded = [];
 
     public function parent()
@@ -17,7 +20,6 @@ class Permission extends EntrustPermission
     {
         return $this->hasMany(Permission::class, 'parent', 'id');
     }
-
 
     public static function tree($level = 1)
     {

@@ -8,7 +8,7 @@
     <title></title>
 </head>
 
-<body>
+<body lang="ar">
     <div class="container">
 
         <div class="row">
@@ -24,6 +24,7 @@
                     كلمة المرور الخاصة بك هي:{{ $password }}
                 </p>
             </div>
+        </div>
 </body>
 
 </html>

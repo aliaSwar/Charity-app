@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use App\Permission;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -48,6 +49,7 @@ class RoleController extends Controller
         $role->display_name =  $request->display_name; // optional
         $role->description  =  $request->description; // optional
         $role->save();
+
         return  redirect()->route('roles.show', $role);
     }
 

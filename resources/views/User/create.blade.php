@@ -1,11 +1,7 @@
 <x-layouts.app>
     <div class="content-wrapper">
         <!-- Content -->
-
         <div class="container-xxl flex-grow-1 container-p-y ">
-
-
-
             <div class="card mb-0" {{-- style="max-width: 800px;" id="bb" --}}>
                 <div class="row g-0">
                     <div class="d-flex flex-row">
@@ -21,24 +17,32 @@
                             </h5>
                         </div>
                         <div class=" col-md-4 ">
-                            <label for="validationCustom02" class="form-label "> اسم
+                            <label for="validationCustom02" class="form-label  "> اسم
                                 الموظف </label>
-                            <input type="string" class="form-control" id="validationCustom02" required>
+                            <input type="string" name="name"class="form-control @error('name') is-invalid @enderror"
+                                id="validationCustom02">
+                            @error('name')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class=" col-md-4 ">
 
                             <label for="validationCustom02" class="form-label"> رقم الهاتف </label>
-                            <input type="number" class="form-control" required>
+                            <input type="number" name="phone"class="form-control">
+                            @error('phone')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class=" col-md-4 ">
 
                             <label for="validationCustom02" class="form-label"> الايميل </label>
-                            <input type="string" class="form-control" required>
+                            <input type="string"
+                                name="email"class="form-control  @error('email') is-invalid @enderror">
                         </div>
                         <div class=" col-md-4 ">
                             <div class="col-md-12">
                                 <label for="validationCustom04" class="form-label" id="rule">دور الموظف</label>
-                                <select class="form-select" id="validationCustom04" required>
+                                <select class="form-select" name="role_id" id="validationCustom04">
                                     <option selected disabled value="">...اختر</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
@@ -46,9 +50,7 @@
 
 
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid state.
-                                </div>
+
                             </div>
                         </div>
                         <div class="">
@@ -78,6 +80,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
 
             </div>

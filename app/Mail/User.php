@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Welcome extends Mailable  implements ShouldQueue
+class User extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,6 +28,6 @@ class Welcome extends Mailable  implements ShouldQueue
      */
     public function build()
     {
-        return  $this->view('Mail.sponsor');
+        return $this->view('Mail.user');
     }
 }

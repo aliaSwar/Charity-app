@@ -19,10 +19,7 @@
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
 
-            <form action="{{ route('roles.store') }}" method="POST" class="row g-3 needs-validation"
-                enctype="multipart/form-data">
 
-                {{ csrf_field() }}
                 <div class=" row-cols-md-2 ">
                     <label for="validationCustom04" class="form-label ">الاسم
                     </label>

@@ -18,5 +18,5 @@
 
 <p align="center">
   
-  <img src="C:\Users\ALIA\Desktop\Charity-app\public\assets\img\image\Charity.jpg" width="600" >
+  <img src="public\assets\img\image\Charity.jpg" width="600" >
 </p>

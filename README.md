@@ -3,7 +3,7 @@
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcVPc5OCgS5dPBKKXrr0NRpVHiH5Nrmpi114CIrXxVkw&s=36" width="350" >
 </p>
 
-##  About Charity App
+## About Charity App
 
 عبارة عن نظام أتمتة لجمعية إنعاش الفقير الخيرية يتضمن :
 
@@ -14,8 +14,9 @@
 -   قسم الموظفين.
 -   قسم تواصل الكفلاء مع الجمعية إدارة بياناتهم.
 
-## التقنيات المستخدمة
+## Mind Map
 
--   laravel in backend.
--   html css js in front end web app.
--   android java in front ent app.
+<p align="center">
+  
+  <img src="assets/img/image/Charity.jpg" width="600" >
+</p>

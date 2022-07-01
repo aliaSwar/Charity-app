@@ -18,5 +18,5 @@
 
 <p align="center">
   
-  <img src="assets/img/image/Charity.jpg" width="600" >
+  <img src="https://gitmind.com/app/doc/02311786198" width="600" >
 </p>

@@ -28,13 +28,24 @@
                         كلمة المرور الخاصة بك هي:{{ $password }}
                     </p>
                 </div>
-                <p> المنصب الوظيفي هو :
+                <p> المنصب الوظيفي هو :@foreach ($user->roles as $role)
+                        {{ $role->name }}
+                    @endforeach
+                </p>
+                <div class="text-light small fw-semibold mb-2">الصلاحيات</div>
+                <div class="demo-inline-spacing">
+                    <p>
+                        @foreach ($user->permissions as $perm)
+                            <span class="badge badge-center rounded-pill bg-primary">{{ $perm->name }}</span>
+                        @endforeach
+
+                    </p>
+                </div>
             </div>
         </div>
-        <a class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/inaash.alfakeer/">
-            <span class="fa fa-facebook"></span>
-        </a>
+
     </div>
+
 </body>
 
 </html>

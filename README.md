@@ -17,5 +17,5 @@
 ## Mind Map
 
 <p align="center">
-  <img src="public\assets\img\image\mind.jpg" width="600" >
+  <img src="..\assets\img\image\mind.jpg" width="600" >
 </p>

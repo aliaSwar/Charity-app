@@ -17,5 +17,5 @@
 ## Mind Map
 
 <p align="center">
-   <a href="https://ibb.co/mHzyKDS"><img src="https://i.ibb.co/mHzyKDS/Charity-App-1.jpg" alt="Charity-App-1" border="0" width="600"></a>
+<a href="https://ibb.co/mHzyKDS"><img src="https://i.ibb.co/mHzyKDS/Charity-App-1.jpg" alt="Charity-App-1" border="0"></a>
 </p>

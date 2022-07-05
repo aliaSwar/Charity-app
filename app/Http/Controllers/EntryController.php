@@ -12,6 +12,7 @@ use App\Models\Identification_paper;
 use App\Models\Person;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class EntryController extends BaseController
 {
@@ -22,9 +23,11 @@ class EntryController extends BaseController
      */
     public function index()
     {
-        $entries = Entry::paginate(1);
 
-        ///$person = Person::all();
+
+        $entries = Cache::remember('entries', 44 + 44 + 4, function () {
+            return Entry::with('category', 'financial', 'status')->paginate(7);
+        });
         return view('Entry.index', ['entries' => $entries]);
     }
 

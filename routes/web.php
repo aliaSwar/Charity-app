@@ -18,6 +18,7 @@ use App\Http\Controllers\TypeController;
 use App\Models\Person;
 use App\Models\User;
 use App\Notifications\SponsorPublished;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/index', function () {
-    return view('index');
+    return view('index', Cache::get('1'),);
 });
 
 Route::get('/dashboard', function () {

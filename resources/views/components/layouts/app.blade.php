@@ -74,12 +74,15 @@
         const darkmode = new Darkmode(options);
         darkmode.showWidget();
     </script> --}}
-    @auth()
+    @role('admin')
         <x-side-bar />
-
-
         <x-navbar />
-    @endauth
+    @endrole
+
+
+
+
+
     {{-- <x-orphan-sid-bar /> --}}
 
 

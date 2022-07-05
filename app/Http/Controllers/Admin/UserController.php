@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $pass = 'inaash-alfqeer' . '-' . $request->name;
+        $pass = 'inaash-alfqeer';
         $request->validate([
             'name' =>   ['required', 'string', 'max:255'],
             'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -54,7 +54,7 @@ class UserController extends Controller
             'name'        => $request->name,
             'email'       => $request->email,
             'phone'       => $request->phone,
-            'password'    => Hash::make($request->password),
+            'password'    => Hash::make($pass),
             'is_empolyee' => true
         ]);
         $user->roles()->attach($request->role_id);

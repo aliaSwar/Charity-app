@@ -34,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/index', function () {
-    return view('index', Cache::get('1'),);
+    return view('index');
 });
 
 Route::get('/dashboard', function () {

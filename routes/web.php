@@ -15,11 +15,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
-use App\Models\Person;
-use App\Models\User;
-use App\Notifications\SponsorPublished;
+use App\Models\Entry;
+use App\Models\Mdical_entry;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,8 +32,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/index', function () {
-    return view('index');
-});
+    $count_entry = Cache::remember('entries', 60 + 60 + 24, function () {
+        return Entry::count();
+    });
+    $count_mdical =  Cache::remember('mdicals', 60 + 60 + 24, function () {
+        return Mdical_entry::count();
+    });
+    return view('index', [
+        'count_entry' =>  $count_entry,
+        'count_mdical' => $count_mdical
+    ]);
+})->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

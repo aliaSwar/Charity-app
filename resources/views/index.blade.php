@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
                                     <span class="fw-semibold d-block mb-1">المدرجين</span>
-                                    <h3 class="card-title mb-2">12,628</h3>
+                                    <h3 class="card-title mb-2">{{ $count_entry }}</h3>
 
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <span>المدرجين طبياً</span>
-                                    <h3 class="card-title text-nowrap mb-1">4,679</h3>
+                                    <h3 class="card-title text-nowrap mb-1">{{ $count_mdical }}</h3>
 
                                 </div>
                             </div>
@@ -101,9 +101,9 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <div class="dropdown">
-                                            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button"
-                                                id="growthReportId" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
+                                            <button class="btn btn-sm btn-outline-primary dropdown-toggle"
+                                                type="button" id="growthReportId" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
                                                 2022
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end"

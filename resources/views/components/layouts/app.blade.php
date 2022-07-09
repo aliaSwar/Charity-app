@@ -76,14 +76,20 @@
     </script> --}}
     @role('admin')
         <x-side-bar />
-        <x-navbar />
     @endrole
 
+    @role('مدير عام')
+        <x-employe-side-bar />
+    @endrole
 
+    @role('v')
+        <x-orphan-side-bar />
+    @endrole
+    @auth
+        <x-navbar />
+    @endauth
 
-
-
-    {{-- <x-orphan-sid-bar /> --}}
+    {{--  --}}
 
 
 

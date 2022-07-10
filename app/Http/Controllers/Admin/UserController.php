@@ -9,6 +9,7 @@ use App\Notifications\UserPublished;
 use App\models\Permission;
 use App\Rules\PhoneNumber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,7 +22,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = Cache::remember('users', 60 + 60 + 24 * 15, function () {
+            return User::all();
+        });
+        dd($users);
+        return view('User.index', ['roles' => $users]);
     }
 
     /**
@@ -46,17 +51,24 @@ class UserController extends Controller
         $request->validate([
             'name' =>   ['required', 'string', 'max:255'],
             'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'image'  => ['file', 'image', 'nullable'],
             'phone' =>  ['string', 'numeric', 'unique:users', 'nullable', new PhoneNumber()],
 
         ]);
+        $path = null;
+        if ($request->has('image')) {
+            $image = $request->image;
+            $path = $image->store('user-images', 'public');
+        }
 
-        $user = User::create([
-            'name'        => $request->name,
-            'email'       => $request->email,
-            'phone'       => $request->phone,
-            'password'    => Hash::make($pass),
-            'is_empolyee' => true
-        ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = Hash::make($pass);
+        $user->is_empolyee = true;
+        $user->image = is_null($path) ? null : $path;
+        $user->save();
         $user->roles()->attach($request->role_id);
         $user->attachPermissions($request->permissions);
 

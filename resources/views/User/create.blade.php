@@ -35,6 +35,14 @@
                         </div>
                         <div class=" col-md-4 ">
 
+                            <label for="validationCustom02" class="form-label"> الصورة</label>
+                            <input type="file" name="image"class="form-control">
+                            @error('image')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class=" col-md-4 ">
+
                             <label for="validationCustom02" class="form-label"> الايميل </label>
                             <input type="string"
                                 name="email"class="form-control  @error('email') is-invalid @enderror">
@@ -53,37 +61,87 @@
 
                             </div>
                         </div>
-                        <div class="">
-                            <div class="col-md-4">
-                                <label for="validationCustom02" class="form-label" id="per"> :
-                                    الصلاحيات
-                                    للموظف </label>
-                                <br>
-                                <div class="form-check-inline">
-                                    @foreach ($permissions as $permission)
-                                        <input class="form-check-input" name="permissions[]" type="checkbox"
-                                            value="{{ $permission->id }}" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            {{ $permission->name }}
-                                        </label>
-                                    @endforeach
 
-                                </div>
+                        <div class="col-12">
+                            <h4 class="mt-2 pt-50">اضافة الصلاحيات</h4>
+                            <div class="table-responsive">
+                                <table class="table table-flush-spacing">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-nowrap fw-bolder">
+                                                حالات الوصول
+                                                <span data-bs-toggle="tooltip" data-bs-placement="top" title=""
+                                                    data-bs-original-title="اعطاءالكل">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                                        height="14" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" class="feather feather-info">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <line x1="12" y1="16" x2="12"
+                                                            y2="12"></line>
+                                                        <line x1="12" y1="8" x2="12.01"
+                                                            y2="8"></line>
+                                                    </svg>
+                                                </span>
+                                            </td>
+                                            <td>
 
+                                                <input class="form-check-input" type="checkbox" name="selectAll"
+                                                    id="selectAll">
+                                                <label class="form-check-label" for="selectAll"> اختيار الكل </label>
+
+                                            </td>
+                                        </tr>
+                                        @foreach ($permissions as $permission)
+                                            <tr>
+                                                <td>
+                                                    {{ $permission->name }}
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex">
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="userManagementRead">
+                                                            <label class="form-check-label" for="userManagementRead">
+                                                                انشاء</label>
+                                                        </div>
+                                                        <div class="form-check me-3 me-lg-5">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="userManagementWrite">
+                                                            <label class="form-check-label" for="userManagementWrite">
+                                                                عرض </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="userManagementCreate">
+                                                            <label class="form-check-label"
+                                                                for="userManagementCreate"> تعديل </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                id="userManagementCreate">
+                                                            <label class="form-check-label"
+                                                                for="userManagementCreate"> حذف</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="btn-group-lg">
-                            <div class="row mt-3">
-                                <div class="d-grid gap-2 col-lg-6 mx-auto">
-                                    <input type="submit" class="btn btn-secondary" value="اختيار">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
 
                 </div>
-
             </div>
+            <div class="btn-group-lg">
+                <div class="row mt-3">
+                    <div class="d-grid gap-2 col-lg-6 mx-auto">
+                        <input type="submit" class="btn btn-secondary" value="اختيار">
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
-
+    </div>
 </x-layouts.app>

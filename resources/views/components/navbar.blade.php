@@ -14,7 +14,7 @@
                 <!-- Search -->
                 <div class="navbar-nav align-items-center">
                     <div class="nav-item d-flex align-items-center">
-                        <h5 class="card-title al"> جمعية إنعاش الفقير الخيرية في التل/ قسم الإدراج </h5>
+                        <h5 class="card-title al"> جمعية إنعاش الفقير الخيرية في التل </h5>
 
                     </div>
                 </div>

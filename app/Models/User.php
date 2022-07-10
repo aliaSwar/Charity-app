@@ -52,4 +52,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Sponsor::class);
     }
+    public function getFeaturedImageAttribute($value)
+    {
+        return asset("storage/{$value}");
+    }
 }

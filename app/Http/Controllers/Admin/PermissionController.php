@@ -37,15 +37,18 @@ class PermissionController extends Controller
     {
         $request->validate([
             'name'          =>   'required|min:4|max:255',
-            'display_name'  =>   'string|required|min:4',
+            'display_name'  =>   'array|required',
             'description'   =>   'string|min:4'
         ]);
-        $permission = new Permission();
-        $permission->name         =  $request->name;
-        $permission->display_name =  $request->display_name; // optional
-        $permission->description  = $request->description; // optional
-        $permission->save();
-        return redirect()->route('permissions.show', ['permission' => $permission]);
+        foreach ($request->display_name as $display_name) {
+            $permission = new Permission();
+            $permission->name         =  $request->name;
+            $permission->display_name =  $display_name; // optional
+            $permission->description  = $request->description; // optional
+            $permission->save();
+        }
+
+        return redirect()->route('permissions.index');
     }
 
     /**

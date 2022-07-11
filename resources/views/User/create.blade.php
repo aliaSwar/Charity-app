@@ -78,7 +78,7 @@
                                                         stroke-linejoin="round" class="feather feather-info">
                                                         <circle cx="12" cy="12" r="10"></circle>
                                                         <line x1="12" y1="16" x2="12"
-                                                            y2="12"></line>
+                                                            y2="12 "></line>
                                                         <line x1="12" y1="8" x2="12.01"
                                                             y2="8"></line>
                                                     </svg>
@@ -87,43 +87,31 @@
                                             <td>
 
                                                 <input class="form-check-input" type="checkbox" name="selectAll"
-                                                    id="selectAll">
+                                                    value="all">
                                                 <label class="form-check-label" for="selectAll"> اختيار الكل </label>
 
                                             </td>
                                         </tr>
-                                        @foreach ($permissions as $permission)
+                                        @foreach ($message as $permission)
                                             <tr>
+
                                                 <td>
                                                     {{ $permission->name }}
                                                 </td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <div class="form-check me-3 me-lg-5">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="userManagementRead">
-                                                            <label class="form-check-label" for="userManagementRead">
-                                                                انشاء</label>
-                                                        </div>
-                                                        <div class="form-check me-3 me-lg-5">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="userManagementWrite">
-                                                            <label class="form-check-label" for="userManagementWrite">
-                                                                عرض </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="userManagementCreate">
-                                                            <label class="form-check-label"
-                                                                for="userManagementCreate"> تعديل </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="userManagementCreate">
-                                                            <label class="form-check-label"
-                                                                for="userManagementCreate"> حذف</label>
-                                                        </div>
-                                                    </div>
+                                                        @foreach ($permissions as $perm)
+                                                            @if ($permission->name == $perm->name)
+                                                                <div class="form-check me-3 me-lg-5">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        name="permissions[]"
+                                                                        value="{{ $perm->id }}">
+                                                                    <label class="form-check-label"
+                                                                        for="userManagementRead">
+                                                                        {{ $perm->display_name }}</label>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -32,34 +32,65 @@
                     @enderror
                 </div>
 
-                <div class="row-cols-md-2">
-                    <label for="validationServer02" class="form-label">الصلاحية</label>
-                    <select name="display_name" class="form-select @error('display_name') border-light-danger @enderror"
-                        id="validationCustom04" aria-label="Default select example">
-                        <option value="انشاء">انشاء</option>
-                        <option value="حذف"> حذف</option>
-                        <option value="عرض الجميع">عرض</option>
-                        <option value="تعديل">تعديل</option>
-                    </select>
-                    @error('display_name')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="row-cols-1">
-                    <label for="validationServer02" class="form-label">الوصف</label>
-                    <textarea id="editor" name="description" class="form-control  @error('content') text-danger @enderror"
-                        rows="3"></textarea>
-                    <input type="hidden"id="content">
-                    @error('description')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="btn-group-lg">
-                    <div class="row mt-3">
-                        <div class="d-grid gap-2 col-lg-6 mx-auto">
-                            <input type="submit" class="btn btn-secondary" value="انشاء">
-                        </div>
+                <div class="row-cols-md-auto">
+                    <label for="validationServer02" class="form-label">الصلاحيات</label>
+                    <div class="table-responsive">
+                        <table class="table table-flush-spacing">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        إعطاء الصلاحيات:
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <div
+                                                class="form-check me-3 me-lg-5  @error('display_name[]') is-invalid @enderror">
+                                                <input class="form-check-input" type="checkbox" name="display_name[]"
+                                                    value="انشاء">
+                                                <label class="form-check-label" for="userManagementRead">
+                                                    انشاء</label>
+                                            </div>
+                                            <div class="form-check me-3 me-lg-5">
+                                                <input class="form-check-input" type="checkbox"name="display_name[]"
+                                                    value="عرض">
+                                                <label class="form-check-label" for="userManagementWrite">
+                                                    عرض </label>
+                                            </div>
+                                            <div class="form-check me-3 me-lg-5">
+                                                <input class="form-check-input" type="checkbox" name="display_name[]"
+                                                    value="تعديل">
+                                                <label class="form-check-label" for="userManagementCreate"> تعديل
+                                                </label>
+                                            </div>
+                                            <div class="form-check me-3 me-lg-5">
+                                                <input class="form-check-input" type="checkbox" name="display_name[]"
+                                                    value="حذف">
+                                                <label class="form-check-label" for="userManagementCreate"> حذف</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @error('display_name[]')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
+                    <div class="row-cols-1">
+                        <label for="validationServer02" class="form-label">الوصف</label>
+                        <textarea id="editor" name="description" class="form-control  @error('content') text-danger @enderror"
+                            rows="3"></textarea>
+                        <input type="hidden"id="content">
+                        @error('description')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="btn-group-lg">
+                        <div class="row mt-3">
+                            <div class="d-grid gap-2 col-lg-6 mx-auto">
+                                <input type="submit" class="btn btn-primary" value="انشاء">
+                            </div>
+                        </div>
             </form>
             <div class="d-flex flex-row">
                 <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-4 mx-auto">

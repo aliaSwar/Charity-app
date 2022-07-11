@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -32,7 +33,7 @@ class EntrustSetupTables extends Migration
         // Create table for storing permissions
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
             $table->string('route')->nullable();
@@ -60,7 +61,6 @@ class EntrustSetupTables extends Migration
             $table->foreignId('permission_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->primary(['user_id', 'permission_id']);
         });
-
     }
 
     /**

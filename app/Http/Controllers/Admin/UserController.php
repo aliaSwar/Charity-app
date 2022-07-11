@@ -10,6 +10,7 @@ use App\models\Permission;
 use App\Rules\PhoneNumber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 
@@ -36,7 +37,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('User.create', ['permissions' => Permission::all(), 'roles' => Role::all()]);
+        $names_perm = Permission::all();
+
+        return view('User.create', ['permissions' => Permission::orderBy('name')->get(), 'message' => Permission::select('name')->distinct()->get(), 'roles' => Role::all()]);
     }
 
     /**
@@ -49,10 +52,11 @@ class UserController extends Controller
     {
         $pass = 'inaash-alfqeer';
         $request->validate([
-            'name' =>   ['required', 'string', 'max:255'],
-            'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'image'  => ['file', 'image', 'nullable'],
-            'phone' =>  ['string', 'numeric', 'unique:users', 'nullable', new PhoneNumber()],
+            'name'      =>   ['required', 'string', 'max:255'],
+            'email'     =>   ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'image'     =>   ['file', 'image', 'nullable'],
+            'phone'     =>   ['string', 'numeric', 'unique:users', 'nullable', new PhoneNumber()],
+            'selectAll' =>   ['nullable', 'string']
 
         ]);
         $path = null;
@@ -70,9 +74,11 @@ class UserController extends Controller
         $user->image = is_null($path) ? null : $path;
         $user->save();
         $user->roles()->attach($request->role_id);
-        $user->attachPermissions($request->permissions);
-
-
+        if ($request->has('selectAll')) {
+            $user->attachPermissions(Permission::select('id')->get());
+        } else {
+            $user->attachPermissions($request->permissions);
+        }
         Notification::send($user, new UserPublished($user, $pass));
 
 

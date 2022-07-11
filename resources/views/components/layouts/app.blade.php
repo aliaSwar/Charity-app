@@ -39,41 +39,28 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
 
+    <!-- IE 11 polyfill for CSS and Custom Properties -->
+    <script nomodule>
+        window.MSInputMethodContext && document.documentMode && document.write(
+            '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-ie11@5/css/bootstrap-ie11.min.css"><script src="https://cdn.jsdelivr.net/npm/ie11-custom-properties@4/ie11CustomProperties.min.js"><\/script>'
+        );
+    </script>
+
+    <link rel="stylesheet" href="{{ asset('assets\css\dark-mode.css') }}">
     <!-- Page CSS -->
     {{ $styles ?? '' }}
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
     <script src="{{ asset('assets/js/config.js') }}"></script>
-
+    <script src="{{ asset('js/dark-mode-switch.min.js') }}"></script>
 </head>
 
 <body>
     {{ $scripts ?? '' }}
-    {{-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script>
-        function addDarkmodeWidget() {
-            new Darkmode().showWidget();
-        }
-        window.addEventListener('load', addDarkmodeWidget);
-        const options = {
-            bottom: '64px', // default: '32px'
-            right: 'unset', // default: '32px'
-            left: '32px', // default: 'unset'
-            time: '0.5s', // default: '0.3s'
-            mixColor: '#fff', // default: '#fff'
-            backgroundColor: '#000', // default: '#fff'
-            buttonColorDark: '#100f2c', // default: '#100f2c'
-            buttonColorLight: '#fff', // default: '#fff'
-            saveInCookies: false, // default: true,
-            // label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-        const darkmode = new Darkmode(options);
-        darkmode.showWidget();
-    </script> --}}
+
     @role('admin')
         <x-side-bar />
     @endrole
@@ -89,7 +76,7 @@
         <x-navbar />
     @endauth
 
-    {{--  --}}
+
 
 
 
@@ -118,7 +105,7 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
+    <script src="{{ asset('assets\js\dark-mode-switch.min.js') }}"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -23,9 +23,9 @@
 ## Solve Problem install packege maatwebsiteexcel
 
 -   open file php.ini
--             before
-    `extension=gd;`
--             after
+    before
+    `extension=gd;`  
+    after
     `extension=gd`
 -   execute the command to change your cache
 

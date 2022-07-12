@@ -60,14 +60,15 @@
 
 <body>
     {{ $scripts ?? '' }}
+
     @role('مدير الإدراج')
         <x-side-bar />
     @endrole
     @role('موظف الادراج الطبي')
-        <x-side-bar />
+        <x-mdical-side-bar />
     @endrole
     @role('موظف الادراج العام')
-        <x-side-bar />
+        <x-entry-side-bar />
     @endrole
     @role('مدير عام')
         <x-employe-side-bar />

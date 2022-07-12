@@ -55,16 +55,17 @@
                 </a>
 
                 <ul class="menu-sub">
+
+                    <li class="menu-item">
+                        <a href="{{ route('entries.create') }}" class="menu-link">
+                            <div data-i18n="Without navbar">إضافة مدرج</div>
+                        </a>
+                    </li>
                     <li class="menu-item">
                         <a href="{{ route('entries.index') }}" class="menu-link">
                             <div data-i18n="Without menu">عرض المدرجين</div>
                         </a>
 
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ route('entries.create') }}" class="menu-link">
-                            <div data-i18n="Without navbar">إضافة مدرج</div>
-                        </a>
                     </li>
                 </ul>
             </li>
@@ -75,11 +76,7 @@
                     <div data-i18n="Authentications">الفئات</div>
                 </a>
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="{{ route('financials.create') }}" class="menu-link">
-                            <div data-i18n="Basic">اضافة فئة</div>
-                        </a>
-                    </li>
+
                     <li class="menu-item">
                         <a href="{{ route('financials.index') }}" class="menu-link">
                             <div data-i18n="Basic">عرض الفئات</div>
@@ -94,11 +91,7 @@
                     <div data-i18n="Authentications">الحالات</div>
                 </a>
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="{{ route('statuses.create') }}" class="menu-link">
-                            <div data-i18n="Basic">اضافة حالة</div>
-                        </a>
-                    </li>
+
                     <li class="menu-item">
                         <a href="{{ route('statuses.index') }}" class="menu-link">
                             <div data-i18n="Basic">عرض الحالات</div>
@@ -114,11 +107,7 @@
                     <div data-i18n="Authentications">الأنواع</div>
                 </a>
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="{{ route('categories.create') }}" class="menu-link">
-                            <div data-i18n="Basic">اضافة نوع</div>
-                        </a>
-                    </li>
+
                     <li class="menu-item">
                         <a href="{{ route('categories.index') }}" class="menu-link">
                             <div data-i18n="Basic">عرض الأنواع</div>
@@ -134,11 +123,7 @@
                     <div data-i18n="Authentications">الأوراق الثبوتية</div>
                 </a>
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="{{ route('papers.create') }}" class="menu-link">
-                            <div data-i18n="Basic">اضافة ورقة</div>
-                        </a>
-                    </li>
+
                     <li class="menu-item">
                         <a href="{{ route('papers.index') }}" class="menu-link">
                             <div data-i18n="Basic">عرض الأوراق</div>
@@ -153,30 +138,7 @@
             </li>
 
 
-            <!-- Components -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">other</span></li>
 
-            <!-- Cards -->
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-user"></i>
-                    <div data-i18n="Layouts">المدرجين الطبين</div>
-                </a>
-
-                <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="{{ route('mdicals.create') }}" class="menu-link">
-                            <div data-i18n="Without menu">اضافة مدرج طبي</div>
-                        </a>
-
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ route('mdicals.index') }}" class="menu-link">
-                            <div data-i18n="Without menu">عرض المدرجين الطبين</div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
 
 

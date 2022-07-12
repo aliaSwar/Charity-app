@@ -5,13 +5,15 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^7.3 || ^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.9",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "mindscms/entrust": "^2.5"
+        "maatwebsite/excel": "^3.1",
+        "mindscms/entrust": "^2.5",
+        "psr/simple-cache": "2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

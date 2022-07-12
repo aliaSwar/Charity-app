@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\MdicalEntryController;
@@ -106,7 +107,8 @@ Route::resource('permissions', PermissionController::class);
 //TODO:: Add user
 Route::resource('users', UserController::class);
 
-
+//TODO:: convert to excel file
+Route::get('excel', [ExcelController::class, 'entries']);
 
 
 

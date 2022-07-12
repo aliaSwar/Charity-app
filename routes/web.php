@@ -89,6 +89,7 @@ Route::controller(OrphanController::class)->group(function () {
     Route::get('filter/{sponsor}', [OrphanController::class, 'filter']);
     Route::post('orphans/{sponsor}', [OrphanController::class, 'create'])->name('orphans.create');
     Route::post('orphan/{sponsor}', [OrphanController::class, 'store'])->name('orphans.store');
+    Route::get('orphans', [OrphanController::class, 'index'])->name('orphans.index');
 });
 //TODO:: Add paid to sponsor
 Route::controller(PaidController::class)->group(function () {

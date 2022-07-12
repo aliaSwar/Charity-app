@@ -26,8 +26,8 @@ class UserController extends Controller
         $users = Cache::remember('users', 60 + 60 + 24 * 15, function () {
             return User::all();
         });
-        dd($users);
-        return view('User.index', ['roles' => $users]);
+
+        return view('User.index', ['users' => $users]);
     }
 
     /**
@@ -39,7 +39,7 @@ class UserController extends Controller
     {
         $names_perm = Permission::all();
 
-        return view('User.create', ['permissions' => Permission::orderBy('name')->get(), 'message' => Permission::select('name')->distinct()->get(), 'roles' => Role::all()]);
+        return view('User.create', ['roles' => Role::all()]);
     }
 
     /**
@@ -74,11 +74,7 @@ class UserController extends Controller
         $user->image = is_null($path) ? null : $path;
         $user->save();
         $user->roles()->attach($request->role_id);
-        if ($request->has('selectAll')) {
-            $user->attachPermissions(Permission::select('id')->get());
-        } else {
-            $user->attachPermissions($request->permissions);
-        }
+
         Notification::send($user, new UserPublished($user, $pass));
 
 

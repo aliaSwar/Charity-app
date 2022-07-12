@@ -47,72 +47,7 @@
                     <div data-i18n="Analytics">الرئيسية</div>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-user"></i>
-                    <div data-i18n="Layouts">الموظفين</div>
-                </a>
-
-                <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons  bx bx-adjust">الموظف</i>
-                            <div data-i18n="Authentications"></div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('users.create') }}" class="menu-link">
-                                    <div data-i18n="Basic">اضافة موظف</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('users.index') }}" class="menu-link">
-                                    <div data-i18n="Basic">عرض الموظفين</div>
-                                </a>
-                            </li>
-
-
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                            <div data-i18n="Authentications">الصلاحيات</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('permissions.create') }}" class="menu-link">
-                                    <div data-i18n="Basic">اضافة صلاحية</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('permissions.index') }}" class="menu-link">
-                                    <div data-i18n="Basic">عرض الصلاحيات</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                            <div data-i18n="Authentications">المناصب</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('roles.create') }}" class="menu-link">
-                                    <div data-i18n="Basic">اضافة منصب</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="{{ route('roles.index') }}" class="menu-link">
-                                    <div data-i18n="Basic">عرض المناصب</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
+            <!-- Layouts -->
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
@@ -121,33 +56,15 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                            <div data-i18n="Authentications">المدرجين العام</div>
+                        <a href="{{ route('entries.index') }}" class="menu-link">
+                            <div data-i18n="Without menu">عرض المدرجين</div>
                         </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('entries.index') }}" class="menu-link">
-                                    <div data-i18n="Basic">عرض المدرجين</div>
-                                </a>
-                            </li>
 
-
-                        </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                            <div data-i18n="Authentications">المدرجين الطبين</div>
+                        <a href="{{ route('entries.create') }}" class="menu-link">
+                            <div data-i18n="Without navbar">إضافة مدرج</div>
                         </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="{{ route('mdicals.index') }}" class="menu-link">
-                                    <div data-i18n="Basic">عرض االمدرجين الطبين</div>
-                                </a>
-                            </li>
-
-                        </ul>
                     </li>
                 </ul>
             </li>
@@ -155,36 +72,78 @@
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                    <div data-i18n="Authentications">الكفالات</div>
+                    <div data-i18n="Authentications">الفئات</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="{{ route('orphans.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض الكفالات</div>
+                        <a href="{{ route('financials.create') }}" class="menu-link">
+                            <div data-i18n="Basic">اضافة فئة</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{ route('financials.index') }}" class="menu-link">
+                            <div data-i18n="Basic">عرض الفئات</div>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons  bx bxs-message-rounded-check"></i>
-                    <div data-i18n="Authentications">المكفولين</div>
+                    <div data-i18n="Authentications">الحالات</div>
                 </a>
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="{{ route('sponsors.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض المكفولين</div>
+                        <a href="{{ route('statuses.create') }}" class="menu-link">
+                            <div data-i18n="Basic">اضافة حالة</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{ route('statuses.index') }}" class="menu-link">
+                            <div data-i18n="Basic">عرض الحالات</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons  bx bx-heart"></i>
+                    <div data-i18n="Authentications">الأنواع</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('categories.create') }}" class="menu-link">
+                            <div data-i18n="Basic">اضافة نوع</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('categories.index') }}" class="menu-link">
+                            <div data-i18n="Basic">عرض الأنواع</div>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons  bx bx-album"></i>
-                    <div data-i18n="Authentications">النواقص</div>
+                    <div data-i18n="Authentications">الأوراق الثبوتية</div>
                 </a>
                 <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('papers.create') }}" class="menu-link">
+                            <div data-i18n="Basic">اضافة ورقة</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('papers.index') }}" class="menu-link">
+                            <div data-i18n="Basic">عرض الأوراق</div>
+                        </a>
+                    </li>
                     <li class="menu-item">
                         <a href="{{ route('papers.nawaqis') }}" class="menu-link">
                             <div data-i18n="Basic">النواقص</div>
@@ -192,5 +151,38 @@
                     </li>
                 </ul>
             </li>
+
+
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">other</span></li>
+
+            <!-- Cards -->
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="Layouts">المدرجين الطبين</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('mdicals.create') }}" class="menu-link">
+                            <div data-i18n="Without menu">اضافة مدرج طبي</div>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('mdicals.index') }}" class="menu-link">
+                            <div data-i18n="Without menu">عرض المدرجين الطبين</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
         </ul>
     </aside>

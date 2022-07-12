@@ -28,7 +28,7 @@ class EntryController extends BaseController
         $entries = Cache::remember('entries', 60 + 60 + 24, function () {
             return Entry::with('category', 'financial', 'status')->paginate(7);
         });
-        return view('Entry.index', ['entries' => $entries]);
+        return view('Entry.index', ['entries' =>  is_null($entries) ? null : $entries]);
     }
 
     /**

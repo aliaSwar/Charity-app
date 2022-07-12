@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Role;
-use App\Permission;
+use App\models\Permission;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -28,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('Role.create');
+        return view('Role.create', ['permissions' => Permission::orderBy('name')->get(), 'message' => Permission::select('name')->distinct()->get(),]);
     }
 
     /**
@@ -49,7 +50,11 @@ class RoleController extends Controller
         $role->display_name =  $request->display_name; // optional
         $role->description  =  $request->description; // optional
         $role->save();
-
+        if ($request->has('selectAll')) {
+            $role->attachPermissions(Permission::select('id')->get());
+        } else {
+            $role->attachPermissions($request->permissions);
+        }
         return  redirect()->route('roles.show', $role);
     }
 

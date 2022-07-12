@@ -23,10 +23,12 @@
 ## Solve Problem install packege maatwebsiteexcel
 
 -   open file php.ini
+    <br>
     before
     `extension=gd;`  
-    after
+     after
     `extension=gd`
+
 -   execute the command to change your cache
 
 ```json

@@ -40,3 +40,5 @@ composer require psr/simple-cache ^2.0
 ```json
     composer require maatwebsite/excel
 ```
+
+-   it will work like a charm ❤

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
 use App\Notifications\UserPublished;
-use App\models\Permission;
+
 use App\Rules\PhoneNumber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $names_perm = Permission::all();
+
 
         return view('User.create', ['roles' => Role::all()]);
     }

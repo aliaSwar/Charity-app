@@ -6,7 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
-class PostController extends Controller
+class PostWebController extends Controller
 {
     /**
      * Display a listing of the resource.

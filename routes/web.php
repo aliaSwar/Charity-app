@@ -12,7 +12,7 @@ use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\OrphanController;
 use App\Http\Controllers\PaidController;
 use App\Http\Controllers\PersonController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostWebController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
@@ -116,4 +116,4 @@ Route::get('excel', [ExcelController::class, 'entries']);
 
 /////////////////////////////Start section posts on app////////////////////////////
 //TODO:: add post to app
-Route::resource('posts', PostController::class);
+Route::resource('posts', PostWebController::class);

@@ -24,10 +24,17 @@ class EntryController extends BaseController
     public function index()
     {
 
-
-        $entries = Cache::remember('entries', 60 + 60 + 24, function () {
-            return Entry::with('category', 'financial', 'status')->paginate(7);
-        });
+        /*        if (Entry::all() == null) {
+            $entries = Entry::with('category', 'financial', 'status')->paginate(7);
+        }
+        else
+        {
+            $entries = Cache::remember('entries', 60 + 60 + 24, function () {
+                return Entry::with('category', 'financial', 'status')->paginate(7);
+            });
+        }
+ */
+        $entries = Entry::with('category', 'financial', 'status')->paginate(7);
         return view('Entry.index', ['entries' =>  is_null($entries) ? null : $entries]);
     }
 

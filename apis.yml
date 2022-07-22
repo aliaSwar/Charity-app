@@ -5,11 +5,11 @@ info:
 servers:
   - url: http://127.0.0.1:8000
     description: Open On LocalHost
-  - url: https://6b09-37-19-199-152.ngrok.io
+  - url: https://inaash-alfqeer.herokuapp.com/
     description: Optional server description, e.g. Internal server for testing
 
 paths:
-  /test:
+  /index:
     get:
       responses:
         '200':

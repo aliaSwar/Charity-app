@@ -52,8 +52,7 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                                href="{{ route('entries.show', $entry) }} detail"><i
+                                            <a class="dropdown-item" href="{{ route('entries.show', $entry) }}"><i
                                                     class="bx bx bxs-detail"></i> عرض التفاصيل</a>
                                             <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
                                                     class="bx bx-edit-alt me-1"></i> تعديل</a>

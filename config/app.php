@@ -182,7 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Mindscms\Entrust\EntrustServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */

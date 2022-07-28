@@ -10,7 +10,7 @@ use App\Notifications\UserPublished;
 use App\Rules\PhoneNumber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,9 +23,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Cache::remember('users', 60 + 60 + 24 * 15, function () {
-            return User::all();
-        });
+        $users = User::where('is_empolyee', true)->get(); /* Cache::remember('users', 60 + 60 + 24 * 15, function () {
+            return
+        }); */
+
 
         return view('User.index', ['users' => $users]);
     }
@@ -89,9 +90,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('User.show', ['user' => $user]);
     }
 
     /**
@@ -100,9 +101,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('User.edit', ['user' => $user]);
     }
 
     /**
@@ -123,8 +124,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')->with('تم حذف الموظف ');
     }
 }

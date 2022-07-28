@@ -32,15 +32,7 @@
                         {{ $role->name }}
                     @endforeach
                 </p>
-                <div class="text-light small fw-semibold mb-2">الصلاحيات</div>
-                <div class="demo-inline-spacing">
-                    <p>
-                        @foreach ($user->permissions as $perm)
-                            <span class="badge badge-center rounded-pill bg-primary">{{ $perm->name }}</span>
-                        @endforeach
 
-                    </p>
-                </div>
             </div>
         </div>
 

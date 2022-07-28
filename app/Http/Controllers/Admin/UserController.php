@@ -8,9 +8,10 @@ use App\Models\User;
 use App\Notifications\UserPublished;
 
 use App\Rules\PhoneNumber;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 
@@ -81,7 +82,7 @@ class UserController extends Controller
 
 
 
-        return 'sucess';
+        return redirect()->route('users.index');
     }
 
     /**
@@ -103,7 +104,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('User.edit', ['user' => $user]);
+        return view('User.edit', ['user' => $user, 'roles' => Role::all()]);
     }
 
     /**
@@ -113,9 +114,40 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $pass = 'inaash-alfqeer' . $request->name;
+        $request->validate([
+            'name'      =>   ['required', 'string', 'max:255'],
+            'email'     =>   ['required', 'string', 'email', 'max:255'],
+            'image'     =>   ['file', 'image', 'nullable'],
+            'phone'     =>   ['string', 'numeric', 'nullable', new PhoneNumber()],
+            'selectAll' =>   ['nullable', 'string']
+
+        ]);
+        $path = null;
+        if ($request->has('image')) {
+            $image = $request->image;
+            $path = $image->store('user-images', 'public');
+        }
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = Hash::make($pass);
+        $user->is_empolyee = true;
+        $user->image = is_null($path) ? null : $path;
+        $user->save();
+        
+        ///update roles to user in table many ot many///
+
+        DB::table('role_user')->where('user_id', $user->id)->updateOrInsert([
+            'role_id' => $request->role_id
+        ]);
+
+        Notification::send($user, new UserPublished($user, $pass));
+        return redirect()->route('users.show', ['user' => $user])->with(['success' => 'تم تحديث معلومات الموظف بنجاح']);
     }
 
     /**
@@ -127,6 +159,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('تم حذف الموظف ');
+        return redirect()->route('users.index')->with(['Success' => 'تم حذف الموظف ']);
     }
 }

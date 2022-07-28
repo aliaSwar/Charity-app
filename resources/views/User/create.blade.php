@@ -61,16 +61,16 @@
 
                             </div>
                         </div>
-                       
-            </div>
-            <div class="btn-group-lg">
-                <div class="row mt-3">
-                    <div class="d-grid gap-2 col-lg-6 mx-auto">
-                        <input type="submit" class="btn btn-secondary" value="اختيار">
+
+                </div>
+                <div class="btn-group-lg">
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 col-lg-6 mx-auto">
+                            <input type="submit" class="btn btn-primary" value="اختيار">
+                        </div>
                     </div>
                 </div>
+                </form>
             </div>
-            </form>
         </div>
-    </div>
 </x-layouts.app>

@@ -72,21 +72,13 @@
 
                                 </tr>
                             @endforeach
-
-
-
-
                 </div>
             </div>
-            </td>
-            </tr>
-            <tr>
-                </tbody>
-                </table>
+            </tbody>
+            </table>
         </div>
     </div>
-    </div>
-    </section>
+    <div class="column is-12">{{ $users->links() }}</div>
 
     <div class="d-flex flex-row">
         <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-5 mx-auto">

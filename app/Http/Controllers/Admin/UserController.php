@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('is_empolyee', true)->get(); /* Cache::remember('users', 60 + 60 + 24 * 15, function () {
+        $users = User::where('is_empolyee', true)->paginate(7); /* Cache::remember('users', 60 + 60 + 24 * 15, function () {
             return
         }); */
 

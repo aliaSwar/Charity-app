@@ -16,7 +16,7 @@ class PostController extends BaseController
      */
     public function index()
     {
-        return Post::paginate(5);
+        return Post::all();
     }
     /**
      * Show the form for creating a new resource.

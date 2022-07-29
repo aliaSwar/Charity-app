@@ -24,7 +24,7 @@
                 <div class="col-md-5">
                     <label for="validationServer01" class="form-label">اسم المنشور</label>
                     <input type="text" name="name"
-                        class="form-control is-valid @error('salary_month') is-invalid @enderror"
+                        class="form-control is-valid @error('salary_month') border-light-danger @enderror"
                         id="validationServer01">
                     @error('name')
                         <div>
@@ -36,11 +36,11 @@
                     <label class="form-label" for="validationServer01">اضافة صورة</label>
                     <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                            <input type="file" name="image" id="basic-default-email"
-                                class="form-control is-valid  @error('image') border-light-danger @enderror"
+                            <input type="file" name="image_upload"
+                                class="form-control is-valid @error('image_upload') border-light-danger @enderror"
                                 accept="image/*" />
                         </div>
-                        @error('image')
+                        @error('image_upload')
                             <div>
                                 <div class="alert alert-danger">{{ $message }}</div>
                             </div>
@@ -50,7 +50,7 @@
                 <div class="">
                     <label class="label">النص</label>
 
-                    <textarea id="editor" name="text" class="form-control is-valid @error('content') text-danger @enderror"
+                    <textarea id="editor" name="text" class="form-control is-valid @error('content') border-light-danger @enderror"
                         rows="3"></textarea>
                     <input type="hidden" {{-- name="notes" --}}id="content">
 

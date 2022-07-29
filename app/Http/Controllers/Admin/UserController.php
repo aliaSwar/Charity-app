@@ -58,8 +58,6 @@ class UserController extends Controller
             'email'     =>   ['required', 'string', 'email', 'max:255', 'unique:users'],
             'image'     =>   ['file', 'image', 'nullable'],
             'phone'     =>   ['string', 'numeric', 'unique:users', 'nullable', new PhoneNumber()],
-            'selectAll' =>   ['nullable', 'string']
-
         ]);
         $path = null;
         if ($request->has('image')) {
@@ -122,7 +120,7 @@ class UserController extends Controller
             'email'     =>   ['required', 'string', 'email', 'max:255'],
             'image'     =>   ['file', 'image', 'nullable'],
             'phone'     =>   ['string', 'numeric', 'nullable', new PhoneNumber()],
-            'selectAll' =>   ['nullable', 'string']
+
 
         ]);
         $path = null;
@@ -139,7 +137,7 @@ class UserController extends Controller
         $user->is_empolyee = true;
         $user->image = is_null($path) ? null : $path;
         $user->save();
-        
+
         ///update roles to user in table many ot many///
 
         DB::table('role_user')->where('user_id', $user->id)->updateOrInsert([

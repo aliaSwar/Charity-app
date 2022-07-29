@@ -36,10 +36,11 @@ class PostWebController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        /* dd($request->image_upload); */
         $post = new  Post();
         if ($request->has('image_upload')) {
             $image = $request->image_upload;
-            $path = $image->store('post-images', 'public');
+            $path = $image->store('posts-images', 'public');
             $post->image = $path;
         }
         $post->name =   $request->name;

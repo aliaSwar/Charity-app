@@ -19,12 +19,12 @@
     <div class="content-wrapper">
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <form class="col-md-10" action="{{ route('posts.store') }}" method="POST">
+            <form class="col-md-10" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-5">
                     <label for="validationServer01" class="form-label">اسم المنشور</label>
                     <input type="text" name="name"
-                        class="form-control is-valid @error('salary_month') border-light-danger @enderror"
+                        class="form-control is-valid @error('name') border-light-danger @enderror"
                         id="validationServer01">
                     @error('name')
                         <div>
@@ -33,24 +33,17 @@
                     @enderror
                 </div>
                 <div class="col-md-5">
-                    <label class="form-label" for="validationServer01">اضافة صورة</label>
-                    <div class="col-sm-10">
-                        <div class="input-group input-group-merge">
-                            <input type="file" name="image_upload"
-                                class="form-control is-valid @error('image_upload') border-light-danger @enderror"
-                                accept="image/*" />
-                        </div>
-                        @error('image_upload')
-                            <div>
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            </div>
-                        @enderror
-                    </div>
+                    <label for="validationServer01" class="form-label">الصورة</label>
+                    <input type="file"
+                        name="image"class="form-control is-valid @error('image') border-light-danger @enderror">
+                    @error('image')
+                        <p class="help is-danger">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="">
                     <label class="label">النص</label>
 
-                    <textarea id="editor" name="text" class="form-control is-valid @error('content') border-light-danger @enderror"
+                    <textarea id="editor" name="text" class="form-control is-valid @error('text') border-light-danger @enderror"
                         rows="3"></textarea>
                     <input type="hidden" {{-- name="notes" --}}id="content">
 

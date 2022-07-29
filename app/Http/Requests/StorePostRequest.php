@@ -26,7 +26,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'image_upload'             => ['file', 'image', 'nullable'],
+            'image'                    => ['nullable'],
             'name'                     => ['required', 'min:3', 'string', 'max:255'],
             'text'                     => ['required', 'string', 'max:255']
         ];

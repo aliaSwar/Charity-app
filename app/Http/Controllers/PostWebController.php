@@ -38,8 +38,8 @@ class PostWebController extends Controller
     {
         /* dd($request->image_upload); */
         $post = new  Post();
-        if ($request->has('image_upload')) {
-            $image = $request->image_upload;
+        if ($request->has('image')) {
+            $image = $request->image;
             $path = $image->store('posts-images', 'public');
             $post->image = $path;
         }
@@ -80,8 +80,8 @@ class PostWebController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        if ($request->has('image_upload')) {
-            $image = $request->image_upload;
+        if ($request->has('image')) {
+            $image = $request->image;
             $path = $image->store('post-images', 'public');
             $post->image = $path;
         }

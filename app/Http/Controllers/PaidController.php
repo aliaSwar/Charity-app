@@ -6,6 +6,7 @@ use App\Models\Paid;
 use App\Http\Requests\StorePaidRequest;
 use App\Http\Requests\UpdatePaidRequest;
 use App\Models\Sponsor;
+use Psy\Command\WhereamiCommand;
 
 class PaidController extends BaseController
 {
@@ -16,7 +17,11 @@ class PaidController extends BaseController
      */
     public function index()
     {
-        //
+        return view('Paid.index', [
+            'paids' =>
+            Paid::orderBy('sponsor_id')
+                ->get()
+        ]);
     }
 
     /**
@@ -93,6 +98,7 @@ class PaidController extends BaseController
      */
     public function destroy(Paid $paid)
     {
-        //
+        $paid->deleteOrFail();
+        return redirect()->route('paids.index')->with('data'=>'تم حذف الدفعة بنجاح');
     }
 }

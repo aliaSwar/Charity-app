@@ -5,12 +5,9 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
 
-
-            <hr class="my-5" />
-
             <!-- Contextual Classes -->
 
-            <div class="card text-bg-primary mb-3">
+            <div class="card text-bg mb-3">
                 <h5 class="card-header">معلومات عامة </h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
@@ -72,16 +69,23 @@
                             </tr>
                             <tr class="table-default">
                                 <td>
+                                    <i class="fab fa-bootstrap fa-lg text-primary "></i> <strong>عدد أفراد العائلة
+                                    </strong>
+                                </td>
+                                <td>{{ $entry->family_num }}</td>
+                            <tr>
+                            <tr class="table-default">
+                                <td>
                                     <i class="fab fa-bootstrap fa-lg text-primary "></i> <strong>راتب الإدراج
                                     </strong>
                                 </td>
                                 <td>{{ $entry->salary_charity }}</td>
                             <tr>
-
                         </tbody>
                     </table>
                 </div>
             </div>
+
             <hr class="my-5">
             <div class="card text-bg-danger mb-3">
                 <h5 class="card-header">معلومات الأفراد </h5>
@@ -110,13 +114,9 @@
                                 </tr>
                             @endforeach
 
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
 
 </x-layouts.app>

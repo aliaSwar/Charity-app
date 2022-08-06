@@ -24,7 +24,7 @@
                         </thead>
                         <tbody class="table-border-bottom-0">
                             <tr class="table-default">
-                                <td><i class="fab fa-sketch fa-lg text-warning "></i> <strong>رقم القيد</strong>
+                                <td><i class="fab fa-sketch fa-lg "></i> <strong>رقم القيد</strong>
                                 </td>
                                 <td>{{ $entry->diwan_num }}</td>
 
@@ -39,31 +39,35 @@
                             <tr class="table-default">
                                 <td><i class="fab fa-vuejs fa-lg text-success"></i> <strong>تاريخ الانتهاء</strong>
                                 </td>
-                                <td>Trevor Baker</td>
+                                <td>{{ $entry->finshed_date }}</td>
+
+                            </tr>
+                            <tr class="table-default">
+                                <td><i class="fab fa-vuejs fa-lg text-success"></i> <strong>تاريخ التجديد</strong>
+                                </td>
+                                <td>{{ $entry->renewal_date }}</td>
 
                             </tr>
                             <tr class="table-default">
                                 <td><i class="fab fa-react fa-lg text-info "></i> <strong>العائلة مكفولة </strong></td>
-                                <td>{{ $entry->all_orphan }}</td>
+                                <td> {{ $entry->all_orphan ? 'نعم' : 'لا' }}</td>
 
-                            </tr>
-                            <tr class="table-default">
-                                <td>
-                                    <i class="fab fa-bootstrap fa-lg text-primary "></i> <strong>الأم مكفولة</strong>
-                                </td>
-                                <td> </td>
-
-                                </td>
                             </tr>
                             <tr class="table-default">
                                 <td><i class="fab fa-sketch fa-lg text-warning "></i> <strong> العنوان</strong></td>
-                                <td>Sarah Banks</td>
+                                <td>{{ $entry->address }}</td>
 
                             </tr>
                             <tr class="table-default">
                                 <td><i class="fab fa-react fa-lg text-info"></i> <strong>رقم البطاقة الذكية
                                     </strong></td>
-                                <td>Ted Richer</td>
+                                <td>{{ $entry->smartCard_num }}</td>
+
+                            </tr>
+                            <tr class="table-default">
+                                <td><i class="fab fa-react fa-lg text-info"></i> <strong>رقم التواصل
+                                    </strong></td>
+                                <td>{{ $entry->phone_num }}</td>
 
                             </tr>
                             <tr class="table-default">
@@ -71,8 +75,8 @@
                                     <i class="fab fa-bootstrap fa-lg text-primary "></i> <strong>راتب الإدراج
                                     </strong>
                                 </td>
-                                <td>Perry Parker</td>
-
+                                <td>{{ $entry->salary_charity }}</td>
+                            <tr>
 
                         </tbody>
                     </table>
@@ -113,6 +117,6 @@
                 </div>
             </div>
 
-            <hr class="my-5" />
+
 
 </x-layouts.app>

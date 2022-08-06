@@ -11,8 +11,10 @@
 
             <div class="row">
                 <div class="col-14">
-                    <div class="card mb-4">
+                    <div class="card mb-3">
+
                         <h5 class="card-header">{{ $category->category }}</h5>
+
                         <div class="card-body">
                             <p class="card-text">
                                 جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية تحاول مساعدة المدرج
@@ -22,17 +24,11 @@
                             <form method="post" action="{{ route('categories.destroy', $category) }}">
                                 @method('delete')
                                 @csrf
-
                                 <button type="submit" class="btn btn-primary me-1">حذف</button>
-
                                 <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary me-1">
-
                                     تعديل
-
                                 </a>
-
                             </form>
-
                             </p>
                         </div>
                     </div>
@@ -50,6 +46,8 @@
                             <th class="table-success ">اسم العائلة</th>
                             <th class="table-success ">رقم الاستمارة</th>
                             <th class="table-success ">رقم الهاتف</th>
+                            <th class="table-success ">الصنف</th>
+                            <th class="table-success ">الحالة</th>
                             <th class="table-success ">الفئة </th>
                             <th class="table-success ">التفاصيل </th>
                         </tr>
@@ -72,8 +70,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item"
-                                            href="{{ route('entries.show', $entry) }} detail"><i
+                                        <a class="dropdown-item" href="{{ route('entries.show', $entry) }} detail"><i
                                                 class="bx bx bxs-detail"></i> عرض التفاصيل</a>
                                         <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
                                                 class="bx bx-edit-alt me-1"></i> تعديل</a>

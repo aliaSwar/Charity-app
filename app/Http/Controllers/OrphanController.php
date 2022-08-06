@@ -26,7 +26,7 @@ class OrphanController extends BaseController
     public function index()
     {
         return view('Orphan.index', [
-            'orphans' => Orphan::paginate(13)
+            'orphans' => Orphan::paginate(7)
         ]);
     }
 

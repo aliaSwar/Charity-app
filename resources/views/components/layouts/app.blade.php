@@ -48,14 +48,14 @@
         );
     </script>
 
-    <link rel="stylesheet" href="{{ asset('assets\css\dark-mode.css') }}">
+
     <!-- Page CSS -->
     {{ $styles ?? '' }}
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 
     <script src="{{ asset('assets/js/config.js') }}"></script>
-    <script src="{{ asset('js/dark-mode-switch.min.js') }}"></script>
+
 </head>
 
 <body>

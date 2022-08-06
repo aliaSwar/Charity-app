@@ -35,7 +35,10 @@ class StoreEntryRequest extends FormRequest
             'smartCard_num'    => ['required', 'numeric', 'digits:7'],
             'registration_num' => ['required', 'numeric'],
             'family_num'       => ['required', 'min:0', 'max:200'],
-            'salary_charity'   => ['numeric']
+            'salary_charity'   => ['numeric'],
+            'entry_date'       => ['date', 'required'],
+            'renewal_date'     => ['date', 'required', 'after:entry_date'],
+            'finshed_date'     => ['date', 'required', 'after:renewal_date']
         ];
     }
 }

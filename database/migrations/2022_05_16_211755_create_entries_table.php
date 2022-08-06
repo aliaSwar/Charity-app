@@ -24,8 +24,6 @@ return new class extends Migration
             $table->date('finshed_date')->nullable(); //تاريخ الانتهاء
             $table->string('family_name');
             $table->text('address');
-            //////الفئة
-
             $table->boolean('all_orphan')->default(false);
             $table->integer('family_num')->default(0);
             $table->integer('salary_charity')->default(0);

@@ -14934,6 +14934,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
     align-items: center;
     flex: 0 1 auto;
     margin: 0;
+    text-decoration: none;
 }
 
 .menu-item.disabled .menu-link {
@@ -15651,6 +15652,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .app-brand-link {
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .app-brand-logo {

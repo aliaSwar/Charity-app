@@ -8,6 +8,7 @@
                     <div class="card mb-4">
                         <h5 class="card-header">{{ $sponsor->user->name }}</h5>
                         <div class="card-body">
+                            <br>
                             <p class="card-text">
                                 الكفيل, {{ $sponsor->user->name }}❤️
                             </p>
@@ -30,7 +31,7 @@
                     <label for="validationCustom04" class="form-label ">المبلغ
                     </label>
                     <input type="text" name="amount"
-                        class="form-control is-valid @error('amount') is-invalid @enderror" id="validationServer02">
+                        class="form-control is-valid @error('amount') is-invalid @enderror" >
                     <span>ادخال الدفعة المالية</span>
                     @error('amount')
                         <p class="text-danger">{{ $message }}</p>
@@ -40,7 +41,7 @@
                 <div class="row-cols-md-2">
                     <label for="validationServer02" class="form-label">صورة العقد</label>
                     <input type="file" name="image"
-                        class="form-control is-valid @error('image') is-invalid @enderror" id="validationServer02">
+                        class="form-control is-valid @error('image') is-invalid @enderror" >
                     <span>التأكد من الصورة انها تحمل دفعة المال مع توقيع الاستلام</span>
                     @error('image')
                         <p class="text-danger">{{ $message }}</p>
@@ -49,7 +50,7 @@
                 <div class="row-cols-1">
                     <label for="validationServer02" class="form-label">تاريخ الاستلام</label>
                     <input type="date" name="date_paid"
-                        class="form-control is-valid @error('date_paid') is-invalid @enderror" id="validationServer02">
+                        class="form-control is-valid @error('date_paid') is-invalid @enderror" >
 
                     @error('date_paid')
                         <p class="text-danger">{{ $message }}</p>

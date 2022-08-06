@@ -150,7 +150,7 @@ class OrphanController extends BaseController
             'financials' => Financial::all(),
             'categories' => Category::all(),
             'statuss'    => Status::all(),
-            'people'    => Person::orderBy('entry_id')->get()
+            'people'    => Person::where('category', '!=', 'الأب')->orderBy('entry_id')->get()
         ]);
     }
 
@@ -171,7 +171,7 @@ class OrphanController extends BaseController
             ])->with(['data' => 'لا يوجد أفراد بهذه الصفات']);
         }
         foreach ($request->filter_age() as $key => $person) {
-            if ($request->filter_entry($person->entry->id)) {
+            if ($request->filter_entry($person->entry->id and $person->category != 'الأب')) {
                 $people[] = $person;
             }
         }

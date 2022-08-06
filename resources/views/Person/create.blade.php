@@ -1,10 +1,10 @@
 <x-layouts.app>
     <x-slot name="styles">
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" >
     </x-slot>
     <x-slot name="scripts">
         <!-- Include the Quill library -->
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
 
         <!-- Initialize Quill editor -->
         <script>

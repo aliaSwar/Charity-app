@@ -118,6 +118,7 @@
                     <tr>
                         <th class="table-success ">اسم العائلة</th>
                         <th class="table-success ">اسم الفرد</th>
+                        <th class="table-success ">من الفرد</th>
                         <th class="table-success ">التفاصيل </th>
                     </tr>
                 </thead>
@@ -128,6 +129,9 @@
                                     {{ $person->entry->family_name }}
                                 </a></td>
                             <td><a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a></td>
+                            <td>
+                                {{ $person->category }}
+                            </td>
                             <td>
                                 <form action="{{ route('orphans.create', $sponsor) }}" method="post">
                                     @csrf

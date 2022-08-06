@@ -9,7 +9,8 @@
                         <h5 class="card-header">{{ $sponsor->user->name }}</h5>
                         <div class="card-body">
                             <p class="card-text">
-                                الكفيل, {{ $sponsor->user->name }}❤️
+                                <br>
+                                الكفيل, {{ $sponsor->user->name }}❤️ 
                             </p>
 
                             <a class="btn btn-success" href="{{ route('sponsors.show', $sponsor) }}">عرض</a>

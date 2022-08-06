@@ -99,6 +99,6 @@ class PaidController extends BaseController
     public function destroy(Paid $paid)
     {
         $paid->deleteOrFail();
-        return redirect()->route('paids.index')->with('data'=>'تم حذف الدفعة بنجاح');
+        return redirect()->route('paids.index')->with(['data' => 'تم حذف الدفعة بنجاح']);
     }
 }

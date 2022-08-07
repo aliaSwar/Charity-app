@@ -12,8 +12,8 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">ادخال الورقة</h5>
-
                     </div>
+                    <br>
                     <div class="card-body">
                         <form action="{{ route('papers.store') }}" method="POST" class="row g-3 needs-validation"
                             enctype="multipart/form-data">

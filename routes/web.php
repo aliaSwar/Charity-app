@@ -91,6 +91,9 @@ Route::controller(OrphanController::class)->group(function () {
     Route::post('orphans/{sponsor}', [OrphanController::class, 'create'])->name('orphans.create');
     Route::post('orphan/{sponsor}', [OrphanController::class, 'store'])->name('orphans.store');
     Route::get('orphans', [OrphanController::class, 'index'])->name('orphans.index');
+    Route::get('orphans/{orphan}', [OrphanController::class, 'show'])->name('orphans.show');
+    Route::post('orphans/{orphan}', [OrphanController::class, 'update'])->name('orphans.edit');
+    Route::delete('orphans/{orphan}', [OrphanController::class, 'destroy'])->name('orphans.destroy');
 });
 //TODO:: Add paid to sponsor
 Route::controller(PaidController::class)->group(function () {

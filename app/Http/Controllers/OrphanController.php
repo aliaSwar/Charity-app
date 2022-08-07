@@ -135,7 +135,8 @@ class OrphanController extends BaseController
      */
     public function destroy(Orphan $orphan)
     {
-        //
+        $orphan->delete();
+        return redirect()->route('categories.index');
     }
 
     /**

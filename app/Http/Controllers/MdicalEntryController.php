@@ -19,7 +19,7 @@ class MdicalEntryController extends BaseController
     public function index()
     {
         return view('Mdical.index', [
-            'mdicals'  => Mdical_entry::all()
+            'mdicals'  => Mdical_entry::paginate(7)
         ]);
     }
 

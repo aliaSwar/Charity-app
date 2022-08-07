@@ -43,10 +43,16 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item"><i class="  bx bx-x-circle"></i> التفاصيل</a>
-                                            <a class="dropdown-item"><i class="  bx bx-x-circle"></i> تعديل</a>
-                                            <a class="dropdown-item"><i class="  bx bx-x-circle"></i> حذف</a>
-
+                                            <a class="dropdown-item" href="{{ route('orphans.show', $orphan) }}"><i
+                                                    class="  bx bx-abacus"></i> التفاصيل</a>
+                                            <a class="dropdown-item" href="{{ route('orphans.edit', $orphan) }}"><i
+                                                    class="  bx bx-adjust"></i> تعديل</a>
+                                            <form method="post" action="{{ route('orphans.destroy', $orphan) }}">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="dropdown-item"><i
+                                                        class=" bx bx-x-circle"></i>حذف</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>

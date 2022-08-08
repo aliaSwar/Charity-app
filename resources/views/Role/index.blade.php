@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="card-body text-sm-end text-center ps-sm-3  ">
-                                    <a href="{{ route('roles.create') }}" data-bs-toggle="modal"
+                                    <a href="{{ route('roles.create') }}"
                                         class="stretched-link text-nowrap add-new-role">
                                         <span class="btn btn-primary mb-0 waves-effect waves-float waves-light">اضافة
                                             منصب جديد</span>

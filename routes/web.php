@@ -18,6 +18,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
 use App\Models\Entry;
 use App\Models\Mdical_entry;
+use App\Models\Status;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -33,15 +34,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/index', function () {
+
     $count_entry = Cache::remember('entries', 60 + 60 + 24, function () {
         return Entry::count();
     });
     $count_mdical =  Cache::remember('mdicals', 60 + 60 + 24, function () {
         return Mdical_entry::count();
     });
+    $waiter = Status::where('status', 'قيد الانتظار')->first()->entries()->count();
+
+    $injecter = Status::where('status', 'مرفوضين')->first()->entries()->count();
+
     return view('index', [
-        'count_entry' =>  $count_entry,
-        'count_mdical' => $count_mdical
+        'count_entry'  =>  $count_entry,
+        'count_mdical' => $count_mdical,
+        'waiter'       => $waiter,
+        'injecter'     =>  $injecter
     ]);
 })->name('index');
 

@@ -64,6 +64,7 @@ class PaidController extends BaseController
      */
     public function show(Paid $paid)
     {
+
         return view('Paid.show', ['paid' => $paid]);
     }
 

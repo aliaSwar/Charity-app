@@ -162,7 +162,7 @@
                                         </div>
                                     </div>
                                     <span class="d-block mb-1">قيد الانتظار</span>
-                                    <h3 class="card-title text-nowrap mb-2">2,456</h3>
+                                    <h3 class="card-title text-nowrap mb-2">{{ $waiter }}</h3>
 
                                 </div>
                             </div>
@@ -183,7 +183,7 @@
                                         </div>
                                     </div>
                                     <span class="d-block mb-1">المرفوضين</span>
-                                    <h3 class="card-title mb-2">14,857</h3>
+                                    <h3 class="card-title mb-2">{{ $injecter }}</h3>
 
                                 </div>
                             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\AuthController;
+use App\Http\Controllers\Api\v1\OrphanController;
 use App\Http\Controllers\Api\v1\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Route::post('/login', [AuthController::class, 'login']);
 //TODO::posts on app
 Route::resource('posts', PostController::class);
+//TODO::sponsor with orphan
+Route::resource('orphans', OrphanController::class);

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Models\Orphan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PostController extends BaseController
+class OrphanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +21,10 @@ class PostController extends BaseController
     public function index()
     {
 
-        return Post::all();
+        /* return auth()->user()->sponsor->id; */
+        return Orphan::where('sponsor_id', auth()->user()->sponsor->id)->get();
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,9 +52,9 @@ class PostController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($orphan)
     {
-        return  $post;
+        return Orphan::findOrFail($orphan);
     }
 
     /**
@@ -80,9 +86,8 @@ class PostController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
-        return 'has deleted';
+        //
     }
 }

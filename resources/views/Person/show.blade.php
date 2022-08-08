@@ -12,9 +12,9 @@
                                 @elseif ($person->category == 'الابنة')
                                     <img src={{ asset('assets/img/image/child.jpg') }} class="rounded-circle " />
                                 @elseif ($person->category == 'الأم')
-                                    <img src={{ asset('assets/img/image/o.png') }} class="rounded-circle " />
+                                    <img src={{ asset('assets/img/image/mother.png') }} class="rounded-circle " />
                                 @else
-                                    <img src={{ asset('assets/img/image/boy.jpg') }} class="rounded-circle " />
+                                    <img src={{ asset('assets/img/image/father.png') }} class="rounded-circle " />
                                 @endif
                             </div>
                             <p class="card-text">{{ $person->full_name }}</p>

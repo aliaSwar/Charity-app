@@ -116,7 +116,14 @@ class EntryController extends BaseController
      */
     public function edit(Entry $entry)
     {
-        return view('Entry.edit', $entry);
+        $papers = Identification_paper::where('is_mdical', 0)->get();
+        return view('Entry.edit', [
+            'entry' => $entry,
+            'categories' => Category::all(),
+            'statuses' => Status::all(),
+            'financials' => Financial::all(),
+            'papers' => $papers
+        ]);
     }
 
     /**
@@ -128,7 +135,24 @@ class EntryController extends BaseController
      */
     public function update(Request $request, Entry $entry)
     {
+
+        $diff = $request->family_num - $entry->family_num;
         $entry->update($request->all());
+        if ($request->papers != null) {
+            $lost_paper = Identification_paper::where(function ($query) use ($request) {
+
+                $query->where('is_mdical', 0)->whereNotIn('id', $request->papers);
+            })->get();
+            $entry->identification_papers()->sync($lost_paper);
+        } else {
+            $entry->identification_papers()->sync(Identification_paper::where('is_mdical', 0)->get());
+        }
+        if ($diff >= 1) {
+            return redirect()->route('person.create',  ['entry' => $entry])->with('sucsess', 'تم اضافة مدرج بنجاح ');
+            //return view('Person.createAjax');
+        }
+        return redirect()->route('entries.show', ['entry' => $entry])->with('sucsess', ' تم إضافة مدرج بنجاح ');
+
         return redirect()->route('entries.show', $entry);
     }
 

@@ -128,3 +128,4 @@ Route::get('excel', [ExcelController::class, 'entries']);
 /////////////////////////////Start section posts on app////////////////////////////
 //TODO:: add post to app
 Route::resource('posts', PostWebController::class);
+

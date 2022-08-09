@@ -46,40 +46,59 @@
 
             <div class="container">
                 <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
-                <table class="table table-bordered table-striped">
+                <table class="table tables-basic tables-basic">
                     <thead>
                         <tr>
-                            <th class="table-success ">اسم العائلة</th>
-                            <th class="table-success ">رقم الاستمارة</th>
-                            <th class="table-success ">رقم الهاتف</th>
-                            <th class="table-success ">الفئة </th>
-                            <th class="table-success ">التفاصيل </th>
+                            <th class="table-success "> الكفالة</th>
+                            <th class="table-success "> رقم الكفيل</th>
+                            <th class="table-success "> تفاصيل</th>
+
                         </tr>
                     </thead>
-                    @foreach ($orphans as $orphan)
-                        <tr>
-                            <td>{{ $orphan->id }}</td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('orphans.show', $orphan) }} detail"><i
-                                                class="bx bx bxs-detail"></i> عرض التفاصيل</a>
-                                        <a class="dropdown-item" href="{{ route('orphans.edit', $orphan) }}"><i
-                                                class="bx bx-edit-alt me-1"></i> تعديل</a>
+                    <tbody id="myTable">
+                        @foreach ($orphans as $orphan)
+                            <tr>
+                                <td>
+                                    {{ $orphan->id }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('sponsors.show', $orphan->sponsor_id) }}"
+                                        style="text-decoration: none;">
+                                        {{ $orphan->sponsor_id }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ route('orphans.show', $orphan) }}"><i
+                                                    class="  bx bx-abacus"></i> التفاصيل</a>
+                                            <a class="dropdown-item" href="{{ route('orphans.edit', $orphan) }}"><i
+                                                    class="  bx bx-adjust"></i> تعديل</a>
+                                            <form method="post" action="{{ route('orphans.destroy', $orphan) }}">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="dropdown-item"><i
+                                                        class=" bx bx-x-circle"></i>حذف</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
+
+                <!-- Vertically centered modal -->
+
             </div>
+
         </div>
+
         {{ $orphans->links() }}
+    </div>
 </x-layouts.app>

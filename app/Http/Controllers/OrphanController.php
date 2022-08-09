@@ -25,6 +25,7 @@ class OrphanController extends BaseController
      */
     public function index()
     {
+
         return view('Orphan.index', [
             'orphans' => Orphan::paginate(7)
         ]);
@@ -64,14 +65,18 @@ class OrphanController extends BaseController
      */
     public function store(StoreOrphanRequest $request, Sponsor $sponsor)
     {
-        foreach ($request->people as $key => $person) {
+
+        foreach ($request->people as  $person) {
+            if (Person::where('id',  $person)->where('gender', 'الأم')->get()) {
+                $mother_is_ok = true;
+            } else  $mother_is_ok = false;
             Orphan::create([
                 'sponsor_id'    => $sponsor->id,
-                'salary_month'  => $request->salary_month,
-                'salary_year'   => $request->salary_year,
+                'salary_month'  => $request->salary_month / count($request->people),
+                'salary_year'   => $request->salary_year / count($request->people),
                 'begin_date'    => $request->begin_date,
                 'end_date'      => $request->end_date,
-                'mother_is_ok'  => $request->mother_is_ok,
+                'mother_is_ok'  => $mother_is_ok,
                 'type_id'       => $request->type_id,
                 'person_id'     => $person
             ]);
@@ -79,14 +84,11 @@ class OrphanController extends BaseController
                 'orphan'  => true
             ]);
         }
-        $mother = Person::where('id', $request->mother_is_ok)->first();
-        if ($mother  != null) {
-            $mother->update([
-                'orphan'  => true
-            ]);
-            return redirect()->route('sponsors.show', $sponsor);
-        }
+
+
+        return redirect()->route('sponsors.show', $sponsor);
     }
+
 
 
     /**
@@ -151,7 +153,9 @@ class OrphanController extends BaseController
             'financials' => Financial::all(),
             'categories' => Category::all(),
             'statuss'    => Status::all(),
-            'people'    => Person::where('category', '!=', 'الأب')->orderBy('entry_id')->get()
+            'people'    => Person::where('category', '!=', 'الأب')
+                ->where('orphan', false)
+                ->orderBy('entry_id')->get()
         ]);
     }
 
@@ -168,11 +172,13 @@ class OrphanController extends BaseController
                 'financials' => Financial::all(),
                 'categories' => Category::all(),
                 'statuss'    => Status::all(),
-                'people'    => Person::orderBy('entry_id')->get()
+                'people'    => Person::where('category', '!=', 'الأب')
+                    ->where('orphan', false)
+                    ->orderBy('entry_id')->get()
             ])->with(['data' => 'لا يوجد أفراد بهذه الصفات']);
         }
         foreach ($request->filter_age() as $key => $person) {
-            if ($request->filter_entry($person->entry->id and $person->category != 'الأب')) {
+            if ($request->filter_entry($person->entry->id)) {
                 $people[] = $person;
             }
         }

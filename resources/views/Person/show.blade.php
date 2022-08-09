@@ -117,7 +117,7 @@
 
                                 <p class="card-text">مكفول:
 
-                                    {{ $person->orphan ? ' :نعم تابع  للكفالة ذات الرقم' . $person->orphan_id : 'لا' }}
+                                    {{ $person->orphan ? 'نعم' : 'لا' }}
                                 </p>
 
                             </div>

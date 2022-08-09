@@ -81,11 +81,10 @@
     @role('موظف السويشال')
         <x-orphan-side-bar />
     @endrole
+
     @auth
         <x-navbar />
     @endauth
-
-
 
 
 

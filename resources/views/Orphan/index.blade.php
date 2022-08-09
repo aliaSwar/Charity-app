@@ -30,12 +30,12 @@
                                 <td>
                                     {{ $orphan->id }}
                                 </td>
-                                <a href="{{ route('sponsors.show', $orphan->sponsor_id) }}">
-                                    <td> {{ $orphan->sponsor_id }}</td>
-                                </a>
-
-
-
+                                <td>
+                                    <a href="{{ route('sponsors.show', $orphan->sponsor_id) }}"
+                                        style="text-decoration: none;">
+                                        {{ $orphan->sponsor_id }}
+                                    </a>
+                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

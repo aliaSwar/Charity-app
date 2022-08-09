@@ -76,5 +76,5 @@ class StoreFilterRequest extends FormRequest
             }
         }
         return $people;
-    }
+    }  
 }

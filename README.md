@@ -23,7 +23,7 @@
 ## QR Code
 
 <p align="center">
-<a href=""><img src="public\assets\img\image\" alt="Mind Map"></a>
+<a href=""><img src="public\assets\img\image\qr-code.png" alt="Mind Map"></a>
 </p>
 
 ## Solve Problem install packege maatwebsiteexcel

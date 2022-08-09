@@ -54,8 +54,10 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('mdicals.show', $mdical) }}"><i
                                                     class="bx bx bxs-detail"></i> عرض التفاصيل</a>
-                                            <a class="dropdown-item" href="{{ route('mdicals.edit', $mdical) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                            @if (Auth::user()->hasRole('موظف الادراج الطبي'))
+                                                <a class="dropdown-item" href="{{ route('mdicals.edit', $mdical) }}"><i
+                                                        class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

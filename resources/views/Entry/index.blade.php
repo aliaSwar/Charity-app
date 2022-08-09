@@ -54,8 +54,11 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('entries.show', $entry) }}"><i
                                                     class="bx bx bxs-detail"></i> عرض التفاصيل</a>
-                                            <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                            @if (Auth::user()->hasRole('موظف الادراج العام'))
+                                                <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
+                                                        class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </td>

@@ -45,14 +45,16 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('orphans.show', $orphan) }}"><i
                                                     class="  bx bx-abacus"></i> التفاصيل</a>
-                                            <a class="dropdown-item" href="{{ route('orphans.edit', $orphan) }}"><i
-                                                    class="  bx bx-adjust"></i> تعديل</a>
-                                            <form method="post" action="{{ route('orphans.destroy', $orphan) }}">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="dropdown-item"><i
-                                                        class=" bx bx-x-circle"></i>حذف</button>
-                                            </form>
+                                            @if (Auth::user()->hasRole('موظف الكفالات'))
+                                                <a class="dropdown-item" href="{{ route('orphans.edit', $orphan) }}"><i
+                                                        class="  bx bx-adjust"></i> تعديل</a>
+                                                <form method="post" action="{{ route('orphans.destroy', $orphan) }}">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="dropdown-item"><i
+                                                            class=" bx bx-x-circle"></i>حذف</button>
+                                                </form>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

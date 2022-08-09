@@ -17,13 +17,13 @@
 ## Mind Map
 
 <p align="center">
-<a href="https://ibb.co/mHzyKDS"><img src="public\assets\img\image\mind.jpg" alt="Mind Map"></a>
+<a href="https://ibb.co/mHzyKDS"><img src="public\assets\img\image\mind.jpg" alt="Mind Map" width="350" ></a>
 </p>
 
 ## QR Code
 
 <p align="center">
-<a href=""><img src="public\assets\img\image\qr-code.png" alt="Mind Map"></a>
+<a href=""><img src="public\assets\img\image\qr-code.png" alt="QR"></a>
 </p>
 
 ## Solve Problem install packege maatwebsiteexcel

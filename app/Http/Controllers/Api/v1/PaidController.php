@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class PaidController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,8 @@ class PaidController extends Controller
      */
     public function index()
     {
-        return Paid::where('sponsor_id', auth()->id())->get();
+
+        return Paid::where('sponsor_id', auth()->user()->sponsor->id)->get();
     }
 
     /**
@@ -47,7 +52,8 @@ class PaidController extends Controller
      */
     public function show($id)
     {
-        //
+        $paid = Paid::findOrFail($id);
+        return $paid;
     }
 
     /**

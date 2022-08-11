@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\OrphanController;
+use App\Http\Controllers\Api\v1\PaidController;
 use App\Http\Controllers\Api\v1\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::resource('posts', PostController::class);
 //TODO::sponsor with orphan
 Route::resource('orphans', OrphanController::class);
+//TODO::sponsor with paids
+Route::resource('paids', PaidController::class);

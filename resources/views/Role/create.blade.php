@@ -127,8 +127,7 @@
         <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-4 mx-auto">
 
     </div>
-    </div>
-    </div>
+    
 
 
 

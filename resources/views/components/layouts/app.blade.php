@@ -82,6 +82,11 @@
         <x-orphan-side-bar />
     @endrole
 
+    @if (!Auth::guest())
+        <x-guest-side-bar />
+    @endif
+
+
     @auth
         <x-navbar />
     @endauth

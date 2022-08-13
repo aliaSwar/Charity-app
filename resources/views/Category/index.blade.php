@@ -11,9 +11,11 @@
             <div class="col-12 col-md-6">
                 <h5 class="pb-1 mb-4">أنواع المدرجين</h5>
             </div>
-            <div class="col-12 col-md-6">
-                <a href="{{ route('categories.create') }}" class="btn btn-danger">هل تريد إنشاء نوع جديدة؟</a>
-            </div>
+            @if (Auth::user()->hasRole('مدير الإدراج'))
+                <div class="col-12 col-md-6">
+                    <a href="{{ route('categories.create') }}" class="btn btn-danger">هل تريد إنشاء نوع جديدة؟</a>
+                </div>
+            @endif
         </div>
         <div class="row">
             @foreach ($categories as $category)
@@ -26,23 +28,27 @@
                                 ال{{ $category->category }}
                             </p>
                             <p class="demo-inline-spacing">
-                            <form method="post" action="{{ route('categories.destroy', $category) }}">
-                                @method('delete')
-                                @csrf
+                                @if (Auth::user()->hasRole('مدير الإدراج'))
+                                    <form method="post" action="{{ route('categories.destroy', $category) }}">
+                                        @method('delete')
+                                        @csrf
 
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                        <button type="submit" class="btn btn-primary me-1">حذف</button>
 
-                                <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary me-1">
+                                        <a href="{{ route('categories.edit', $category) }}"
+                                            class="btn btn-primary me-1">
 
-                                    تعديل
+                                            تعديل
 
-                                </a>
+                                        </a>
+                                @endif
+
                                 <a href="{{ route('categories.show', $category) }}" class="btn btn-primary me-1">
 
                                     عرض
 
                                 </a>
-                            </form>
+                                </form>
 
                             </p>
                         </div>
@@ -50,5 +56,7 @@
                 </div>
             @endforeach
         </div>
+    </div>
+
 
 </x-layouts.app>

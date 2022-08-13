@@ -11,9 +11,11 @@
             <div class="col-12 col-md-6">
                 <h5 class="pb-1 mb-4">فئات المدرجين:</h5>
             </div>
-            <div class="col-12 col-md-6">
-                <a href="{{ route('financials.create') }}" class="btn btn-danger">هل تريد إنشاء فئة جديدة؟</a>
-            </div>
+            @if (Auth::user()->hasRole('مدير الإدراج'))
+                <div class="col-12 col-md-6">
+                    <a href="{{ route('financials.create') }}" class="btn btn-danger">هل تريد إنشاء فئة جديدة؟</a>
+                </div>
+            @endif
         </div>
         <div class="row">
             @foreach ($financials as $financial)
@@ -26,23 +28,26 @@
                                 {{ $financial->type }}
                             </p>
                             <p class="demo-inline-spacing">
-                            <form method="post" action="{{ route('financials.destroy', $financial) }}">
-                                @method('delete')
-                                @csrf
+                                @if (Auth::user()->hasRole('مدير الإدراج'))
+                                    <form method="post" action="{{ route('financials.destroy', $financial) }}">
+                                        @method('delete')
+                                        @csrf
 
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                        <button type="submit" class="btn btn-primary me-1">حذف</button>
 
-                                <a href="{{ route('financials.edit', $financial) }}" class="btn btn-primary me-1">
+                                        <a href="{{ route('financials.edit', $financial) }}"
+                                            class="btn btn-primary me-1">
 
-                                    تعديل
+                                            تعديل
 
-                                </a>
+                                        </a>
+                                @endif
                                 <a href="{{ route('financials.show', $financial) }}" class="btn btn-primary me-1">
 
                                     عرض
 
                                 </a>
-                            </form>
+                                </form>
 
                             </p>
                         </div>

@@ -12,9 +12,11 @@
                 <div class="col-12 col-md-6">
                     <h5 class="pb-1 mb-4">حال المدرجين</h5>
                 </div>
-                <div class="col-12 col-md-6">
-                    <a href="{{ route('statuses.create') }}" class="btn btn-danger">هل تريد إنشاء حالة جديدة؟</a>
-                </div>
+                @if (Auth::user()->hasRole('مدير الإدراج'))
+                    <div class="col-12 col-md-6">
+                        <a href="{{ route('statuses.create') }}" class="btn btn-danger">هل تريد إنشاء حالة جديدة؟</a>
+                    </div>
+                @endif
             </div>
             <div class="row">
                 @foreach ($statuses as $status)
@@ -27,24 +29,26 @@
                                     {{ $status->status }}
                                 </p>
                                 <p class="demo-inline-spacing">
-                                <form method="post" action="{{ route('statuses.destroy', $status) }}">
-                                    @method('delete')
-                                    @csrf
+                                    @if (Auth::user()->hasRole('مدير الإدراج'))
+                                        <form method="post" action="{{ route('statuses.destroy', $status) }}">
+                                            @method('delete')
+                                            @csrf
 
-                                    <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                            <button type="submit" class="btn btn-primary me-1">حذف</button>
 
-                                    <a href="{{ route('statuses.edit', $status) }}" class="btn btn-primary me-1">
+                                            <a href="{{ route('statuses.edit', $status) }}"
+                                                class="btn btn-primary me-1">
 
-                                        تعديل
+                                                تعديل
 
-                                    </a>
-
+                                            </a>
+                                    @endif
                                     <a href="{{ route('statuses.show', $status) }}" class="btn btn-primary me-1">
 
                                         عرض
 
                                     </a>
-                                </form>
+                                    </form>
 
                                 </p>
                             </div>
@@ -52,5 +56,8 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+
 
 </x-layouts.app>

@@ -19,20 +19,21 @@
                                 ال{{ $status->status }}
                             </p>
                             <p class="demo-inline-spacing">
-                            <form method="post" action="{{ route('statuses.destroy', $status) }}">
-                                @method('delete')
-                                @csrf
+                                @if (Auth::user()->hasRole('مدير الإدراج'))
+                                    <form method="post" action="{{ route('statuses.destroy', $status) }}">
+                                        @method('delete')
+                                        @csrf
 
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                        <button type="submit" class="btn btn-primary me-1">حذف</button>
 
-                                <a href="{{ route('statuses.edit', $status) }}" class="btn btn-primary me-1">
+                                        <a href="{{ route('statuses.edit', $status) }}" class="btn btn-primary me-1">
 
-                                    تعديل
+                                            تعديل
 
-                                </a>
+                                        </a>
 
-                            </form>
-
+                                    </form>
+                                @endif
                             </p>
                         </div>
                     </div>

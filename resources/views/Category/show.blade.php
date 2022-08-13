@@ -21,14 +21,17 @@
                                 ال{{ $category->category }}
                             </p>
                             <p class="demo-inline-spacing">
-                            <form method="post" action="{{ route('categories.destroy', $category) }}">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
-                                <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary me-1">
-                                    تعديل
-                                </a>
-                            </form>
+                                @if (Auth::user()->hasRole('مدير الإدراج'))
+                                    <form method="post" action="{{ route('categories.destroy', $category) }}">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                        <a href="{{ route('categories.edit', $category) }}"
+                                            class="btn btn-primary me-1">
+                                            تعديل
+                                        </a>
+                                    </form>
+                                @endif
                             </p>
                         </div>
                     </div>
@@ -72,8 +75,10 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{ route('entries.show', $entry) }} detail"><i
                                                 class="bx bx bxs-detail"></i> عرض التفاصيل</a>
-                                        <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
-                                                class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                        @if (Auth::user()->hasRole('مدير الإدراج'))
+                                            <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
+                                                    class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                        @endif
                                     </div>
                                 </div>
                             </td>

@@ -21,20 +21,21 @@
                         </div>
                         <div class=" card-body">
                             <p class="card-text"> تأتي مع المدرجين لاثبات الادراج.</p>
-                            <form method="post" action="{{ route('papers.destroy', $paper) }}">
-                                @method('delete')
-                                @csrf
+                            @if (Auth::user()->hasRole('مدير الإدراج'))
+                                <form method="post" action="{{ route('papers.destroy', $paper) }}">
+                                    @method('delete')
+                                    @csrf
 
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                    <button type="submit" class="btn btn-primary me-1">حذف</button>
 
-                                <a href="{{ route('papers.edit', $paper) }}" class="btn btn-primary me-1">
+                                    <a href="{{ route('papers.edit', $paper) }}" class="btn btn-primary me-1">
 
-                                    تعديل
+                                        تعديل
 
-                                </a>
+                                    </a>
 
-                            </form>
-
+                                </form>
+                            @endif
                             </p>
                         </div>
                     </div>

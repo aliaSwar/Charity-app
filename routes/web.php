@@ -19,6 +19,7 @@ use App\Http\Controllers\TypeController;
 use App\Models\Entry;
 use App\Models\Mdical_entry;
 use App\Models\Status;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -35,16 +36,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index', function () {
 
+
+
     $count_entry = Cache::remember('entries', 60 + 60 + 24, function () {
         return Entry::count();
     });
     $count_mdical =  Cache::remember('mdicals', 60 + 60 + 24, function () {
         return Mdical_entry::count();
     });
+    if (is_null(Status::where('status', 'قيد الانتظار')) or Status::where('status', 'مرفوضين')) {
+        return view('index', [
+            'count_entry'  =>  $count_entry,
+            'count_mdical' => $count_mdical,
+        ]);
+    }
     $waiter = Status::where('status', 'قيد الانتظار')->first()->entries()->count();
 
     $injecter = Status::where('status', 'مرفوضين')->first()->entries()->count();
-
     return view('index', [
         'count_entry'  =>  $count_entry,
         'count_mdical' => $count_mdical,
@@ -128,4 +136,3 @@ Route::get('excel', [ExcelController::class, 'entries']);
 /////////////////////////////Start section posts on app////////////////////////////
 //TODO:: add post to app
 Route::resource('posts', PostWebController::class);
-

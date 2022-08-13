@@ -60,36 +60,38 @@
 
 <body>
     {{ $scripts ?? '' }}
-
-    @role('مدير الإدراج')
-        <x-side-bar />
-    @endrole
-    @role('موظف الادراج الطبي')
-        <x-mdical-side-bar />
-    @endrole
-    @role('موظف الادراج العام')
-        <x-entry-side-bar />
-    @endrole
-    @role('مدير عام')
-        <x-employe-side-bar />
-    @endrole
-
-    @role('موظف الكفالات')
-        <x-orphan-side-bar />
-    @endrole
-
-    @role('موظف السويشال')
-        <x-orphan-side-bar />
-    @endrole
-
-    @if (!Auth::guest())
-        <x-guest-side-bar />
-    @endif
-
-
     @auth
+        @role('مدير الإدراج')
+            <x-side-bar />
+        @endrole
+        @role('موظف الادراج الطبي')
+            <x-mdical-side-bar />
+        @endrole
+        @role('موظف الادراج العام')
+            <x-entry-side-bar />
+        @endrole
+        @role('مدير عام')
+            <x-employe-side-bar />
+        @endrole
+
+        @role('موظف الكفالات')
+            <x-orphan-side-bar />
+        @endrole
+
+        @role('موظف السويشال')
+            <x-orphan-side-bar />
+        @endrole
+
         <x-navbar />
     @endauth
+
+
+    {{-- @if (!Auth::guest())
+        <x-guest-side-bar />
+    @endif --}}
+
+
+
 
 
 

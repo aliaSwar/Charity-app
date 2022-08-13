@@ -5,7 +5,7 @@
             <div class="container ">
                 <div class="card mb-0">
                     <div class="row g-0">
-                        <div class="d-grid gap-md-5 col-lg-2 mx-auto">
+                        <div class="d-grid gap-md-0 col-lg-2 mx-auto">
                             <div class="d-flex flex-row">
                                 @if ($person->category == 'الابن')
                                     <img src={{ asset('assets/img/image/boy.jpg') }} class="rounded-circle " />
@@ -17,7 +17,9 @@
                                     <img src={{ asset('assets/img/image/father.png') }} class="rounded-circle " />
                                 @endif
                             </div>
-                            <p class="card-text">{{ $person->full_name }}</p>
+                            <p>...{{ $person->full_name }}...</p>
+
+                            
                         </div>
                     </div>
                 </div>

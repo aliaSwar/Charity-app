@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sponsor;
 use App\Http\Requests\StoreSponsorRequest;
 use App\Http\Requests\UpdateSponsorRequest;
+use App\Models\Orphan;
 use App\Models\User;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\SponsorPublished;
@@ -69,7 +70,7 @@ class SponsorController extends BaseController
 
         return view('Sponsor.show', [
             'sponsor' => $sponsor,
-            'orphans' => $sponsor->orphans()->paginate(8)
+            'orphans' => Orphan::where('sponsor_id',$sponsor->id)->paginate(8)
         ]);
     }
 

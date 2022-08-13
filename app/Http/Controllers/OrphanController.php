@@ -99,8 +99,15 @@ class OrphanController extends BaseController
      */
     public function show(Orphan $orphan)
     {
+        foreach (Orphan::where('sponsor_id', $orphan->sponsor_id)->where('salary_month', $orphan->salary_month)->get() as $person) {
+            $people[] = Person::findOrFail($person->person_id);
+            $sponsor = Sponsor::findOrFail($person->sponsor_id);
+        }
+        /* return $people; */
         return view('Orphan.show', [
-            'orphan' => $orphan
+            'orphan' => $orphan,
+            'people' => $people,
+            'sponsor' => $sponsor,
         ]);
     }
 

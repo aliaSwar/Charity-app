@@ -54,7 +54,9 @@
                                         </div>
                                     </div>
                                     <span class="fw-semibold d-block mb-1">المدرجين</span>
-                                    <h3 class="card-title mb-2">{{ $count_entry }}</h3>
+                                    <h3 class="card-title mb-2"> @isset($count_entry)
+                                            {{ $count_entry }}
+                                        @endisset </h3>
 
                                 </div>
                             </div>
@@ -79,7 +81,11 @@
                                         </div>
                                     </div>
                                     <span>المدرجين طبياً</span>
-                                    <h3 class="card-title text-nowrap mb-1">{{ $count_mdical }}</h3>
+                                    <h3 class="card-title text-nowrap mb-1">
+                                        @isset($count_mdical)
+                                            {{ $count_mdical }}
+                                        @endisset
+                                    </h3>
 
                                 </div>
                             </div>
@@ -162,7 +168,11 @@
                                         </div>
                                     </div>
                                     <span class="d-block mb-1">قيد الانتظار</span>
-                                    <h3 class="card-title text-nowrap mb-2">{{ $waiter }}</h3>
+                                    <h3 class="card-title text-nowrap mb-2">
+                                        @isset($waiter)
+                                            {{ $waiter }}
+                                        @endisset
+                                    </h3>
 
                                 </div>
                             </div>
@@ -183,7 +193,11 @@
                                         </div>
                                     </div>
                                     <span class="d-block mb-1">المرفوضين</span>
-                                    <h3 class="card-title mb-2">{{ $injecter }}</h3>
+                                    <h3 class="card-title mb-2">
+                                        @isset($injecter)
+                                            {{ $injecter }}
+                                        @endisset
+                                    </h3>
 
                                 </div>
                             </div>

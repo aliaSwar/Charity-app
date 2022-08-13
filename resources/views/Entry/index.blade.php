@@ -11,7 +11,11 @@
 
 
             <!--/ Basic Bootstrap Table -->
-
+            @if (session()->has('delete'))
+                <div class="alert alert-danger">
+                    <p>{{ session()->get('delete') }}</p>
+                </div>
+            @endif
             <hr class="my-5" />
 
 

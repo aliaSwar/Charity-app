@@ -89,6 +89,9 @@ Route::controller(PersonController::class)->group(function () {
     Route::get('person-create/{entry}', [PersonController::class, 'create'])->name('person.create');
     Route::post('person/{entry}', [PersonController::class, 'store'])->name('person.store');
     Route::get('person/{person}', [PersonController::class, 'show'])->name('person.show');
+    Route::post('person/{person}', [PersonController::class, 'update'])->name('person.update');
+    Route::get('person/{person}/edit', [PersonController::class, 'edit'])->name('person.edit');
+    Route::delete('person/{person}', [PersonController::class, 'destroy'])->name('person.destory');
 });
 //قسم النواقص
 Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');

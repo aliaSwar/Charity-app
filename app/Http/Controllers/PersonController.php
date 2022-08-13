@@ -6,8 +6,10 @@ use App\Models\Person;
 use App\Http\Requests\StorePersonRequest;
 use App\Http\Requests\UpdatePersonRequest;
 use App\Models\Entry;
+use App\Models\Orphan;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\View\View as ViewView;
@@ -102,7 +104,6 @@ class PersonController extends BaseController
      */
     public function update(UpdatePersonRequest $request, Person $person)
     {
-        //
     }
 
     /**
@@ -113,5 +114,13 @@ class PersonController extends BaseController
      */
     public function destroy(Person $person)
     {
+        $entry = Entry::findOrFail($person->entry_id);
+        $entry->decrement('family_num');
+        if ($person->orphan and $person->category == 'الأم') {
+            DB::table('orphans')->where('person_id', $person->id)->delete();
+            ////do orphan and person
+        }
+        $person->delete();
+        return redirect()->route('entries.index')->with(['delete' => 'تم حذف احد افراد العائلة']);
     }
 }

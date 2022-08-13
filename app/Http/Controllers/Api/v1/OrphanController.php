@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Orphan;
+use App\Models\Person;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,9 +55,19 @@ class OrphanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($orphan)
+    public function show($id)
     {
-        return Orphan::findOrFail($orphan);
+        $orphan = Orphan::findOrFail($id);
+
+        foreach (Orphan::where('sponsor_id', $orphan->sponsor_id)->where('salary_month', $orphan->salary_month)->get() as $person) {
+            $people[] = Person::findOrFail($person->person_id);
+            $sponsor = Sponsor::findOrFail($person->sponsor_id);
+        }
+        return [
+            $orphan,
+            $people,
+            $sponsor
+        ];
     }
 
     /**

@@ -70,7 +70,7 @@ class SponsorController extends BaseController
 
         return view('Sponsor.show', [
             'sponsor' => $sponsor,
-            'orphans' => Orphan::where('sponsor_id',$sponsor->id)->paginate(8)
+            'orphans' => Orphan::where('sponsor_id', $sponsor->id)->paginate(8)
         ]);
     }
 
@@ -94,7 +94,7 @@ class SponsorController extends BaseController
      */
     public function update(UpdateSponsorRequest $request, Sponsor $sponsor)
     {
-        $pass = 'aid-update' . '-' . $this->phone;
+        $pass = 'aid-update' . '-' . $request->phone;
         $user = User::findOrFail($sponsor->user_id);
         $request->authenticate($user, $pass);
 

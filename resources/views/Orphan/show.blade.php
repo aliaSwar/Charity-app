@@ -77,7 +77,7 @@
                             <th class="table-success "> المكفول</th>
                             <th class="table-success "> اسم المكفول</th>
                             <th class="table-success "> عائلة المكفول</th>
-                            <th class="table-success "> عائلة المكفول</th>
+                            <th class="table-success "> الأم مكفولة</th>
                         </tr>
                     </thead>
                     <tbody id="myTable">

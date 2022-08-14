@@ -83,8 +83,10 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the commands for the application.
-     *
+     * Register the commands for the application.R TUI[]
+     * 789
+     +
+     C*
      * @return void
      */
     protected function commands()

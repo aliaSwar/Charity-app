@@ -14,6 +14,6 @@ class AidSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

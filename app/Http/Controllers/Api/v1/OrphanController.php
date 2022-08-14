@@ -61,12 +61,11 @@ class OrphanController extends Controller
 
         foreach (Orphan::where('sponsor_id', $orphan->sponsor_id)->where('salary_month', $orphan->salary_month)->get() as $person) {
             $people[] = Person::findOrFail($person->person_id);
-            $sponsor = Sponsor::findOrFail($person->sponsor_id);
         }
         return [
             $orphan,
             $people,
-            $sponsor
+
         ];
     }
 

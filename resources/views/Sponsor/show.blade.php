@@ -38,6 +38,9 @@
                                     </a>
                                 </form>
                             @endif
+                            <a href="{{ route('paids.maly', $sponsor) }}" class="btn btn-primary me-1">
+                                السجل المالي
+                            </a>
                             </p>
                         </div>
                     </div>

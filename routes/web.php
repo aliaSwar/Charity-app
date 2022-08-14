@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\ExcelController;
@@ -97,8 +98,8 @@ Route::controller(PersonController::class)->group(function () {
 //قسم النواقص
 Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');
 
-
-
+///قسم الاعانات
+Route::resource('aids', AidController::class);
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
@@ -120,6 +121,7 @@ Route::controller(PaidController::class)->group(function () {
     Route::get('paids/create/{sponsor}', [PaidController::class, 'create'])->name('paids.create');
     Route::post('paids/{sponsor}', [PaidController::class, 'store'])->name('paids.store');
     Route::get('paids/{paid}', [PaidController::class, 'show'])->name('paids.show');
+    Route::get('paids/maly/{sponsor}', [PaidController::class, 'maly'])->name('paids.maly');
 });
 
 //////////////////////////////////start section role and permission///////////////////

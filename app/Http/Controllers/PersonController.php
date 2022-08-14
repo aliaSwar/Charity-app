@@ -118,7 +118,10 @@ class PersonController extends BaseController
         $entry->decrement('family_num');
         if ($person->orphan and $person->category == 'الأم') {
             DB::table('orphans')->where('person_id', $person->id)->delete();
-            ////do orphan and person
+            $people = DB::table('people')->where('entry_id', $person->entry_id)->where('orphan', true)->get();
+            foreach ($people as $per) {
+                ///where in
+            }
         }
         $person->delete();
         return redirect()->route('entries.index')->with(['delete' => 'تم حذف احد افراد العائلة']);

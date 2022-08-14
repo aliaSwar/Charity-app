@@ -40,6 +40,7 @@ class OrphanController extends BaseController
     {
         $mothers = array();
         $people = Person::whereIn('id', $request->people)->get();
+
         foreach ($people as $person) {
             $entry = $person->entry_id;
             $mothers[] = Person::where('category', 'الأم')
@@ -68,6 +69,7 @@ class OrphanController extends BaseController
 
         foreach ($request->people as  $person) {
             if (Person::where('id',  $person)->where('category', 'الأم')->get()) {
+                dd(Person::where('id',  $person)->where('category', 'الأم')->get());
                 $mother_is_ok = true;
             } else  $mother_is_ok = false;
             Orphan::create([
@@ -145,6 +147,7 @@ class OrphanController extends BaseController
     public function destroy(Orphan $orphan)
     {
         $orphan->delete();
+
         return redirect()->route('categories.index');
     }
 

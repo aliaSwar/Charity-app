@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/index', function () {
 
 
+    return   DB::table('orphans')->where('type_id', DB::table('types')->where('type', 'سنوية')->first()->id)->where('begin_date', date('y-m-d'))->get();
 
     $count_entry = Cache::remember('entries', 60 + 60 + 24, function () {
         return Entry::count();

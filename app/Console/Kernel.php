@@ -3,12 +3,17 @@
 namespace App\Console;
 
 use App\Models\Entry;
+use App\Models\Orphan;
 use App\Models\Person;
+use App\Models\Sponsor;
+use App\Models\Type;
+use App\Notifications\PaidPublished;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class Kernel extends ConsoleKernel
 {
@@ -61,6 +66,7 @@ class Kernel extends ConsoleKernel
     }
     protected function schedule(Schedule $schedule)
     {
+        //TODO::send every year for indrement education
         $people = Person::all();
         $schedule->call(function () use ($people) {
             foreach ($people as $person) {
@@ -69,6 +75,7 @@ class Kernel extends ConsoleKernel
                 }
             }
         })->yearly();
+        //TODO::convert statuses
         $schedule->call(function () {
             $query = Entry::whereDate('finshed_date', date('y-m-d'))->get();
             foreach ($query as $q) {
@@ -78,15 +85,40 @@ class Kernel extends ConsoleKernel
                     $q->save();
                 }
             }
-        })->everyMinute();
-        // $schedule->command('inspire')->hourly();
+        })->daily();
+
+        //TODO::send Notification To Sponsor for paids every year
+
+
+        $schedule->call(function () {
+            $orphans = DB::table('orphans')
+                ->where('type_id', DB::table('types')->where('type', 'سنوية')->first()->id)
+                ->where('begin_date', date('y-m-d'))->get();
+            foreach ($orphans as $orphan) {
+                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan));
+            }
+        })->yearly();
+
+
+        //TODO::send Notification To Sponsor for paids every month
+
+
+        $schedule->call(function () {
+            $orphans = DB::table('orphans')->where('type_id', function () {
+                DB::table('types')->select('id')->where('type', 'شهرية')->first();
+            })->where('begin_date', date('y-m-d'))->get();
+            foreach ($orphans as $orphan) {
+                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan));
+            }
+        })->yearly();
     }
+
+
 
     /**
      * Register the commands for the application.R TUI[]
      * 789
-     +
-     C*
+
      * @return void
      */
     protected function commands()

@@ -21,6 +21,7 @@ use App\Models\Mdical_entry;
 use App\Models\Status;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*

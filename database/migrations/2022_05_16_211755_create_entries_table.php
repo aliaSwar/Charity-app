@@ -21,7 +21,7 @@ return new class extends Migration
             $table->bigInteger('phone_num')->unsigned();
             $table->date('entry_date', 'y-m-d'); //تاريخ الادخال
             $table->date('renewal_date', 'y-m-d')->nullable(); //تاريخ التجديد
-            $table->date('finshed_date')->nullable(); //تاريخ الانتهاء
+            $table->date('finshed_date','y-m-d')->nullable(); //تاريخ الانتهاء
             $table->string('family_name');
             $table->text('address');
             $table->boolean('all_orphan')->default(false);

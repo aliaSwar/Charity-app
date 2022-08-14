@@ -2,9 +2,13 @@
 
 namespace App\Console;
 
+use App\Models\Entry;
 use App\Models\Person;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -65,13 +69,16 @@ class Kernel extends ConsoleKernel
                 }
             }
         })->yearly();
-        $schedule->call(function () use ($people) {
-            foreach ($people as $person) {
-                if ($this->check($person)) {
-                    $this->select($person);
+        $schedule->call(function () {
+            $query = Entry::whereDate('finshed_date', date('y-m-d'))->get();
+            foreach ($query as $q) {
+                if ($q->status->status === 'نشطين') {
+                    $status = DB::table('statuses')->where('status', '=', 'غير نشطين')->first();
+                    $q->status_id = $status->id;
+                    $q->save();
                 }
             }
-        })->yearly();
+        })->everyMinute();
         // $schedule->command('inspire')->hourly();
     }
 

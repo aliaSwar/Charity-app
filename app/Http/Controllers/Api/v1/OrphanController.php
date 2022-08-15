@@ -8,6 +8,7 @@ use App\Models\Person;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrphanController extends Controller
 {
@@ -59,7 +60,11 @@ class OrphanController extends Controller
     {
         $orphan = Orphan::findOrFail($id);
 
-        foreach (Orphan::where('sponsor_id', $orphan->sponsor_id)->where('salary_month', $orphan->salary_month)->get() as $person) {
+        foreach (DB::table('orphans')->where('sponsor_id', $orphan->sponsor_id)
+            ->where('salary_month', $orphan->salary_month)
+            ->where('begin_date', $orphan->begin_date)
+            ->where('is_finsh', false)
+            ->get() as $person) {
             $people[] = Person::findOrFail($person->person_id);
         }
         return $people;

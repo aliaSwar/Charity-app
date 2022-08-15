@@ -16,9 +16,10 @@ class PaidPublished extends Notification
      *
      * @return void
      */
-    public function __construct($orphan)
+    public function __construct($orphan, $sponsor)
     {
         $this->orphan = $orphan;
+        $this->sponsor = $sponsor;
     }
 
     /**
@@ -41,9 +42,8 @@ class PaidPublished extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->from('swar2000alia@gmail.com', 'جمعية إنعاش الفقير الخيرية')
+            ->view('Mail.paid', ['orphan' => $this->orphan, 'sponsor' => $this->sponsor]);
     }
 
     /**

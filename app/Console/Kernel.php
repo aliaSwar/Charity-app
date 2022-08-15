@@ -95,7 +95,8 @@ class Kernel extends ConsoleKernel
                 ->where('type_id', DB::table('types')->where('type', 'سنوية')->first()->id)
                 ->where('begin_date', date('y-m-d'))->get();
             foreach ($orphans as $orphan) {
-                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan));
+                $sponsor = Sponsor::findOrFail($orphan->sponsor_id);
+                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan, $sponsor));
             }
         })->yearly();
 
@@ -108,9 +109,10 @@ class Kernel extends ConsoleKernel
                 DB::table('types')->select('id')->where('type', 'شهرية')->first();
             })->where('begin_date', date('y-m-d'))->get();
             foreach ($orphans as $orphan) {
-                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan));
+                $sponsor = Sponsor::findOrFail($orphan->sponsor_id);
+                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan, $sponsor));
             }
-        })->yearly();
+        })->monthly();
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\Orphan;
 use App\Models\Person;
@@ -10,12 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class OrphanController extends Controller
+class OrphanController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum');
-    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +23,7 @@ class OrphanController extends Controller
     {
 
 
-        /* return auth()->user()->sponsor; */
+        return auth()->user()->sponsor;
         return Orphan::where('sponsor_id', auth()->user()->sponsor->id)->get();
     }
 

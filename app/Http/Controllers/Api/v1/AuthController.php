@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends BaseController
+class AuthController extends Controller
 {
 
     /**
@@ -17,6 +17,7 @@ class AuthController extends BaseController
      */
     public function login(Request $request)
     {
+
         $credentials = $request->validate([
             'name'     => 'required|string',
             'password'  => 'required|string',
@@ -45,7 +46,7 @@ class AuthController extends BaseController
      */
     public function logout(Request $request)
     {
-        
+
         auth()->user()->tokens()->delete();
         return [
             'message' => 'has Logout'

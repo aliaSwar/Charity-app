@@ -69,9 +69,8 @@ class OrphanController extends BaseController
 
         foreach ($request->people as  $person) {
             if (Person::where('id',  $person)->where('category', 'الأم')->get()) {
-                dd(Person::where('id',  $person)->where('category', 'الأم')->get());
                 $mother_is_ok = true;
-            } else  $mother_is_ok = false;
+            } else  $mother_is_ok = false;  
             Orphan::create([
                 'sponsor_id'    => $sponsor->id,
                 'salary_month'  => $request->salary_month / count($request->people),

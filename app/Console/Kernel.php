@@ -7,6 +7,7 @@ use App\Models\Orphan;
 use App\Models\Person;
 use App\Models\Sponsor;
 use App\Models\Type;
+use App\Notifications\OrphanPublish;
 use App\Notifications\PaidPublished;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -93,7 +94,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $orphans = DB::table('orphans')
                 ->where('type_id', DB::table('types')->where('type', 'سنوية')->first()->id)
-                ->where('begin_date', date('y-m-d'))->get();
+                ->whereMonth('begin_date', today()->month)->whereDay('begin_date', today()->day)->get();
             foreach ($orphans as $orphan) {
                 $sponsor = Sponsor::findOrFail($orphan->sponsor_id);
                 Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan, $sponsor));
@@ -105,14 +106,41 @@ class Kernel extends ConsoleKernel
 
 
         $schedule->call(function () {
-            $orphans = DB::table('orphans')->where('type_id', function () {
-                DB::table('types')->select('id')->where('type', 'شهرية')->first();
-            })->where('begin_date', date('y-m-d'))->get();
+            $orphans = DB::table('orphans')->where('type_id', DB::table('types')->where('type', 'شهرية')->first()->id)
+                ->whereMonth('begin_date', today()->month)->whereDay('begin_date', today()->day)->get();
             foreach ($orphans as $orphan) {
                 $sponsor = Sponsor::findOrFail($orphan->sponsor_id);
                 Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new PaidPublished($orphan, $sponsor));
             }
         })->monthly();
+        //TODO::translate from orphans to entry person when finsh date orphan
+        $schedule->call(function () {
+            $orphans = Orphan::where('end_date', date('y-m-d'))
+                ->where('is_finsh', false)
+                ->get();
+            foreach ($orphans as $orphan) {
+                $sponsor = Sponsor::findOrFail($orphan->sponsor_id);
+                Notification::send(Sponsor::findOrFail($orphan->sponsor_id)->user, new OrphanPublish($orphan, $sponsor));
+                DB::table('people')->where('id', $orphan->person_id)
+                    ->where('orphan', true)
+                    ->update(['orphan' => false]);
+                $orphan->is_finsh = true;
+                $orphan->save();
+            }
+        })->daily();
+        //TODO::covert entry family to orphan
+        $schedule->call(function () {
+            foreach (Entry::all() as $entry) {
+                $count = DB::table('people')->where('entry_id', $entry->id)
+                    ->where('orphan', true)
+                    ->where('status', 'existing')
+                    ->count();
+                if ($count === $entry->family_num) {
+                    $entry->all_orphan = true;
+                    $entry->save();
+                }
+            }
+        })->daily();
     }
 
 

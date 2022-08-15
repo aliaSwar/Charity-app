@@ -22,8 +22,6 @@ class OrphanController extends BaseController
     public function index()
     {
 
-
-        return auth()->user()->sponsor;
         return Orphan::where('sponsor_id', auth()->user()->sponsor->id)->get();
     }
 

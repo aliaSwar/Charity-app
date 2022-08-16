@@ -13,6 +13,10 @@ use App\Models\Person;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use App\Exports\EntryExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class EntryController extends BaseController
 {
@@ -183,4 +187,16 @@ class EntryController extends BaseController
 
         return redirect()->route('entries.show');
     }
+    public function allentryandaid()
+    {
+        $allentry=Entry::all();
+        return view('aid.index',compact('allentry'));
+    }
+    public function export()
+    {
+        return Excel::download(new EntryExport, 'users.xlsx');
+    }
+
+
+
 }

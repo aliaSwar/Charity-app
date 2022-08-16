@@ -32,7 +32,7 @@ class Entry extends Model
      */
     public function aids()
     {
-        return $this->belongsToMany(Aid::class);
+        return $this->belongsToMany('App\Models\Aid','aid_entry')->withpivot(['date']);
     }
     /**
      * The entry that belong to  identification_papers .

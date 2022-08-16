@@ -44,7 +44,7 @@
             <!-- Layouts -->
             <li class="menu-item">
 
-                <a href="tables-basic.html" class="menu-link ">
+                <a href="{{ route('orphans.index') }}" class="menu-link ">
                     <i class="bx bx-user"></i>
 
                     <div data-i18n="Account Settings"> بيانات المكفولين</div>
@@ -53,7 +53,7 @@
 
             <li class="menu-item">
 
-                <a href="koflass.html" class="menu-link ">
+                <a href="" class="menu-link ">
                     <i class=" bx bxs-face"></i>
                     <div data-i18n="Account Settings">بيانات الكفلاء </div>
                 </a>

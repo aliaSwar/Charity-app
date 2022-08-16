@@ -15,7 +15,9 @@ class Aid extends Model
      */
     public function entries()
     {
-        return $this->belongsToMany(Entry::class);
+
+        return $this->belongsToMany('App\Models\Entry','aid_entry');
+
     }
 
     public function getRouteKeyName()

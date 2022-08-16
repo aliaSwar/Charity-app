@@ -18,6 +18,7 @@ use App\Http\Controllers\PostWebController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\entryaidsController;
 use App\Models\Entry;
 use App\Models\Mdical_entry;
 use App\Models\Status;
@@ -110,12 +111,27 @@ Route::resource('permissions', PermissionController::class);
 Route::resource('users', UserController::class);
 
 //TODO:: convert to excel file
-Route::get('excel', [ExcelController::class, 'entries']);
+Route::get('/excel', [ExcelController::class, 'entries']);
 
-
+//exort exel
+Route::get('/export', [EntryController::class, 'export']);
 
 
 
 /////////////////////////////Start section posts on app////////////////////////////
 //TODO:: add post to app
 Route::resource('posts', PostWebController::class);
+//aid_entry
+//Route::get('/pe', [entryaidsController::class, 'getaid']);
+Route::get('peee/{entry_id}', [entryaidsController::class, 'getaid'])->name('entry.aids');
+//Route::get('/peee', [EntryController::class, 'allentryandaid']);
+Route::post('/createaiid', [entryaidsController::class, 'store'])->name('create.aids');
+//Route::post('/createaiid', [entryaidsController::class, 'store'])->name('creatspecific.aids');
+
+//Route::post('/createaiiid', [entryaidsController::class, 'getentryforaid'])->name('create.aids');
+
+//Route::post('/createaiiid', [entryaidsController::class, 'getentryforaid'])->name('specific.aids');
+//Route::get('/createaiiiid', [entryaidsController::class, 'getentryforaiddd'])->name('specificentry.aids');
+
+//اضافة اعانة للمدرجين
+Route::get('/createaid', [entryaidsController::class, 'create']);

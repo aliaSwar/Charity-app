@@ -3,11 +3,13 @@
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MdicalEntryController;
 use App\Http\Controllers\OrphanController;
 use App\Http\Controllers\PaidController;
@@ -36,36 +38,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/index', function () {
 
 
+//TODO::index page
+Route::get('/index', [IndexController::class, 'index'])->name('index');
 
-    $count_entry = Cache::remember('entries', 60 + 60 + 24, function () {
-        return Entry::count();
-    });
-    $count_mdical =  Cache::remember('mdicals', 60 + 60 + 24, function () {
-        return Mdical_entry::count();
-    });
-    if (is_null(Status::where('status', 'قيد الانتظار')) or Status::where('status', 'مرفوضين')) {
-        return view('index', [
-            'count_entry'  =>  $count_entry,
-            'count_mdical' => $count_mdical,
-        ]);
-    }
-    $waiter = Status::where('status', 'قيد الانتظار')->first()->entries()->count();
 
-    $injecter = Status::where('status', 'مرفوضين')->first()->entries()->count();
-    return view('index', [
-        'count_entry'  =>  $count_entry,
-        'count_mdical' => $count_mdical,
-        'waiter'       => $waiter,
-        'injecter'     =>  $injecter
-    ]);
-})->name('index');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 ///////////////////////////////Start section entries/////////////////////////
@@ -98,8 +76,8 @@ Route::controller(PersonController::class)->group(function () {
 //قسم النواقص
 Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');
 
-
-
+///قسم الاعانات
+Route::resource('aids', AidController::class);
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
@@ -121,6 +99,7 @@ Route::controller(PaidController::class)->group(function () {
     Route::get('paids/create/{sponsor}', [PaidController::class, 'create'])->name('paids.create');
     Route::post('paids/{sponsor}', [PaidController::class, 'store'])->name('paids.store');
     Route::get('paids/{paid}', [PaidController::class, 'show'])->name('paids.show');
+    Route::get('paids/maly/{sponsor}', [PaidController::class, 'maly'])->name('paids.maly');
 });
 
 //////////////////////////////////start section role and permission///////////////////

@@ -15,29 +15,34 @@
                                 جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية لديها كفالات بمدة
                                 {{ $sponsor->user->name }}
                             </p>
-                            @if (Auth::user()->hasRole('موظف الكفالات'))
-                                <p class="demo-inline-spacing">
-                                <form method="post" action="{{ route('sponsors.destroy', $sponsor) }}">
-                                    @method('delete')
-                                    @csrf
+                            {{-- @if (Auth::user()->hasRole('موظف الكفالات')) --}}
+                            <p class="demo-inline-spacing">
+                            <form method="post" action="{{ route('sponsors.destroy', $sponsor) }}">
+                                @method('delete')
+                                @csrf
 
-                                    <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                <button type="submit" class="btn btn-info me-1">حذف</button>
 
-                                    <a href="{{ route('sponsors.edit', $sponsor) }}" class="btn btn-primary me-1">
+                                <a href="{{ route('sponsors.edit', $sponsor) }}" class="btn btn-info me-1">
 
-                                        تعديل
+                                    تعديل
 
-                                    </a>
-                                    <a href="{{ route('filter.create', $sponsor) }}" class="btn btn-primary me-1">
+                                </a>
+                                <a href="{{ route('filter.create', $sponsor) }}" class="btn btn-info me-1">
 
-                                        انشاء كفالة
+                                    انشاء كفالة
 
-                                    </a>
-                                    <a href="{{ route('paids.create', $sponsor) }}" class="btn btn-primary me-1">
-                                        انشاء دفعة
-                                    </a>
-                                </form>
-                            @endif
+                                </a>
+                                <a href="{{ route('paids.create', $sponsor) }}" class="btn btn-info me-1">
+                                    انشاء دفعة
+                                </a>
+                                {{-- @endif --}}
+                                <a href="{{ route('paids.maly', $sponsor) }}" class="btn btn-info me-1">
+                                    السجل المالي
+                                </a>
+                            </form>
+
+
                             </p>
                         </div>
                     </div>

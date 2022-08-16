@@ -27,7 +27,7 @@ class OrphanController extends BaseController
     {
 
         return view('Orphan.index', [
-            'orphans' => Orphan::paginate(7)
+            'orphans' => Orphan::orderBy('is_finsh')->paginate(5)
         ]);
     }
 
@@ -40,6 +40,7 @@ class OrphanController extends BaseController
     {
         $mothers = array();
         $people = Person::whereIn('id', $request->people)->get();
+
         foreach ($people as $person) {
             $entry = $person->entry_id;
             $mothers[] = Person::where('category', 'الأم')
@@ -145,6 +146,7 @@ class OrphanController extends BaseController
     public function destroy(Orphan $orphan)
     {
         $orphan->delete();
+
         return redirect()->route('categories.index');
     }
 

@@ -102,4 +102,16 @@ class PaidController extends BaseController
         $paid->deleteOrFail();
         return redirect()->route('paids.index')->with(['data' => 'تم حذف الدفعة بنجاح']);
     }
+    /**
+     * السجل المالي
+     */
+    public function maly(Sponsor $sponsor)
+    {
+        return view('Paid.maly', [
+            'paids' =>
+            Paid::where('sponsor_id', '=', $sponsor->id)
+                ->paginate(5),
+            'sponsor' => $sponsor
+        ]);
+    }
 }

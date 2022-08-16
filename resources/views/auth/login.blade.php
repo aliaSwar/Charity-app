@@ -72,7 +72,7 @@
                         <p class="mb-4">هيا لنبدأ يا صديقي .</p>
 
                         <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
-                            @csrf
+                            {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="name" class="form-label">اسم المستخدم</label>
                                 <input type="text" name="name"

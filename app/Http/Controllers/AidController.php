@@ -26,7 +26,7 @@ class AidController extends BaseController
      */
     public function create()
     {
-        //
+        return view('Aid.create');
     }
 
     /**

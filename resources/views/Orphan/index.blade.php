@@ -20,6 +20,7 @@
                         <tr>
                             <th class="table-success "> الكفالة</th>
                             <th class="table-success "> رقم الكفيل</th>
+                            <th class="table-success "> صلاحية الكفالة</th>
                             <th class="table-success "> تفاصيل</th>
 
                         </tr>
@@ -35,6 +36,9 @@
                                         style="text-decoration: none;">
                                         {{ $orphan->sponsor_id }}
                                     </a>
+                                </td>
+                                <td>
+                                    {{ $orphan->is_finsh ? 'انتهت مدة الكفالة وأصبحت ملغية' : 'مازالت قائمة' }}
                                 </td>
                                 <td>
                                     <div class="dropdown">

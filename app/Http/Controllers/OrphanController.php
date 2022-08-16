@@ -25,7 +25,7 @@ class OrphanController extends BaseController
      */
     public function index()
     {
-
+d
         return view('Orphan.index', [
             'orphans' => Orphan::orderBy('is_finsh')->paginate(5)
         ]);

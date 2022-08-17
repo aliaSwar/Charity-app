@@ -89,7 +89,7 @@ Route::controller(OrphanController::class)->group(function () {
     Route::post('orphan/{sponsor}', [OrphanController::class, 'store'])->name('orphans.store');
     Route::get('orphans', [OrphanController::class, 'index'])->name('orphans.index');
     Route::get('orphans/{orphan}', [OrphanController::class, 'show'])->name('orphans.show');
-    Route::post('orphans/{orphan}', [OrphanController::class, 'update'])->name('orphans.edit');
+    Route::get('orphans/{orphan}/edit', [OrphanController::class, 'edit'])->name('orphans.edit');
     Route::delete('orphans/{orphan}', [OrphanController::class, 'destroy'])->name('orphans.destroy');
 });
 //TODO:: Add paid to sponsor
@@ -117,10 +117,20 @@ Route::get('/export', [EntryController::class, 'export']);
 
 
 /////////////////////////////Start section posts on app////////////////////////////
+
 //TODO:: add post to app
 Route::resource('posts', PostWebController::class);
-//aid_entry
-//Route::get('/pe', [entryaidsController::class, 'getaid']);
+
+//////////////////////////End Section Posts on app/////////////////////////////////
+
+
+///////////////////////////// AID Section ///////////////////////////////////////
+Route::resource('aids', AidController::class);
+
+//TODO::توزيع إعلانة على المدرجين
+Route::resource('deployes', entryaidsController::class);
+Route::get('/create', [entryaidsController::class, 'create']);
+Route::post('/store', [entryaidsController::class, 'store'])->name('store');
 Route::get('peee/{entry_id}', [entryaidsController::class, 'getaid'])->name('entry.aids');
 //Route::get('/peee', [EntryController::class, 'allentryandaid']);
 Route::post('/createaiid', [entryaidsController::class, 'store'])->name('create.aids');

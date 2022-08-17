@@ -63,13 +63,13 @@
                                     @enderror
                                 </div>
 
-                                <div class="row mt-3">
-                                    <div class=" row-cols-md-6 mx-auto">
-                                        <button class="btn  btn-lg " type="submit"
-                                            style="background: #1ABC9C !important">تم</button>
+                                    <div class="row mt-3">
+                                        <div class=" row-cols-md-6 mx-auto">
+                                            <button class="btn  btn-lg " type="submit"
+                                                style="background: #1ABC9C !important">تم</button>
+                                        </div>
                                     </div>
-                                </div>
-                        </form>
+                            </form>
                     </div>
                 </div>
             </div>

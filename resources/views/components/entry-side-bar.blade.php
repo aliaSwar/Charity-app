@@ -116,6 +116,29 @@
 
                 </ul>
             </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons  bx bx-heart"></i>
+                    <div data-i18n="Authentications">الإعانات</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('aids.create') }}" class="menu-link">
+                            <div data-i18n="Basic">اضافة الإعانات</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('aids.index') }}" class="menu-link">
+                            <div data-i18n="Basic">عرض الإعانات</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('aids.index') }}" class="menu-link">
+                            <div data-i18n="Basic">توزيع الإعانات </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">

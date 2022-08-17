@@ -120,6 +120,7 @@ class OrphanController extends BaseController
      */
     public function edit(Orphan $orphan)
     {
+
         return view('Orphan.edit', [
             'orphan' => $orphan
         ]);

@@ -6,6 +6,7 @@ use App\Models\Aid;
 use App\Http\Requests\StoreAidRequest;
 use App\Http\Requests\UpdateAidRequest;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 
 class AidController extends BaseController
 {
@@ -16,7 +17,7 @@ class AidController extends BaseController
      */
     public function index()
     {
-        return view();
+        return view('aid.index', ['aids' => Aid::paginate(5)]);
     }
 
     /**
@@ -26,7 +27,7 @@ class AidController extends BaseController
      */
     public function create()
     {
-        return view('Aid.create');
+        return view('aid.create');
     }
 
     /**
@@ -37,7 +38,20 @@ class AidController extends BaseController
      */
     public function store(StoreAidRequest $request)
     {
-        //
+
+        $aid = new Aid();
+
+        $aid->name = $request->name;
+        $aid->slug = Str::slug($request->name, '-');
+        if ($request->has('image')) {
+            $image = $request->image;
+            $path = $image->store('helper-image', 'public');
+            $aid->image = $path;
+        }
+        $aid->notes = $request->notes;
+        $aid->saveOrFail();
+
+        return redirect()->route('aids.index');
     }
 
     /**
@@ -48,7 +62,7 @@ class AidController extends BaseController
      */
     public function show(Aid $aid)
     {
-        //
+        return view('aid.show', ['aid' => $aid]);
     }
 
     /**

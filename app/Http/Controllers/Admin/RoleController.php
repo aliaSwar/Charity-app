@@ -51,7 +51,7 @@ class RoleController extends Controller
         $role->description  =  $request->description; // optional
         $role->save();
 
-        return  redirect()->route('roles.show', $role);
+        return  redirect()->route('roles.index');
     }
 
     /**
@@ -62,7 +62,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return view('Role.show', $role);
+        return view('Role.show', ['role' => $role]);
     }
 
     /**

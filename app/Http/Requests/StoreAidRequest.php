@@ -13,7 +13,7 @@ class StoreAidRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreAidRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image'                    => ['file', 'image', 'nullable'],
+            'name'                     => ['required', 'min:3', 'max:255'],
+            'notes'                    => ['required', 'string', 'nullable']
         ];
     }
 }

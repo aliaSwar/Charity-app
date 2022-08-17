@@ -53,24 +53,17 @@
 
             <li class="menu-item">
 
-                <a href="" class="menu-link ">
+                <a href="{{ route('sponsors.index') }}" class="menu-link ">
                     <i class=" bx bxs-face"></i>
                     <div data-i18n="Account Settings">بيانات الكفلاء </div>
                 </a>
             </li>
 
 
-            <li class="menu-item">
-
-                <a href="add kafallah.html" class="menu-link ">
-                    <i class=" bx bxs-shopping-bag"></i>
-                    <div data-i18n="Account Settings">إضافة كفالة</div>
-                </a>
-            </li>
 
             <li class="menu-item">
 
-                <a href="add-Kafeel.html" class="menu-link ">
+                <a href="{{ route('sponsors.create') }}" class="menu-link ">
                     <i class="  bx bxs-user-plus"></i>
                     <div data-i18n="Account Settings">إضافة كفيل</div>
                 </a>
@@ -79,7 +72,7 @@
 
             <li class="menu-item">
 
-                <a href="javascript:void(0);" class="menu-link ">
+                <a href="{{ route('paids.index') }}" class="menu-link ">
                     <i class="    bx bxs-food-menu"></i>
                     <div data-i18n="Account Settings">عرض التقارير المالية</div>
                 </a>
@@ -91,22 +84,24 @@
 
             <!-- Cards -->
             <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <a href="{{ route('users.show', Auth::id()) }}" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
                     <div data-i18n="Layouts">إعدادات الحساب</div>
                 </a>
 
                 <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="auth-forgot-password-basic.html" class="menu-link">
-                            <div data-i18n="Without menu">تغيير كلمة السر </div>
-                        </a>
 
-                    </li>
                     <li class="menu-item">
-                        <a href="layouts-without-navbar.html" class="menu-link">
-                            <div data-i18n="Without menu">تسجيل الخروج </div>
-                        </a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+
+
+                            <i class="bx bx-power-off me-2"></i>
+                            <span class="align-middle">
+                                <input type="submit" style="border:none;background:none;padding: 0"
+                                    value="تسجيل خروج"></span>
+
+                        </form>
                     </li>
                 </ul>
             </li>

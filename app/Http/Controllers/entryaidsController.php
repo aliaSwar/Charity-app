@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Entry;
 use App\Models\Aid;
 use App\Models\entryaid;
@@ -15,7 +16,6 @@ class entryaidsController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,12 +24,11 @@ class entryaidsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { $allentry=Entry::all();
-       // return view('aid.index',compact('allentry'));
+    {
+        $allentry = Entry::all();
+        $aids = Aid::all();
 
-        $aids=Aid::all();
-       // return $aiids;
-           return view('aid.create',compact('aids','allentry'));
+        return view('giving.create', compact('aids', 'allentry'));
     }
 
     /**
@@ -42,18 +41,16 @@ class entryaidsController extends Controller
     {
         /* dd($request->all()); */
         if ($request->has('selectAll')) {
-            $entries=Entry::select('id')->get();
-       foreach ($entries as $entry){
-        $entry ->aids()->attach($request->aid_id,['date'=>$request->aid_date]);
-
-        }} else {
-       $aid=Aid::find($request->aid_id);
-       $aid->entries()->attach($request->entryid,['date'=>$request->aid_date]);
+            $entries = Entry::select('id')->get();
+            foreach ($entries as $entry) {
+                $entry->aids()->attach($request->aid_id, ['date' => $request->aid_date]);
+            }
+        } else {
+            $aid = Aid::find($request->aid_id);
+            $aid->entries()->attach($request->entryid, ['date' => $request->aid_date]);
         }
-        $allentry=Entry::all();
-        return view('aid.index',compact('allentry'));
-
-
+        $allentry = Entry::all();
+        return view('giving.index', compact('allentry'));
     }
 
 
@@ -108,49 +105,46 @@ class entryaidsController extends Controller
 
     public function getaid($entryid)
     {
-      //  print($entryid);
-         $entry=Entry::find($entryid);
+        //  print($entryid);
+        $entry = Entry::find($entryid);
 
-      // $aids=entryaid::all()->where('entry_id', $entryid);
+        // $aids=entryaid::all()->where('entry_id', $entryid);
 
 
-           $aids=$entry ->aids;
-           //return  $a;
-          return view('aid.show',compact('aids'));
-
+        $aids = $entry->aids;
+        //return  $a;
+        return view('giving.show', compact('aids'));
     }
 
     public function getentryforaid(Request $request)
     {
-       // $allentry=Entry::all();
+        // $allentry=Entry::all();
         //return view('aid.index',compact('allentry'));
         // return $request->aid_id;
-       // print($request->aid_id);
+        // print($request->aid_id);
         print(1);
 
 
 
-          //  return view('aid.index',compact('request','allentry'));
+        //  return view('aid.index',compact('request','allentry'));
 
-       // $entry=Entry::find(2);
-      //  $entry ->aids()->attach($request->aid_id);
+        // $entry=Entry::find(2);
+        //  $entry ->aids()->attach($request->aid_id);
         // $aid=Aid::find(1);
-          //return  $aid ->entries;
+        //return  $aid ->entries;
     }
 
-    public function getentryforaiddd($id,$request)
+    public function getentryforaiddd($id, $request)
     {
 
-          //  return view('aid.show',compact('request'));
+        //  return view('aid.show',compact('request'));
 
-        $entry=Entry::find($id);
-        $entry ->aids()->attach($request->aid_id,['date'=>$request->aid_date]);
+        $entry = Entry::find($id);
+        $entry->aids()->attach($request->aid_id, ['date' => $request->aid_date]);
 
 
 
         // $aid=Aid::find(1);
-          //return  $aid ->entries;
+        //return  $aid ->entries;
     }
-
-
 }

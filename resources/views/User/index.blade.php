@@ -36,8 +36,8 @@
                                             </button>
                                             @foreach ($user->roles as $role)
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ route('roles.show', $role) }}"><i
-                                                            class=" bx bx-radio-circle-marked"></i> رؤية الصلاحيات</a>
+                                                    <a class="dropdown-item" href="{{ route('roles.index') }}"><i
+                                                            class=" bx bx-radio-circle-marked"></i>رؤية المناصب</a>
 
                                                 </div>
                                             @endforeach

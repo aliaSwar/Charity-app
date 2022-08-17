@@ -51,13 +51,7 @@
                                                     class="  bx bx-abacus"></i> التفاصيل</a>
                                             @if (Auth::user()->hasRole('موظف الكفالات'))
                                                 <a class="dropdown-item" href="{{ route('orphans.edit', $orphan) }}"><i
-                                                        class="  bx bx-adjust"></i> تعديل</a>
-                                                <form method="post" action="{{ route('orphans.destroy', $orphan) }}">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button type="submit" class="dropdown-item"><i
-                                                            class=" bx bx-x-circle"></i>حذف</button>
-                                                </form>
+                                                        class="  bx bx-adjust"></i> تجديد</a>
                                             @endif
                                         </div>
                                     </div>

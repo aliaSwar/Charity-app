@@ -47,16 +47,7 @@
                                             <a href="{{ route('paids.show', $paid) }}"class="dropdown-item"><i
                                                     class="  bx bx-adjust"></i>
                                                 التفاصيل</a>
-                                            <a href="{{ route('paids.edit', $paid) }}"class="dropdown-item"><i
-                                                    class="bx bx-pencil"></i>
-                                                تعديل</a>
 
-                                            <form method="post" action="{{ route('paids.destroy', $paid) }}">
-                                                @method('delete')
-                                                @csrf
-                                                <button type="submit" class="dropdown-item"><i
-                                                        class=" bx bx-x-circle"></i>حذف</button>
-                                            </form>
 
                                         </div>
                                     </div>

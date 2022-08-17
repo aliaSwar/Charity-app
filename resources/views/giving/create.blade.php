@@ -4,7 +4,7 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             {{-- <hr class="my-5" /> --}}
-            <form action="{{ route('create.aids') }}" method="POST" class="row g-3 needs-validation"
+            <form action="{{ route('store') }}" method="POST" class="row g-3 needs-validation"
                 enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="col-md-4">
@@ -16,18 +16,17 @@
 
                 <div class=" col-md-3 -btn-group dropend -mt-px">
                     <label for="validationCustom04" class="form-label">نوع الاعانة</label>
-                    <select name="aid_id" class="form-select"
-                        id="validationCustom04" aria-label="Default select example">
-                        {{-- <select value="{{ old('category_id') }}"> --}}
+                    <select name="aid_id" class="form-select" id="validationCustom04"
+                        aria-label="Default select example">
+                        
                         <option selected>اختر نوع الاعانة</option>
                         @foreach ($aids as $aid)
                             <option value="{{ $aid->id }}">{{ $aid->name }}</option>
                         @endforeach
                     </select>
-                    <input class="form-check-input" type="checkbox" name="selectAll"
-                                                value="all">
-                                            <label class="form-check-label" for="selectAll"> اختيار الكل
-                                            </label>
+                    <input class="form-check-input" type="checkbox" name="selectAll" value="all">
+                    <label class="form-check-label" for="selectAll"> اختيار الكل
+                    </label>
 
                 </div>
 
@@ -49,9 +48,10 @@
                                 <tr>
                                     <td>{{ $entry->id }}</td>
                                     <td>{{ $entry->family_name }}</td>
-                                    <td><a href="{{route('entry.aids',$entry -> id)}}" class="btn btn-success">عرض الاعانات </a>
-                                        <input class="form-check-input" type="checkbox"
-                                        name="entryid[]" value="{{ $entry->id }}">
+                                    <td><a href="{{ route('entry.aids', $entry->id) }}" class="btn btn-success">عرض
+                                            الاعانات </a>
+                                        <input class="form-check-input" type="checkbox" name="entryid[]"
+                                            value="{{ $entry->id }}">
                                     </td>
                                 </tr>
                             @endforeach
@@ -62,17 +62,17 @@
 
 
 
-                 <hr class="my-5" />
+                <hr class="my-5" />
 
                 <div class="col-md-12">
 
-                  <button class="btn btn-primary" type="submit"> تأكيد </button>
+                    <button class="btn btn-primary" type="submit"> تأكيد </button>
 
                 </div>
 
 
 
-              <hr class="my-5" />
+                <hr class="my-5" />
 
             </form>
 

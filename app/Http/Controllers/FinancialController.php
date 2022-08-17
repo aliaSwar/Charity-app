@@ -63,7 +63,7 @@ class FinancialController extends Controller
      */
     public function edit(Financial $financial)
     {
-        return view('Financial.edit', $financial);
+        return view('Financial.edit', ['financial' => $financial]);
     }
 
     /**

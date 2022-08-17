@@ -11,7 +11,8 @@
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label"> تعديل حالة المدرجين </label>
                     <input name="status" type="text"
-                        class="form-control @error('status') border-light-danger @enderror">
+                        class="form-control @error('status') border-light-danger @enderror"
+                        value="{{ old('status', $status->status) }}">
                     @error('status')
                         <div>
                             <p class="help is-danger">{{ $message }}</p>
@@ -24,6 +25,8 @@
                         type="submit">تم</button>
                 </div>
             </form>
+        </div>
+    </div>
 
 
 </x-layouts.app>

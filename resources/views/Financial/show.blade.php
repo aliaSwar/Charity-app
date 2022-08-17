@@ -53,6 +53,8 @@
                             <th class="table-success ">اسم العائلة</th>
                             <th class="table-success ">رقم الاستمارة</th>
                             <th class="table-success ">رقم الهاتف</th>
+                            <th class="table-success ">النوع </th>
+                            <th class="table-success ">الحالة </th>
                             <th class="table-success ">الفئة </th>
                             <th class="table-success ">التفاصيل </th>
                         </tr>

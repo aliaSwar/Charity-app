@@ -69,7 +69,7 @@ class StatusController extends BaseController
      */
     public function edit(Status $status)
     {
-        return view('Status.edit', $status);
+        return view('Status.edit', ['status' => $status]);
     }
 
     /**
@@ -81,7 +81,7 @@ class StatusController extends BaseController
      */
     public function update(Request $request, Status $status)
     {
-        dd($status);
+
 
         $status->status = $request->status;
         $status->slug = Str::slug($request->status, '-');

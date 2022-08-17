@@ -10,10 +10,11 @@
                         <div class="card-body">
                             <p class="card-text">
                                 <br>
-                                الكفيل, {{ $sponsor->user->name }}❤️ 
+                                الكفيل, {{ $sponsor->user->name }}❤️
                             </p>
 
-                            <a class="btn btn-success" href="{{ route('sponsors.show', $sponsor) }}">عرض</a>
+                            <a class="btn btn-success" href="{{ route('sponsors.show', $sponsor) }}"
+                                style="background: #1ABC9C !important">عرض</a>
 
                         </div>
                     </div>
@@ -25,20 +26,9 @@
 
             <form class="row g-3" action="{{ route('orphans.store', $sponsor) }}" method="POST">
                 @csrf
-                <div class="col-md-5">
-                    <label for="validationServer01" class="form-label">مبلغ الشهري</label>
-                    <input type="number" name="salary_month"
-                        class="form-control is-valid @error('salary_month') is-invalid @enderror"
-                        id="validationServer01">
-                    @error('salary_month')
-                        <div>
-                            <p class="help is-danger">{{ $message }}</p>
-                        </div>
-                    @enderror
-                </div>
 
                 <div class="col-md-5">
-                    <label for="validationServer02" class="form-label">المبلغ السنوي </label>
+                    <label for="validationServer02" class="form-label">المبلغ </label>
                     <input type="number"
                         name="salary_year"class="form-control is-valid @error('salary_year') is-invalid @enderror"
                         id="validationServer02">

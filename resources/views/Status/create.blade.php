@@ -9,8 +9,8 @@
                 @csrf
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label"> ادخل حالة المدرجين </label>
-                    <input name="status" type="text" class="form-control @error('status') border-light-danger @enderror"
-                        id="validationCustom01">
+                    <input name="status" type="text"
+                        class="form-control @error('status') border-light-danger @enderror" id="validationCustom01">
                     @error('status')
                         <div>
                             <p class="help is-danger">{{ $message }}</p>
@@ -18,10 +18,9 @@
                     @enderror
 
                 </div>
-                <div class="row mt-3">
-                    <div class="d-grid gap-2 col-lg-6 mx-auto">
-                        <button class="btn btn-secondary btn-lg" type="submit">تم</button>
-                    </div>
+                <div class="row-cols-md-6">
+                    <button class="btn btn-info btn-lg" style="background: #1ABC9C !important"
+                        type="submit">تم</button>
                 </div>
             </form>
 

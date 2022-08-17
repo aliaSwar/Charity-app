@@ -15,6 +15,7 @@
                         <h5 class="card-header">{{ $status->status }}</h5>
                         <div class="card-body">
                             <p class="card-text">
+                                <br>
                                 جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية تحاول مساعدة المدرج
                                 ال{{ $status->status }}
                             </p>

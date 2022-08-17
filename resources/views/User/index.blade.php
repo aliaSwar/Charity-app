@@ -5,10 +5,10 @@
         <div class="container-xxl flex-grow-1 container-p-y">
 
 
-            <!-- Basic Bootstrap Table -->
+            <div class="d-flex flex-row">
+                <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-5 mx-auto">
 
-
-            <!--/ Basic Bootstrap Table -->
+            </div>
 
             <hr class="my-5" />
             <div class="container">
@@ -77,14 +77,7 @@
             </tbody>
             </table>
         </div>
-    </div>
-    <div class="column is-12">{{ $users->links() }}</div>
-
-    <div class="d-flex flex-row">
-        <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-5 mx-auto">
-
-    </div>
-    <div class="content-backdrop fade"></div>
+        <div class="column is-12">{{ $users->links() }}</div>
     </div>
 
     </div>
@@ -92,7 +85,8 @@
 
 
 
-    <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
+
+
+
 
 </x-layouts.app>

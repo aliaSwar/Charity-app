@@ -77,7 +77,7 @@
                             <th class="table-success "> المكفول</th>
                             <th class="table-success "> اسم المكفول</th>
                             <th class="table-success "> عائلة المكفول</th>
-                            <th class="table-success "> الأم مكفولة</th>
+
                         </tr>
                     </thead>
                     <tbody id="myTable">
@@ -93,9 +93,7 @@
                                     <a
                                         href="{{ route('entries.show', $person->entry) }}">{{ $person->entry->family_name }}</a>
                                 </td>
-                                <td>
-                                    {{ $orphan->mother_is_ok }}
-                                </td>
+
                             </tr>
                         @endforeach
                     </tbody>

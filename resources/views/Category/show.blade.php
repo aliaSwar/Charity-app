@@ -16,6 +16,7 @@
                         <h5 class="card-header">{{ $category->category }}</h5>
 
                         <div class="card-body">
+                            <br>
                             <p class="card-text">
                                 جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية تحاول مساعدة المدرج
                                 ال{{ $category->category }}

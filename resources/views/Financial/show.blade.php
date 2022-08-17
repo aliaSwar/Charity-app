@@ -15,25 +15,28 @@
                         <h5 class="card-header">{{ $financial->type }}</h5>
                         <div class="card-body">
                             <p class="card-text">
+                                <br>
                                 جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية لديها فئة
                                 ال{{ $financial->type }}
                             </p>
-                            <p class="demo-inline-spacing">
-                            <form method="post" action="{{ route('financials.destroy', $financial) }}">
-                                @method('delete')
-                                @csrf
+                            @if (Auth::user()->hasRole('مدير الإدراج'))
+                                <p class="demo-inline-spacing">
+                                <form method="post" action="{{ route('financials.destroy', $financial) }}">
+                                    @method('delete')
+                                    @csrf
 
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                    <button type="submit" class="btn btn-primary me-1">حذف</button>
 
-                                <a href="{{ route('financials.edit', $financial) }}" class="btn btn-primary me-1">
+                                    <a href="{{ route('financials.edit', $financial) }}" class="btn btn-primary me-1">
 
-                                    تعديل
+                                        تعديل
 
-                                </a>
+                                    </a>
 
-                            </form>
+                                </form>
 
-                            </p>
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -72,8 +75,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item"
-                                            href="{{ route('entries.show', $entry) }} detail"><i
+                                        <a class="dropdown-item" href="{{ route('entries.show', $entry) }} detail"><i
                                                 class="bx bx bxs-detail"></i> عرض التفاصيل</a>
                                         <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
                                                 class="bx bx-edit-alt me-1"></i> تعديل</a>

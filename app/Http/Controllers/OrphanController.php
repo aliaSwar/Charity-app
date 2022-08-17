@@ -15,6 +15,7 @@ use App\Models\Status;
 use App\Models\Type;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrphanController extends BaseController
 {
@@ -25,7 +26,7 @@ class OrphanController extends BaseController
      */
     public function index()
     {
-d
+
         return view('Orphan.index', [
             'orphans' => Orphan::orderBy('is_finsh')->paginate(5)
         ]);
@@ -68,16 +69,15 @@ d
     {
 
         foreach ($request->people as  $person) {
-            if (Person::where('id',  $person)->where('category', 'الأم')->get()) {
-                $mother_is_ok = true;
-            } else  $mother_is_ok = false;
+            $monthly = $request->salary_year / Type::findOrFail($request->type_id);
+
             Orphan::create([
                 'sponsor_id'    => $sponsor->id,
-                'salary_month'  => $request->salary_month / count($request->people),
+                'salary_month'  => $monthly / count($request->people),
                 'salary_year'   => $request->salary_year / count($request->people),
                 'begin_date'    => $request->begin_date,
                 'end_date'      => $request->end_date,
-                'mother_is_ok'  => $mother_is_ok,
+
                 'type_id'       => $request->type_id,
                 'person_id'     => $person
             ]);
@@ -145,9 +145,6 @@ d
      */
     public function destroy(Orphan $orphan)
     {
-        $orphan->delete();
-
-        return redirect()->route('categories.index');
     }
 
     /**

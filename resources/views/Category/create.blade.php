@@ -19,12 +19,14 @@
                     @enderror
 
                 </div>
-                <div class="row mt-3">
-                    <div class="d-grid gap-2 col-lg-6 mx-auto">
-                        <button class="btn btn-secondary btn-lg" type="submit">تم</button>
-                    </div>
+
+                <div class="row-cols-md-6">
+                    <button class="btn btn-lg" style="background: #1ABC9C !important" type="submit">تم</button>
                 </div>
+
             </form>
+        </div>
+    </div>
 
 
 </x-layouts.app>

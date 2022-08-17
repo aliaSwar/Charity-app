@@ -56,8 +56,7 @@ Route::resource('categories', CategoryController::class);
 Route::resource('statuses', StatusController::class);
 //TODO:: route Paper to entries
 Route::resource('papers', IdentificationPaperController::class);
-//TODO:: route person or family entries
-//Route::resource('people', PersonController::class);
+
 //TODO:: route add financial to entries
 Route::resource('financials', FinancialController::class);
 //TODO:: route add  the mdical entries
@@ -76,8 +75,7 @@ Route::controller(PersonController::class)->group(function () {
 //قسم النواقص
 Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name('papers.nawaqis');
 
-///قسم الاعانات
-Route::resource('aids', AidController::class);
+
 /////////////////////////////Start section Orphan////////////////////////////
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);

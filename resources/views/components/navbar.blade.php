@@ -54,12 +54,20 @@
                         </li>
 
                         <li>
+                            <a class="dropdown-item" href="{{ route('users.show', auth()->user()) }}">
+                                <i class="bx bx-user me-2"></i>
+                                <span class="align-middle">عرض التفاصيل</span>
+                            </a>
+                        </li>
+                        <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
 
-                                <input class="btn btn-icon accordion-button " type="submit" value="تسجيل خروج">
-
-
+                                <a class="dropdown-item" href="#">
+                                    <i class="bx bx-power-off me-2"></i>
+                                    <span class="align-middle">
+                                        <input type="submit" style="border:none;background:none;padding: 0"
+                                            value="تسجيل خروج"></span>
                                 </a>
                             </form>
                         </li>

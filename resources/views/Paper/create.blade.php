@@ -64,8 +64,9 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="d-grid gap-2 col-lg-6 mx-auto">
-                                        <button class="btn btn-secondary btn-lg" type="submit">انشاء</button>
+                                    <div class=" row-cols-md-6 mx-auto">
+                                        <button class="btn  btn-lg " type="submit"
+                                            style="background: #1ABC9C !important">تم</button>
                                     </div>
                                 </div>
                         </form>

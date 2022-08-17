@@ -14,9 +14,10 @@
                     <div class="card mb-4">
                         <h5 class="card-header">{{ $type->type }}</h5>
                         <div class="card-body">
+                            <br>
                             <p class="card-text">
-                                جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية لديها كفالات بمدة
-                                {{ $type->type }}
+                                جمعيتنا , ❤️ جمعية انعاش الفقير الخيرية لديها كفالات لمدة
+                                {{ $type->type }}وعدد أشهرها {{ $type->date }}
                             </p>
                             <p class="demo-inline-spacing">
                             <form method="post" action="{{ route('types.destroy', $type) }}">
@@ -47,18 +48,16 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th class="table-success ">اسم العائلة</th>
-                            <th class="table-success ">رقم الاستمارة</th>
-                            <th class="table-success ">رقم الهاتف</th>
-                            <th class="table-success ">الفئة </th>
+                            <th class="table-success ">رقم الكفالة</th>
+
                             <th class="table-success ">التفاصيل </th>
                         </tr>
                     </thead>
                     @foreach ($orphans as $orphan)
                         <tr>
                             <td>{{ $orphan->id }}</td>
-                            <td></td>
-                            <td></td>
+
+
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

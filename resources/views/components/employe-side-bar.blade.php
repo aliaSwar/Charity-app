@@ -74,24 +74,7 @@
 
                             </ul>
                         </li>
-                        <li class="menu-item">
-                            <a href="" class="menu-link menu-toggle">
-                                <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                                <div data-i18n="Authentications">الصلاحيات</div>
-                            </a>
-                            <ul class="menu-sub">
-                                <li class="menu-item">
-                                    <a href="{{ route('permissions.create') }}" class="menu-link">
-                                        <div data-i18n="Basic">اضافة صلاحية</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="{{ route('permissions.index') }}" class="menu-link">
-                                        <div data-i18n="Basic">عرض الصلاحيات</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
                         <li class="menu-item">
                             <a href="javascript:void(0);" class="menu-link menu-toggle">
                                 <i class="menu-icon tf-icons  bx bx-adjust"></i>
@@ -168,12 +151,12 @@
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons  bx bxs-message-rounded-check"></i>
-                        <div data-i18n="Authentications">المكفولين</div>
+                        <div data-i18n="Authentications">الكفلاء</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
                             <a href="{{ route('sponsors.index') }}" class="menu-link">
-                                <div data-i18n="Basic">عرض المكفولين</div>
+                                <div data-i18n="Basic">عرض الكفلاء</div>
                             </a>
                         </li>
                     </ul>

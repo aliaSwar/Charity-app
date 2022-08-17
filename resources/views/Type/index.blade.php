@@ -18,7 +18,7 @@
             <div class="row">
                 @foreach ($types as $type)
                     <div class="col-md-6 col-xl-4">
-                        <div class="card bg-secondary text-white mb-3">
+                        <div class="card bg-gray text-white mb-3">
                             <div class="card-header">{{ $type->type }}</div>
                             <div class="card-body">
                                 <p class="card-text">
@@ -30,14 +30,17 @@
                                     @method('delete')
                                     @csrf
 
-                                    <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                    <button type="submit" class="btn me-1"style="background: #1ABC9C !important"
+                                        type="submit">حذف</button>
 
-                                    <a href="{{ route('types.edit', $type) }}" class="btn btn-primary me-1">
+                                    <a href="{{ route('types.edit', $type) }}"
+                                        class="btn me-1"style="background: #1ABC9C !important" type="submit">
 
                                         تعديل
 
                                     </a>
-                                    <a href="{{ route('types.show', $type) }}" class="btn btn-primary me-1">
+                                    <a href="{{ route('types.show', $type) }}"
+                                        class="btn me-1"style="background: #1ABC9C !important" type="submit">
 
                                         عرض
 
@@ -50,5 +53,8 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+
 
 </x-layouts.app>

@@ -25,12 +25,23 @@
                     @enderror
 
                 </div>
-                <div class="row mt-3">
-                    <div class="d-grid gap-2 col-lg-6 mx-auto">
-                        <button class="btn btn-secondary btn-lg" type="submit">تم</button>
-                    </div>
+                <div class="col-md-4">
+                    <label for="validationCustom01" class="form-label">ادخل عدد أشهر الكفالة </label>
+                    <input name="date" type="number"
+                        class="form-control @error('date') border-light-danger @enderror"value="{{ old('date', $type->date) }}">
+                    @error('date')
+                        <div>
+                            <p class="help is-danger">{{ $message }}</p>
+                        </div>
+                    @enderror
+
+                </div>
+                <div class="row-cols-md-6">
+                    <button class="btn btn-lg" style="background: #1ABC9C !important" type="submit">تم</button>
                 </div>
             </form>
 
+        </div>
+    </div>
 
 </x-layouts.app>

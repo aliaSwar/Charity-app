@@ -29,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('Role.create', ['permissions' => Permission::orderBy('name')->get(), 'message' => Permission::select('name')->distinct()->get(),]);
+        return view('Role.create', ['permissions' => Permission::orderBy('name')->get(), 'message' => Permission::select('name')->distinct()->get()]);
     }
 
     /**
@@ -50,11 +50,7 @@ class RoleController extends Controller
         $role->display_name =  $request->display_name; // optional
         $role->description  =  $request->description; // optional
         $role->save();
-        if ($request->has('selectAll')) {
-            $role->attachPermissions(Permission::select('id')->get());
-        } else {
-            $role->attachPermissions($request->permissions);
-        }
+
         return  redirect()->route('roles.show', $role);
     }
 

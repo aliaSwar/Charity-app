@@ -15,6 +15,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        return view('Permission.index',  ['permissions' => Permission::orderBy('name')->get(), 'message' => Permission::select('name')->distinct()->get()]);
     }
 
     /**

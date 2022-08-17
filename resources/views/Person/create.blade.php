@@ -185,7 +185,7 @@
                     <hr class="my-5" />
                     <div class="btn-group-lg">
                         <div class="control">
-                            <input class="btn btn-primary" type="submit" value="إضافة">
+                            <input class="btn btn-primary" type="submit"  style="background: #1ABC9C !important" value="إضافة">
                         </div>
                         <hr class="my-5" />
 

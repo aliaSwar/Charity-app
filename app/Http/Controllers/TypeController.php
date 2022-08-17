@@ -83,10 +83,12 @@ class TypeController extends BaseController
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        $type->update([
-            'type' =>  $request->type,
-            'slug' => Str::slug($request->type)
-        ]);
+
+        $type->type = $request->type;
+        $type->date = $request->date;
+        $type->slug = Str::slug($request->type);
+        $type->saveOrFail();
+
         return redirect()->route('types.show', ['type' => $type])->with('success', 'تم تحديث زمن الكفالة ');
     }
 

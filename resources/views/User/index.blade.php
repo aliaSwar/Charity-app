@@ -9,8 +9,6 @@
                 <img src="{{ asset('assets\img\image\o.png') }}" class="d-grid gap-2 col-lg-5 mx-auto">
 
             </div>
-
-          
             <div class="container">
                 <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
                 <div class="card">

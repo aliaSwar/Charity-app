@@ -125,10 +125,11 @@
                 <tbody id="myTable">
                     @foreach ($people as $key => $person)
                         <tr>
-                            <td><a href="{{ route('entries.show', $person->entry) }}">
+                            <td><a href="{{ route('entries.show', $person->entry) }}"style="text-decoration: none;">
                                     {{ $person->entry->family_name }}
                                 </a></td>
-                            <td><a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a></td>
+                            <td><a href="{{ route('person.show', $person) }}"
+                                    style="text-decoration: none;">{{ $person->full_name }}</a></td>
                             <td>
                                 {{ $person->category }}
                             </td>

@@ -72,7 +72,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('entries.show', $entry) }}"><i
                                                     class="bx bx bxs-detail"></i> عرض التفاصيل</a>
-                                            @if (Auth::user()->hasRole('موظف الادراج العام'))
+                                            @if (Auth::user()->hasRole('موظف الادراج العام') or Auth::user()->hasRole('مدير الإدراج'))
                                                 <a class="dropdown-item" href="{{ route('entries.edit', $entry) }}"><i
                                                         class="bx bx-edit-alt me-1"></i> تعديل</a>
                                             @endif

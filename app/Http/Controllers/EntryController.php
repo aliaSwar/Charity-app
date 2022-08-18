@@ -39,7 +39,7 @@ class EntryController extends BaseController
             });
         }
  */
-        $entries = Entry::with('category', 'financial', 'status')->paginate(7);
+        $entries = Entry::with('category', 'financial', 'status')->paginate(5);
         return view('Entry.index', ['entries' =>  is_null($entries) ? null : $entries]);
     }
 

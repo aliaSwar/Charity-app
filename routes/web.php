@@ -110,7 +110,7 @@ Route::resource('permissions', PermissionController::class);
 Route::resource('users', UserController::class);
 
 //TODO:: convert to excel file
-Route::get('/excel', [ExcelController::class, 'entries']);
+Route::get('/excel', [EntryController::class, 'export'])->name('excel');
 
 
 

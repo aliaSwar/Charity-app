@@ -210,6 +210,7 @@ class EntryController extends BaseController
     }
     public function export()
     {
-        return Excel::download(new EntryExport, 'users.xlsx');
+        return Excel::download(new EntryExport, 'entries.xlsx');
+        return redirect()->back();
     }
 }

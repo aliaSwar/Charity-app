@@ -66,7 +66,7 @@
                 <div class="btn-group-lg">
                     <div class="row mt-3">
                         <div class="d-grid gap-2 col-lg-6 mx-auto">
-                            <input type="submit" class="btn btn-primary" value="اختيار">
+                            <input type="submit" class="btn " style="background: #1ABC9C !important"  value="اختيار">
                         </div>
                     </div>
                 </div>

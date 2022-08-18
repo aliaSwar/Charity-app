@@ -16,10 +16,24 @@
                     <p>{{ session()->get('delete') }}</p>
                 </div>
             @endif
-            <hr class="my-5" />
+
 
 
             <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <h5 class="pb-1 mb-4"> المدرجين</h5>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <a href="{{ route('excel') }}" class="btn btn-danger">هل تريد تصدير ملف
+                            اكسل؟</a>
+                    </div>
+
+                </div>
+                <br>
+                <br>
+
                 <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
 
                 <table class="table table-bordered table-striped">

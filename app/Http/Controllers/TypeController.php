@@ -39,10 +39,12 @@ class TypeController extends BaseController
      */
     public function store(StoreTypeRequest $request)
     {
-        $type = Type::create([
-            'type'  => $request->type,
-            'slug'  => Str::slug($request->type, '-')
-        ]);
+
+        $type = new Type();
+        $type->type = $request->type;
+        $type->date = $request->date;
+        $type->slug = Str::slug($request->type);
+        $type->saveOrFail();
         return redirect()->route('types.show', ['type' => $type]);
     }
 

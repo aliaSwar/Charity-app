@@ -137,6 +137,11 @@
                             <div data-i18n="Basic">توزيع الإعانات </div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{ route('deployes.index') }}" class="menu-link">
+                            <div data-i18n="Basic">عرض توزيع الإعانات </div>
+                        </a>
+                    </li>
                 </ul>
             </li>
 

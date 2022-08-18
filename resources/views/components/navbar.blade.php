@@ -62,8 +62,8 @@
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
-
-                                <a class="dropdown-item" href="#">
+                                @method('post')
+                                <a class="dropdown-item" href="">
                                     <i class="bx bx-power-off me-2"></i>
                                     <span class="align-middle">
                                         <input type="submit" style="border:none;background:none;padding: 0"

@@ -16,6 +16,7 @@ class entryaidsController extends Controller
      */
     public function index()
     {
+        return view('giving.index', ['allentry' => Entry::paginate(5)]);
     }
 
     /**
@@ -50,7 +51,7 @@ class entryaidsController extends Controller
             $aid->entries()->attach($request->entryid, ['date' => $request->aid_date]);
         }
         $allentry = Entry::all();
-        return view('giving.index', compact('allentry'));
+        return redirect()->route('deployes.index');
     }
 
 

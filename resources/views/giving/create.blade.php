@@ -28,11 +28,7 @@
 
                 </div>
 
-                <div class="col-md-12">
 
-                    <button class="btn btn-primary" type="submit"> تأكيد </button>
-
-                </div>
                 <div class="row-cols-1">
                     <div class="row-cols-1">
 
@@ -118,7 +114,11 @@
 
 
 
-
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 col-lg-6 mx-auto">
+                            <input type="submit" class="btn btn-danger" value="اختيار">
+                        </div>
+                    </div>
             </form>
 
 

@@ -72,6 +72,24 @@
 
             <li class="menu-item">
 
+                <a href="{{ route('types.create') }}" class="menu-link ">
+                    <i class="  bx bxs-user-badge"></i>
+                    <div data-i18n="Account Settings">إضافة نوع الكفالة</div>
+                </a>
+            </li>
+
+
+            <li class="menu-item">
+
+                <a href="{{ route('types.index') }}" class="menu-link ">
+                    <i class="  bx bxs-user-check"></i>
+                    <div data-i18n="Account Settings">عرض أنواع الكفالة</div>
+                </a>
+            </li>
+
+
+            <li class="menu-item">
+
                 <a href="{{ route('paids.index') }}" class="menu-link ">
                     <i class="    bx bxs-food-menu"></i>
                     <div data-i18n="Account Settings">عرض التقارير المالية</div>

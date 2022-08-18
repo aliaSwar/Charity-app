@@ -79,7 +79,7 @@
         @endrole
 
         @role('موظف السويشال')
-            <x-orphan-side-bar />
+            <x-social-side-bar />
         @endrole
 
         <x-navbar />

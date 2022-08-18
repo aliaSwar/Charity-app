@@ -14,6 +14,7 @@ use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use App\Exports\EntryExport;
+use App\Http\Requests\UpdateEntryRequest;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -137,11 +138,26 @@ class EntryController extends BaseController
      * @param  \App\Models\Entry  $entry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Entry $entry)
+    public function update(UpdateEntryRequest $request, Entry $entry)
     {
 
         $diff = $request->family_num - $entry->family_num;
-        $entry->update($request->all());
+        $entry->diwan_num = $request->diwan_num;
+        $entry->registration_num = $request->registration_num;
+        $entry->smartCard_num = $request->smartCard_num;
+        $entry->phone_num = $request->phone_num;
+        $entry->renewal_date = $request->renewal_date;
+        $entry->entry_date = $request->entry_date;
+        $entry->finshed_date = $request->finshed_date;
+        $entry->family_num = $request->family_num;
+        $entry->family_name = $request->family_name;
+        $entry->address = $request->address;
+        $entry->salary_charity = $request->salary_charity;
+        $entry->category_id = $request->category_id;
+        $entry->financial_id = $request->financial_id;
+        $entry->status_id = $request->status_id;
+        $entry->save();
+
         if ($request->papers != null) {
             $lost_paper = Identification_paper::where(function ($query) use ($request) {
 
@@ -189,14 +205,11 @@ class EntryController extends BaseController
     }
     public function allentryandaid()
     {
-        $allentry=Entry::all();
-        return view('aid.index',compact('allentry'));
+        $allentry = Entry::all();
+        return view('aid.index', compact('allentry'));
     }
     public function export()
     {
         return Excel::download(new EntryExport, 'users.xlsx');
     }
-
-
-
 }

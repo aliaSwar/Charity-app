@@ -2,11 +2,11 @@
 
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4">المناصب </h4>
+            <h4 class="fw-bold py-3 mb-4">المناصب :</h4>
 
             <div class="row">
                 @foreach ($roles as $role)
-                    <div class="col-xl-4 col-lg-6 col-md-6">
+                    <div class="col-xl-4 col-lg-6 col-md-2">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
@@ -22,20 +22,22 @@
                                         @endforeach
                                     </ul>
                                 </div>
+
                                 <div class="d-flex justify-content-between align-items-end mt-1 pt-25">
                                     <div class="role-heading">
                                         <h4 class="fw-bolder">{{ $role->name }}</h4>
-                                        <p class="card-text"> {{ Str::limit($role->description, 80) }} ...
+                                        <p class="card-text"> {{ Str::limit($role->description, 80) }}
                                             <br>
 
                                         </p>
 
                                         <small class="fw-bolder">
-                                            <a href="{{ route('roles.create') }}"> اضافة
-                                                منصب
+                                            <a href="{{ route('roles.create') }}"><span
+                                                    style="color: #1ABC9C !important"> اضافة
+                                                    منصب
+                                                </span>
                                             </a>
                                         </small>
-
                                     </div>
                                     <a href="{{ route('roles.show', $role) }}" class="text-body"><svg
                                             xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -50,6 +52,8 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+
                     </div>
                 @endforeach
                 <div class="col-xl-4 col-lg-6 col-md-6">
@@ -65,7 +69,8 @@
                                 <div class="card-body text-sm-end text-center ps-sm-3  ">
                                     <a href="{{ route('roles.create') }}"
                                         class="stretched-link text-nowrap add-new-role">
-                                        <span class="btn btn-primary mb-0 waves-effect waves-float waves-light">اضافة
+                                        <span class="btn  mb-0 waves-effect waves-float waves-light"
+                                            style="background: #1ABC9C !important">اضافة
                                             منصب جديد</span>
                                     </a>
                                 </div>

@@ -21,24 +21,30 @@
                         </div>
                         <div class=" card-body">
                             <p class="card-text"> {!! $post->text !!}</p>
-                            <form method="post" action="{{ route('posts.destroy', $post) }}">
-                                @method('delete')
-                                @csrf
+                            @if (Auth::user()->hasRole('موظف السويشال'))
+                                <form method="post" action="{{ route('posts.destroy', $post) }}">
+                                    @method('delete')
+                                    @csrf
 
-                                <button type="submit" class="btn btn-primary me-1">حذف</button>
+                                    <button type="submit" class="btn  btn-success me-1">حذف</button>
 
-                                <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary me-1">
+                                    <a href="{{ route('posts.edit', $post) }}" class="btn b me-1 "
+                                        style="background: #1ABC9C
+                                    !important">
 
-                                    تعديل
+                                        تعديل
 
-                                </a>
+                                    </a>
 
-                            </form>
-
+                                </form>
+                            @endif
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+
 </x-layouts.app>

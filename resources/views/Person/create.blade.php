@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot name="styles">
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" >
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     </x-slot>
     <x-slot name="scripts">
         <!-- Include the Quill library -->
@@ -138,7 +138,7 @@
                             <option value="single">اعزب</option>
                             <option value="married"> متزوج </option>
                             <option value="separate">منفصل </option>
-                            <option value="window">أرمل </option>
+                            <option value="widow">أرمل </option>
 
                         </select>
                         @error('family_status')
@@ -185,7 +185,8 @@
                     <hr class="my-5" />
                     <div class="btn-group-lg">
                         <div class="control">
-                            <input class="btn btn-primary" type="submit"  style="background: #1ABC9C !important" value="إضافة">
+                            <input class="btn btn-primary" type="submit" style="background: #1ABC9C !important"
+                                value="إضافة">
                         </div>
                         <hr class="my-5" />
 

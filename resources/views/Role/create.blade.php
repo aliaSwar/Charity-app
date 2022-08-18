@@ -23,28 +23,29 @@
                 enctype="multipart/form-data">
 
                 {{ csrf_field() }}
-                <div class=" row-cols-md-2 ">
+                <div class=" row-cols-md-5 ">
                     <label for="validationCustom04" class="form-label ">الاسم
                     </label>
-                    <input type="text" name="name" class="form-control  @error('name') is-invalid @enderror"
-                        id="validationServer02">
+                    <input type="text" name="name"
+                        class="form-control is-valid @error('name') is-invalid @enderror" id="validationServer02">
                     @error('name')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
 
-                <div class="row-cols-md-2">
+                <div class="row-cols-md-5">
                     <label for="validationServer02" class="form-label">المنصب</label>
                     <input type="text" name="display_name"
-                        class="form-control  @error('display_name') is-invalid @enderror" id="validationServer02">
+                        class="form-control is-valid @error('display_name') is-invalid @enderror"
+                        id="validationServer02">
 
                     @error('display_name')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="row-cols-1">
+                <div class="row-cols-md-5">
                     <label for="validationServer02" class="form-label">الوصف</label>
-                    <textarea id="editor" name="description" class="form-control  @error('content') text-danger @enderror"
+                    <textarea id="editor" name="description" class="form-control is-valid @error('content') text-danger @enderror"
                         rows="3"></textarea>
                     <input type="hidden"id="content">
                     @error('description')
@@ -58,7 +59,7 @@
     <div class="btn-group-lg">
         <div class="row mt-3">
             <div class="d-grid gap-2 col-lg-6 mx-auto">
-                <input type="submit" class="btn btn-secondary" value="انشاء">
+                <input type="submit" class="btn " style="background: #1ABC9C !important" value="انشاء">
             </div>
         </div>
     </div>

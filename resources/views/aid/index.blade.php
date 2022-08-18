@@ -5,7 +5,11 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    <p>{{ session()->get('message') }}</p>
+                </div>
+            @endif
             <hr class="my-5" />
 
 
@@ -37,9 +41,16 @@
                                             <a class="dropdown-item" href="{{ route('aids.show', $aid) }}"><i
                                                     class="bx bx bxs-detail"></i> عرض التفاصيل</a>
 
-                                            @if (Auth::user()->hasRole('موظف الادراج العام  '))
-                                                <a class="dropdown-item" href="{{ route('aids.edit', $aid) }}"><i
-                                                        class="bx bx-edit-alt me-1"></i> تعديل</a>
+                                            @if (Auth::user()->hasRole('موظف الادراج العام'))
+                                                <form action="{{ route('aids.destroy', $aid) }}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <a class="dropdown-item" href="{{ route('aids.edit', $aid) }}"><i
+                                                            class="bx bx-edit-alt me-1"></i> تعديل</a>
+
+                                                    <button type="submit" class="dropdown-item"><i
+                                                            class=" bx bx-x-circle"></i>حذف</button>
+                                                </form>
                                             @endif
 
                                         </div>

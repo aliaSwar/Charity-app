@@ -12,7 +12,7 @@
                 <h6 class="pb-1 mb-4 text-muted">منشورات التطبيق</h6>
                 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                     @foreach ($posts as $post)
-                        <a href="{{ route('posts.show', $post) }}">
+                        <a href="{{ route('posts.show', $post) }}" style="text-decoration: none;">
                             <div class="col">
                                 <div class="card h-100">
                                     <img class="card-img-top"

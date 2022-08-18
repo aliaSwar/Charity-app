@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
-
+use Faker\Provider\Base;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class RoleController extends BaseController
 {
     /**
      * Display a listing of the resource.

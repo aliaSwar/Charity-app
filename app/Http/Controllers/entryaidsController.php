@@ -25,10 +25,10 @@ class entryaidsController extends Controller
      */
     public function create()
     {
-        $allentry = Entry::all();
+        $entries = Entry::paginate(5);
         $aids = Aid::all();
 
-        return view('giving.create', compact('aids', 'allentry'));
+        return view('giving.create', compact('aids', 'entries'));
     }
 
     /**

@@ -103,12 +103,15 @@
                     </tbody>
                 </table>
 
-                <!-- Vertically centered modal -->
+                {{ $orphans->links() }}
 
             </div>
 
         </div>
-
-        {{ $orphans->links() }}
     </div>
+
+
+
+
+
 </x-layouts.app>

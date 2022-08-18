@@ -73,7 +73,9 @@ class AidController extends BaseController
      */
     public function edit(Aid $aid)
     {
-        //
+        return view('aid.edit', [
+            'aid'   => $aid
+        ]);
     }
 
     /**
@@ -85,7 +87,18 @@ class AidController extends BaseController
      */
     public function update(UpdateAidRequest $request, Aid $aid)
     {
-        //
+        if ($request->has('image')) {
+            $image = $request->image;
+            $path = $image->store('helper-image', 'public');
+        }
+        $aid->update([
+            'name'   => $request->name,
+            'slug'   => Str::slug($request->name, '-'),
+            'image'  => $path,
+            'notes'  => $request->notes
+        ]);
+
+        return redirect()->route('aids.index')->with(['message' => 'تم تعديل المساعدة بنجاح']);
     }
 
     /**
@@ -96,6 +109,7 @@ class AidController extends BaseController
      */
     public function destroy(Aid $aid)
     {
-        //
+        $aid->delete();
+        return redirect()->route('aids.index')->with(['message' => 'تم حذف المساعدة بنجاح']);
     }
 }

@@ -36,7 +36,6 @@
                 <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
         </div>
-
         <div class="menu-inner-shadow"></div>
 
         <ul class="menu-inner py-1">
@@ -49,116 +48,70 @@
             </li>
             <!-- Layouts -->
             <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
+
+                <a href="{{ route('posts.index') }}" class="menu-link ">
+                    <i class="bx bx-user"></i>
+
+                    <div data-i18n="Account Settings"> بيانات المنشورات</div>
+                </a>
+            </li>
+
+
+
+
+            <li class="menu-item">
+
+                <a href="{{ route('posts.create') }}" class="menu-link ">
+                    <i class="  bx bxs-user-plus"></i>
+                    <div data-i18n="Account Settings">إضافة منشور</div>
+                </a>
+            </li>
+
+
+
+            <!-- Components -->
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">other</span></li>
+
+
+            <!-- Cards -->
+            <li class="menu-item">
+                <a href="" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-user"></i>
-                    <div data-i18n="Layouts">المدرجين</div>
+                    <div data-i18n="Layouts"> الحساب</div>
                 </a>
+
 
                 <ul class="menu-sub">
 
                     <li class="menu-item">
-                        <a href="{{ route('entries.create') }}" class="menu-link">
-                            <div data-i18n="Without navbar">إضافة مدرج</div>
-                        </a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+
+                            <a href="" class="menu-link">
+                                <i class="bx bx-power-off me-2"></i>
+
+                                <input type="submit" style="border:none;background:none;padding: 0"
+                                    value="تسجيل خروج"></span>
+                                <a>
+                        </form>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('entries.index') }}" class="menu-link">
-                            <div data-i18n="Without menu">عرض المدرجين</div>
-                        </a>
 
-                    </li>
-                </ul>
-            </li>
-
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons  bx bx-adjust"></i>
-                    <div data-i18n="Authentications">الفئات</div>
-                </a>
-                <ul class="menu-sub">
-
-                    <li class="menu-item">
-                        <a href="{{ route('financials.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض الفئات</div>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons  bx bxs-message-rounded-check"></i>
-                    <div data-i18n="Authentications">الحالات</div>
-                </a>
-                <ul class="menu-sub">
-
-                    <li class="menu-item">
-                        <a href="{{ route('statuses.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض الحالات</div>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons  bx bx-heart"></i>
-                    <div data-i18n="Authentications">الأنواع</div>
-                </a>
-                <ul class="menu-sub">
-
-                    <li class="menu-item">
-                        <a href="{{ route('categories.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض الأنواع</div>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons  bx bx-heart"></i>
-                    <div data-i18n="Authentications">الإعانات</div>
-                </a>
-                <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="{{ route('aids.create') }}" class="menu-link">
-                            <div data-i18n="Basic">اضافة الإعانات</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ route('aids.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض الإعانات</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ route('deployes.create') }}" class="menu-link">
-                            <div data-i18n="Basic">توزيع الإعانات </div>
+                        <a href="{{ route('users.show', Auth::user()) }}" class="menu-link ">
+                            <i class=" bx bxs-face"></i>
+                            إعدادات الحساب
                         </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons  bx bx-album"></i>
-                    <div data-i18n="Authentications">الأوراق الثبوتية</div>
-                </a>
-                <ul class="menu-sub">
 
-                    <li class="menu-item">
-                        <a href="{{ route('papers.index') }}" class="menu-link">
-                            <div data-i18n="Basic">عرض الأوراق</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ route('papers.nawaqis') }}" class="menu-link">
-                            <div data-i18n="Basic">النواقص</div>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+
+
+
+
+
+
 
 
 

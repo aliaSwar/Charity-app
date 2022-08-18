@@ -165,8 +165,15 @@
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons  bx bx-album"></i>
-                        <div data-i18n="Authentications">النواقص</div>
+                        <div data-i18n="Authentications">الأوراق الثبوتية</div>
                     </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{ route('papers.index') }}" class="menu-link">
+                                <div data-i18n="Basic">الأوراق</div>
+                            </a>
+                        </li>
+                    </ul>
                     <ul class="menu-sub">
                         <li class="menu-item">
                             <a href="{{ route('papers.nawaqis') }}" class="menu-link">
@@ -174,6 +181,59 @@
                             </a>
                         </li>
                     </ul>
+
                 </li>
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="bx bxs-food-menu"></i>
+                        <div data-i18n="Authentications">المنشورات</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="{{ route('posts.index') }}" class="menu-link">
+                                <div data-i18n="Basic">عرض المنشورات</div>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <!-- Components -->
+                <li class="menu-header small text-uppercase"><span class="menu-header-text">other</span></li>
+
+                <!-- Cards -->
+                <li class="menu-item">
+                    <a href="" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div data-i18n="Layouts"> الحساب</div>
+                    </a>
+
+
+                    <ul class="menu-sub">
+
+                        <li class="menu-item">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+
+                                <a href="" class="menu-link ">
+                                    <i class="bx bx-power-off me-2"></i>
+
+                                    <input type="submit" style="border:none;background:none;padding: 0"
+                                        value="تسجيل خروج"></span>
+                                    <a>
+                            </form>
+                        </li>
+                        <li class="menu-item">
+
+                            <a href="{{ route('users.show', Auth::id()) }}" class="menu-link ">
+                                <i class=" bx bxs-face"></i>
+                                <div data-i18n="Layouts">إعدادات الحساب</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
             </ul>
         </aside>

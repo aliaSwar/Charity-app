@@ -24,7 +24,7 @@ class UpdateOrphanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'salary_year'
         ];
     }
 }

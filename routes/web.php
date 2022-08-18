@@ -49,14 +49,13 @@ require __DIR__ . '/auth.php';
 ///////////////////////////////Start section entries/////////////////////////
 //TODO:: route entry
 Route::resource('entries', EntryController::class);
-/* Route::get('entries/{entry}/detials', [EntryController::class, 'detials']); */
+
 //TODO:: route category
 Route::resource('categories', CategoryController::class);
 //TODO:: route Status
 Route::resource('statuses', StatusController::class);
 //TODO:: route Paper to entries
 Route::resource('papers', IdentificationPaperController::class);
-
 //TODO:: route add financial to entries
 Route::resource('financials', FinancialController::class);
 //TODO:: route add  the mdical entries
@@ -80,6 +79,7 @@ Route::get('nawaqis', [IdentificationPaperController::class, 'indexAll'])->name(
 Route::resource('sponsors', SponsorController::class);
 Route::resource('types', TypeController::class);
 Route::resource('paids', PaidController::class);
+
 //TODO:: Add Orphan
 Route::controller(OrphanController::class)->group(function () {
     Route::get('filter/create/{sponsor}', [OrphanController::class, 'create_filter'])->name('filter.create');
@@ -91,6 +91,7 @@ Route::controller(OrphanController::class)->group(function () {
     Route::get('orphans/{orphan}', [OrphanController::class, 'show'])->name('orphans.show');
     Route::get('orphans/{orphan}/edit', [OrphanController::class, 'edit'])->name('orphans.edit');
     Route::delete('orphans/{orphan}', [OrphanController::class, 'destroy'])->name('orphans.destroy');
+    Route::put('orphans/{orphan}', [OrphanController::class, 'update'])->name('orphans.update');
 });
 //TODO:: Add paid to sponsor
 Route::controller(PaidController::class)->group(function () {
@@ -111,8 +112,6 @@ Route::resource('users', UserController::class);
 //TODO:: convert to excel file
 Route::get('/excel', [ExcelController::class, 'entries']);
 
-//exort exel
-Route::get('/export', [EntryController::class, 'export']);
 
 
 
@@ -121,10 +120,10 @@ Route::get('/export', [EntryController::class, 'export']);
 //TODO:: add post to app
 Route::resource('posts', PostWebController::class);
 
-//////////////////////////End Section Posts on app/////////////////////////////////
 
 
-///////////////////////////// AID Section ///////////////////////////////////////
+
+///////////////////////////// ADD AID Section ///////////////////////////////////////
 Route::resource('aids', AidController::class);
 
 //TODO::توزيع إعلانة على المدرجين

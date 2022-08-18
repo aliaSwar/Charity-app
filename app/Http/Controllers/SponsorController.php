@@ -50,12 +50,12 @@ class SponsorController extends BaseController
             'password' => Hash::make($pass),
         ]);
 
-        Notification::send($user, new SponsorPublished($user, $pass));
+
         $sponsor = Sponsor::create([
             'address' => $request->address,
             'user_id' => $user->id
         ]);
-
+        Notification::send($user, new SponsorPublished($user, $pass));
         return redirect()->route('sponsors.show', ['sponsor' => $sponsor]);
     }
 

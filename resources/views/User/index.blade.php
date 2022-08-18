@@ -10,7 +10,7 @@
 
             </div>
 
-            <hr class="my-5" />
+          
             <div class="container">
                 <input class="form-control mb-4" id="tableSearch" type="text" placeholder="بحث..">
                 <div class="card">

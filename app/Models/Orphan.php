@@ -13,4 +13,12 @@ class Orphan extends Model
     {
         return $this->belongsTo(Type::class);
     }
+    public function sponsor()
+    {
+        return $this->belongsTo(Sponsor::class);
+    }
+    public function people()
+    {
+        return $this->hasMany(Person::class);
+    }
 }

@@ -52,7 +52,7 @@
                 <a href="{{ route('orphans.index') }}" class="menu-link ">
                     <i class="bx bx-user"></i>
 
-                    <div data-i18n="Account Settings"> بيانات المكفولين</div>
+                    <div data-i18n="Account Settings"> بيانات الكفالات</div>
                 </a>
             </li>
 

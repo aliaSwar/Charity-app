@@ -16,12 +16,10 @@ return new class extends Migration
     {
         Schema::create('orphans', function (Blueprint $table) {
             $table->id();
-
-            $table->boolean('mother_is_ok')->nullable();
             $table->bigInteger('salary_month')->default(25000); //تم تعديل بحيث يكون الراتب هو راتب الكلي على عدد اشهر الكفالة
             $table->date('begin_date', 'y-m-d');
             $table->date('end_date', 'y-m-d');
-            $table->bigInteger('salary_year')->default(100000); //تم تعديل الداتا بيز بحيث يكون الراتب حسب مدة الكفالة
+            $table->bigInteger('salary'); //تم تعديل الداتا بيز بحيث يكون الراتب حسب مدة الكفالة
             $table->foreignId('type_id'); //اسم االسنوي او الشهري
             $table->timestamps();
         });

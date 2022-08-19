@@ -26,7 +26,8 @@ class IndexController extends BaseController
         $count_mdical =  Cache::remember('mdicals', 60 + 60 + 24, function () {
             return Mdical_entry::count();
         });
-        if (is_null(Status::where('status', 'قيد الانتظار')) or is_null(Status::where('status', 'مرفوضين'))) {
+
+        if (is_null(Status::where('status', 'قيد الانتظار')->get()) || is_null(Status::where('status', 'مرفوضين')->get())) {
             return view('index', [
                 'count_entry'  =>  $count_entry,
                 'count_mdical' => $count_mdical,

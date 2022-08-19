@@ -15,9 +15,9 @@ class Sponsor extends Model
         return $this->hasMany(Paid::class);
     }
 
-    public function people()
+    public function orphans()
     {
-        return $this->belongsToMany(Person::class);
+        return $this->hasMany(Orphan::class);
     }
     public function user(): BelongsTo
     {

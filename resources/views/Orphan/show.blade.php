@@ -13,7 +13,7 @@
 
                             </div>
                             <br>
-                            <h5> ❤️🙈{{ $sponsor->user->name }}😘</h5>
+                            <h5> ❤️🙈{{ $orphan->sponsor->user->name }}😘</h5>
                             <br>
                         </div>
 
@@ -63,7 +63,7 @@
                         <div class="card mb-1">
                             <div class="card-body">
 
-                                <p class="card-text"> الراتب السنوي لكل فرد: {{ $orphan->salary_year }} ليرة</p>
+                                <p class="card-text"> الراتب لكل فرد: {{ $orphan->salary }} ليرة</p>
 
                             </div>
                         </div>
@@ -81,17 +81,18 @@
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                        @foreach ($people as $key => $person)
+                        @foreach ($orphan->people as $person)
                             <tr>
                                 <td>
                                     {{ $person->id }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a>
+                                    <a href="{{ route('person.show', $person) }}"
+                                        style="text-decoration: none;">{{ $person->full_name }}</a>
                                 </td>
                                 <td>
-                                    <a
-                                        href="{{ route('entries.show', $person->entry) }}">{{ $person->entry->family_name }}</a>
+                                    <a href="{{ route('entries.show', $person->entry) }}"
+                                        style="text-decoration: none;">{{ $person->entry->family_name }}</a>
                                 </td>
 
                             </tr>

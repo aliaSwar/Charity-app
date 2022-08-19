@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AidController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
-use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\FinancialController;
 use App\Http\Controllers\IdentificationPaperController;
 use App\Http\Controllers\IndexController;
@@ -19,12 +18,6 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\entryaidsController;
-use App\Models\Entry;
-use App\Models\Mdical_entry;
-use App\Models\Status;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -131,14 +124,8 @@ Route::resource('deployes', entryaidsController::class);
 Route::get('/create', [entryaidsController::class, 'create']);
 Route::post('/store', [entryaidsController::class, 'store'])->name('store');
 Route::get('peee/{entry_id}', [entryaidsController::class, 'getaid'])->name('entry.aids');
-//Route::get('/peee', [EntryController::class, 'allentryandaid']);
 Route::post('/createaiid', [entryaidsController::class, 'store'])->name('create.aids');
-//Route::post('/createaiid', [entryaidsController::class, 'store'])->name('creatspecific.aids');
 
-//Route::post('/createaiiid', [entryaidsController::class, 'getentryforaid'])->name('create.aids');
-
-//Route::post('/createaiiid', [entryaidsController::class, 'getentryforaid'])->name('specific.aids');
-//Route::get('/createaiiiid', [entryaidsController::class, 'getentryforaiddd'])->name('specificentry.aids');
 
 //اضافة اعانة للمدرجين
 Route::get('/createaid', [entryaidsController::class, 'create']);

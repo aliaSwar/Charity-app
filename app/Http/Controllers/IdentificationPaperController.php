@@ -44,7 +44,7 @@ class IdentificationPaperController extends BaseController
         $paper->slug = Str::slug($request->name, '-');
         if ($request->has('image')) {
             $image = $request->image;
-            $path = $image->store('paper-images', 'public');
+        $path = $image->store('paper-images', 'public');
             $paper->image = $path;
         }
         $paper->is_mdical = $request->is_mdical;

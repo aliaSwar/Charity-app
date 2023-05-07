@@ -114,7 +114,8 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-primary d-grid w-100" type="submit">تسجيل دخول</button>
+                                <button class="btn  d-grid w-100" type="submit"
+                                    style="background: #1ABC9C !important">تسجيل دخول</button>
                             </div>
                         </form>
 

@@ -39,7 +39,7 @@ class EntryController extends BaseController
             });
         }
  */
-        $entries = Entry::with('category', 'financial', 'status')->paginate(7);
+        $entries = Entry::with('category', 'financial', 'status')->paginate(5);
         return view('Entry.index', ['entries' =>  is_null($entries) ? null : $entries]);
     }
 
@@ -210,6 +210,7 @@ class EntryController extends BaseController
     }
     public function export()
     {
-        return Excel::download(new EntryExport, 'users.xlsx');
+        return Excel::download(new EntryExport, 'entries.xlsx');
+        return redirect()->back();
     }
 }

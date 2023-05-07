@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 
+use function PHPUnit\Framework\isEmpty;
+
 class IndexController extends BaseController
 {
     public function index()
@@ -26,7 +28,8 @@ class IndexController extends BaseController
         $count_mdical =  Cache::remember('mdicals', 60 + 60 + 24, function () {
             return Mdical_entry::count();
         });
-        if (is_null(Status::where('status', 'قيد الانتظار')) or Status::where('status', 'مرفوضين')) {
+
+        if (isEmpty(Status::where('status', 'قيد الانتظار')->get()) or isEmpty(Status::where('status', 'مرفوضين')->get())) {
             return view('index', [
                 'count_entry'  =>  $count_entry,
                 'count_mdical' => $count_mdical,

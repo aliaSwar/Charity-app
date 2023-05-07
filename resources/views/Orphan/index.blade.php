@@ -19,7 +19,7 @@
                     <thead>
                         <tr>
                             <th class="table-success "> الكفالة</th>
-                            <th class="table-success "> رقم الكفيل</th>
+                            <th class="table-success "> اسم الكفيل</th>
                             <th class="table-success "> صلاحية الكفالة</th>
                             <th class="table-success "> تفاصيل</th>
 
@@ -34,7 +34,7 @@
                                 <td>
                                     <a href="{{ route('sponsors.show', $orphan->sponsor_id) }}"
                                         style="text-decoration: none;">
-                                        {{ $orphan->sponsor_id }}
+                                        {{ $orphan->sponsor->user->name }}
                                     </a>
                                 </td>
                                 <td>

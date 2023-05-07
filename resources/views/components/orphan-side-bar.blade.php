@@ -39,7 +39,12 @@
         <div class="menu-inner-shadow"></div>
 
         <ul class="menu-inner py-1">
-
+            <li class="menu-item active">
+                <a href="{{ route('index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">الرئيسية</div>
+                </a>
+            </li>
 
             <!-- Layouts -->
             <li class="menu-item">
@@ -47,7 +52,7 @@
                 <a href="{{ route('orphans.index') }}" class="menu-link ">
                     <i class="bx bx-user"></i>
 
-                    <div data-i18n="Account Settings"> بيانات المكفولين</div>
+                    <div data-i18n="Account Settings"> بيانات الكفالات</div>
                 </a>
             </li>
 

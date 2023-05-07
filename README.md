@@ -25,26 +25,3 @@
 <p align="center">
 <a href=""><img src="public\assets\img\image\qr-code.png" alt="QR" width="350"></a>
 </p>
-
-## Solve Problem install packege maatwebsiteexcel
-
--   open file php.ini
-    <br>
-    before
-    `extension=gd;`  
-     after
-    `extension=gd`
-
--   execute the command to change your cache
-
-```json
-composer require psr/simple-cache ^2.0
-```
-
--   Then install maatwebsiteexcel
-
-```json
-    composer require maatwebsite/excel
-```
-
--   it will work like a charm ❤

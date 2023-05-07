@@ -23,6 +23,7 @@
                                         <p class="card-text">
                                             {!! $post->text !!}
                                         </p>
+                                        
                                     </div>
                                 </div>
                             </div>

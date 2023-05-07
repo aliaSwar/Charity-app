@@ -25,8 +25,10 @@
                                                     class="bx bx-user"></i></span>
                                             <input name="name" type="text"
                                                 class="form-control @error('name') border-light-danger @enderror"
-                                                id="basic-icon-default-fullname" placeholder="فاعل خير " aria-label=" فاعل
-                                                خير " aria-describedby="basic-icon-default-fullname2" />
+                                                id="basic-icon-default-fullname" placeholder="فاعل خير "
+                                                aria-label=" فاعل
+                                                خير "
+                                                aria-describedby="basic-icon-default-fullname2" />
                                             @error('name')
                                                 <div>
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -94,7 +96,8 @@
                                 </div>
                                 <div class="row justify-content-end">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">إنشاء</button>
+                                        <button type="submit" class="btn"
+                                            style="background: #1ABC9C !important">إنشاء</button>
                                     </div>
                                 </div>
                             </form>

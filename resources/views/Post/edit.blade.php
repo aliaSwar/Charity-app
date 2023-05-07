@@ -19,7 +19,8 @@
     <div class="content-wrapper">
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <form class="col-md-10" action="{{ route('posts.update', $post) }}" method="POST">
+            <form class="col-md-10" action="{{ route('posts.update', $post) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="col-md-5">

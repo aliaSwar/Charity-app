@@ -39,23 +39,12 @@ class OrphanController extends BaseController
      */
     public function create(Request $request, Sponsor $sponsor)
     {
-        $mothers = array();
+
         $people = Person::whereIn('id', $request->people)->get();
-
-        foreach ($people as $person) {
-            $entry = $person->entry_id;
-            $mothers[] = Person::where('category', 'الأم')
-                ->where('entry_id', $entry)
-                ->where('orphan', false)
-                ->first();
-        }
-
         return view('Orphan.create', [
             'sponsor'    => $sponsor,
             'types'      => Type::all(),
-            'financials' => Financial::all(),
             'people'     => $people,
-            'mothers'    => $mothers
         ]);
     }
 
@@ -68,27 +57,28 @@ class OrphanController extends BaseController
     public function store(StoreOrphanRequest $request, Sponsor $sponsor)
     {
 
+        //dd(Type::findOrFail($request->type_id)->date);
+        $monthly = $request->salary / Type::findOrFail($request->type_id)->date;
+
+        $orphan = Orphan::create([
+            'sponsor_id'    => $sponsor->id,
+            'salary_month'  => $monthly,
+            'salary'        => $request->salary,
+            'begin_date'    => $request->begin_date,
+            'end_date'      => $request->end_date,
+
+            'type_id'       => $request->type_id,
+        ]);
+        dd($orphan->salary);
         foreach ($request->people as  $person) {
-
-            $monthly = $request->salary_year / Type::findOrFail($request->type_id)->date;
-
-            Orphan::create([
-                'sponsor_id'    => $sponsor->id,
-                'salary_month'  => $monthly / count($request->people),
-                'salary_year'   => $request->salary_year / count($request->people),
-                'begin_date'    => $request->begin_date,
-                'end_date'      => $request->end_date,
-
-                'type_id'       => $request->type_id,
-                'person_id'     => $person
-            ]);
             Person::where('id', $person)->update([
+                'orphan_id' =>  $orphan->id,
                 'orphan'  => true
             ]);
         }
 
 
-        return redirect()->route('sponsors.show', $sponsor);
+        return redirect()->route('orphans.show', ['orphan' => $orphan]);
     }
 
 
@@ -101,15 +91,10 @@ class OrphanController extends BaseController
      */
     public function show(Orphan $orphan)
     {
-        foreach (Orphan::where('sponsor_id', $orphan->sponsor_id)->where('salary_month', $orphan->salary_month)->get() as $person) {
-            $people[] = Person::findOrFail($person->person_id);
-            $sponsor = Sponsor::findOrFail($person->sponsor_id);
-        }
+
         /* return $people; */
         return view('Orphan.show', [
-            'orphan' => $orphan,
-            'people' => $people,
-            'sponsor' => $sponsor,
+            'orphan' => $orphan
         ]);
     }
 
@@ -124,8 +109,7 @@ class OrphanController extends BaseController
         return view('Orphan.edit', [
             'orphan' => $orphan,
             'types'   => Type::all(),
-            'person'  => Person::where('id', $orphan->person_id)->first(),
-            'sponsor' => Sponsor::where('id', $orphan->sponsor_id)->first()
+
         ]);
     }
 
@@ -138,19 +122,21 @@ class OrphanController extends BaseController
      */
     public function update(UpdateOrphanRequest $request, Orphan $orphan)
     {
-        $monthly = $request->salary_year / Type::findOrFail($request->type_id)->date;
+        $monthly = $request->salary / Type::findOrFail($request->type_id)->date;
 
-        $orphan->update([
-            'sponsor_id'    => $orphan->sponsor_id,
-            'salary_month'  => $monthly,
-            'salary_year'   => $request->salary_year,
-            'begin_date'    => $request->begin_date,
-            'end_date'      => $request->end_date,
-            'type_id'       => $request->type_id,
-            'person_id'     => $orphan->person_id
-        ]);
+        $orphan->sponsor_id = $orphan->sponsor_id;
+        $orphan->salary_month = $monthly;
+        $orphan->salary       = $request->salary;
+        $orphan->begin_date   = $request->begin_date;
+        $orphan->end_date    = $request->end_date;
+        $orphan->type_id     = $request->type_id;
+
+        $orphan->save();
+
+
         Person::where('id', $orphan->person_id)->update([
-            'orphan'  => true
+            'orphan'  => true,
+            'orphan_id' => $orphan->id
         ]);
         return redirect()->route('orphans.show', [
             'orphan'  => $orphan

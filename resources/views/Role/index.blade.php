@@ -16,8 +16,10 @@
                                             <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
                                                 data-bs-placement="top" class="avatar avatar-sm pull-up" title
                                                 data-bs-original-title="{{ $user->name }}">
-                                                <img src="{{ is_null($user->image) ? '../assets/img/avatars/5.png' : Storage::url($user->image) }}"
-                                                    alt="Avatar" class="rounded-circle" />
+                                                <a href="{{ route('users.show', $user) }}">
+                                                    <img src="{{ is_null($user->image) ? '../assets/img/avatars/5.png' : Storage::url($user->image) }}"
+                                                        alt="Avatar" class="rounded-circle" />
+                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -32,10 +34,9 @@
                                         </p>
 
                                         <small class="fw-bolder">
-                                            <a href="{{ route('roles.create') }}"><span
+                                            <a href="{{ route('users.create') }}"><span
                                                     style="color: #1ABC9C !important"> اضافة
-                                                    منصب
-                                                </span>
+                                                    مستخدم </span>
                                             </a>
                                         </small>
                                     </div>

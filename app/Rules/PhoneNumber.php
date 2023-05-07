@@ -35,6 +35,6 @@ class PhoneNumber implements Rule
      */
     public function message()
     {
-        return 'The phone number must be in valid format, example: 0956820831';
+        return 'الرقم يجب أن يكون صحيح, مثال: 0956820831';
     }
 }

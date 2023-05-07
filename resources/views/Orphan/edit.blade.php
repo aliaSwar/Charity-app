@@ -6,14 +6,14 @@
             <div class="row">
                 <div class="col-14">
                     <div class="card mb-4">
-                        <h5 class="card-header">{{ $sponsor->user->name }}</h5>
+                        <h5 class="card-header">{{ $orphan->sponsor->user->name }}</h5>
                         <div class="card-body">
                             <p class="card-text">
                                 <br>
-                                الكفيل, {{ $sponsor->user->name }}❤️
+                                الكفيل, {{ $orphan->sponsor->user->name }}❤️
                             </p>
 
-                            <a class="btn btn-success" href="{{ route('sponsors.show', $sponsor) }}"
+                            <a class="btn btn-success" href="{{ route('sponsors.show', $orphan->sponsor) }}"
                                 style="background: #1ABC9C !important">عرض</a>
 
                         </div>
@@ -30,9 +30,9 @@
                 <div class="col-md-5">
                     <label for="validationServer02" class="form-label">المبلغ </label>
                     <input type="number"
-                        name="salary_year"class="form-control is-valid @error('salary_year') is-invalid @enderror"
-                        value="{{ old('salary_year', $orphan->salary_year) }}">
-                    @error('salary_year')
+                        name="salary"class="form-control is-valid @error('salary') is-invalid @enderror"
+                        value="{{ old('salary', $orphan->salary) }}">
+                    @error('salary')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -90,17 +90,22 @@
             </tr>
         </thead>
         <tbody id="myTable">
-
-            <tr>
-                <td><a href="{{ route('entries.show', $person->entry) }}">
-                        {{ $person->entry->family_name }}
-                    </a></td>
-                <td><a href="{{ route('person.show', $person) }}">{{ $person->full_name }}</a></td>
-                <td>
-                    تأكيد الكفالة
-                    <input type="checkbox" name="person_id" value="{{ $person->id }}">
-                </td>
-
+            @foreach ($orphan->people as $person)
+                <tr>
+                    <td><a
+                            href="{{ route('entries.show', $person->entry) }}"style="
+                            text-decoration:none
+                        ">
+                            {{ $person->entry->family_name }}
+                        </a></td>
+                    <td><a href="{{ route('person.show', $person) }}"
+                            style="text-decoration: none">{{ $person->full_name }}</a></td>
+                    <td>
+                        تأكيد الكفالة
+                        <input type="checkbox" name="person_id" value="{{ $person->id }}">
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
     <div class="row mt-3">

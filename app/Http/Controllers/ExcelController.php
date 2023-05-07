@@ -12,6 +12,5 @@ class ExcelController extends Controller
     {
         $entries = Entry::all();
 
-
     }
 }
